@@ -4,6 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>AirTecFugas</Name>
     <RootNamespace>AirTecFugas</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,11 +37,25 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="MainApp\admin.py" />
+    <Compile Include="MainApp\apps.py" />
+    <Compile Include="MainApp\migrations\__init__.py" />
+    <Compile Include="MainApp\models.py" />
+    <Compile Include="MainApp\tests.py" />
+    <Compile Include="MainApp\views.py" />
+    <Compile Include="MainApp\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="AirTecFugas\__init__.py" />
     <Compile Include="AirTecFugas\settings.py" />
     <Compile Include="AirTecFugas\urls.py" />
     <Compile Include="AirTecFugas\wsgi.py" />
+    <Compile Include="ModelsApp\admin.py" />
+    <Compile Include="ModelsApp\apps.py" />
+    <Compile Include="ModelsApp\migrations\__init__.py" />
+    <Compile Include="ModelsApp\models.py" />
+    <Compile Include="ModelsApp\tests.py" />
+    <Compile Include="ModelsApp\views.py" />
+    <Compile Include="ModelsApp\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -53,8 +68,18 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="AirTecFugas\" />
+    <Folder Include="MainApp\" />
+    <Folder Include="MainApp\migrations\" />
+    <Folder Include="MainApp\templates\" />
+    <Folder Include="MainApp\templates\MainApp\" />
+    <Folder Include="ModelsApp\" />
+    <Folder Include="ModelsApp\migrations\" />
+    <Folder Include="ModelsApp\templates\" />
+    <Folder Include="ModelsApp\templates\ModelsApp\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MainApp\templates\MainApp\index.html" />
+    <Content Include="ModelsApp\templates\ModelsApp\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -90,6 +115,17 @@
     <None Include="readme.html">
       <SubType>WebBrowser</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.6</Version>
+      <Description>env (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

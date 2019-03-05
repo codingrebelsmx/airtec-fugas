@@ -4,6 +4,7 @@ Definition of urls for AirTecFugas.
 
 from datetime import datetime
 from django.conf.urls import url
+from django.conf.urls import re_path
 import django.contrib.auth.views
 
 import app.forms
@@ -16,11 +17,11 @@ import app.views
 
 urlpatterns = [
     # Examples:
-    url(r'^$', app.views.home, name='home'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about$', app.views.about, name='about'),
-    url(r'^login/$',
-        django.contrib.auth.views.login,
+    re_path(r'^$', app.views.home, name='home'),
+    re_path(r'^contact$', app.views.contact, name='contact'),
+    re_path(r'^about$', app.views.about, name='about'),
+    re_path(r'^login/$',
+        django.contrib.auth.views.LoginView,
         {
             'template_name': 'app/login.html',
             'authentication_form': app.forms.BootstrapAuthenticationForm,
@@ -31,8 +32,8 @@ urlpatterns = [
             }
         },
         name='login'),
-    url(r'^logout$',
-        django.contrib.auth.views.logout,
+    re_path(r'^logout$',
+        django.contrib.auth.views.LogoutView,
         {
             'next_page': '/',
         },
