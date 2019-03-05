@@ -11,37 +11,26 @@ import app.forms
 import app.views
 
 # Uncomment the next lines to enable the admin:
-# from django.conf.urls import include
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls import include
+from django.contrib import admin
+admin.autodiscover()
 
-urlpatterns = [
-    # Examples:
+urlpatterns = [# Examples:
     re_path(r'^$', app.views.home, name='home'),
     re_path(r'^contact$', app.views.contact, name='contact'),
     re_path(r'^about$', app.views.about, name='about'),
-    re_path(r'^login/$',
-        django.contrib.auth.views.LoginView,
-        {
-            'template_name': 'app/login.html',
-            'authentication_form': app.forms.BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title': 'Log in',
-                'year': datetime.now().year,
-            }
-        },
-        name='login'),
+    re_path(r'^login/$',django.contrib.auth.views.LoginView.as_view(template_name= 'app/login.html', 
+                                                    authentication_form= app.forms.BootstrapAuthenticationForm,
+                                                    extra_context={ 'title': 'Log in', 'year': datetime.now().year,}),name = 'login'),
     re_path(r'^logout$',
-        django.contrib.auth.views.LogoutView,
+        django.contrib.auth.views.LogoutView.as_view(),
         {
             'next_page': '/',
         },
-        name='logout'),
+        name = 'logout'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-]
+    re_path(r'^admin/', admin.site.urls),]
