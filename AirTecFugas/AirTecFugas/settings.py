@@ -30,8 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-INSTALLED_APPS = ['app',
-    'MainApp',
+INSTALLED_APPS = ['MainApp',
     'ModelsApp',
     'rest_framework',
     'django_filters',
@@ -107,14 +106,15 @@ REST_FRAMEWORK = {
 }
 
 #REST_FRAMEWORK = {
-#    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+#    'DEFAULT_FILTER_BACKENDS':
+#    ('django_filters.rest_framework.DjangoFilterBackend',),
 #    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',)
 #}
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
