@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'AirTecFugas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'defaultdb',
+        'NAME': 'AirTecFugasDB',
         'USER': 'doadmin',
         'PASSWORD': 'qlg43dfw8jwg174q',
         'HOST': 'fugasairtec-do-user-188158-0.db.ondigitalocean.com',
@@ -130,3 +130,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+
+AUTH_USER_MODEL = 'ModelsApp.User'
+
+MEDIA_ROOT = 'c:/IttenCE/EspacioCiudadano/'
+

@@ -57,8 +57,27 @@
     <Compile Include="AirTecFugas\wsgi.py" />
     <Compile Include="ModelsApp\admin.py" />
     <Compile Include="ModelsApp\apps.py" />
+    <Compile Include="ModelsApp\Helpers\UploadsTo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\Helpers\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\migrations\__init__.py" />
     <Compile Include="ModelsApp\models.py" />
+    <Compile Include="ModelsApp\models\BaseModel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\models\Empresa.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\models\Planta.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\models\User.py" />
+    <Compile Include="ModelsApp\models\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\tests.py" />
     <Compile Include="ModelsApp\views.py" />
     <Compile Include="ModelsApp\__init__.py" />
@@ -78,6 +97,8 @@
     <Folder Include="MainApp\templates\MainApp\" />
     <Folder Include="ModelsApp\" />
     <Folder Include="ModelsApp\migrations\" />
+    <Folder Include="ModelsApp\models\" />
+    <Folder Include="ModelsApp\Helpers\" />
     <Folder Include="ModelsApp\templates\" />
     <Folder Include="ModelsApp\templates\ModelsApp\" />
   </ItemGroup>
