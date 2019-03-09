@@ -26,7 +26,7 @@ SECRET_KEY = 'f8bc36b9-9c25-4607-8500-29fd4bca5c96'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,5 +133,5 @@ STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 AUTH_USER_MODEL = 'ModelsApp.User'
 
-MEDIA_ROOT = 'c:/IttenCE/EspacioCiudadano/'
+MEDIA_ROOT = 'C:/AirTecFugas/'
 

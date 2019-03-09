@@ -2,6 +2,8 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from .BaseModel import BaseModel
+from .Empresa import Empresa
+from ModelsApp.Helpers.UploadsTo import get_full_path
 
 
 @python_2_unicode_compatible
