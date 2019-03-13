@@ -57,6 +57,12 @@
     <Compile Include="AirTecFugas\wsgi.py" />
     <Compile Include="ModelsApp\admin.py" />
     <Compile Include="ModelsApp\apps.py" />
+    <Compile Include="ModelsApp\forms\CustomUserForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\Helpers\UploadsTo.py">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +105,7 @@
     <Folder Include="ModelsApp\migrations\" />
     <Folder Include="ModelsApp\models\" />
     <Folder Include="ModelsApp\Helpers\" />
+    <Folder Include="ModelsApp\forms\" />
     <Folder Include="ModelsApp\templates\" />
     <Folder Include="ModelsApp\templates\ModelsApp\" />
   </ItemGroup>
