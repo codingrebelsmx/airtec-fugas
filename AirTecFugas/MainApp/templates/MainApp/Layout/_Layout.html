@@ -1,0 +1,114 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Unify Admin Panel" />
+    <meta name="keywords" content="Admin, Dashboard, Bootstrap4, Sass, CSS3, HTML5, Responsive Dashboard, Responsive Admin Template, Admin Template, Best Admin Template, Bootstrap Template, Themeforest" />
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="shortcut icon" href="{% static 'MainApp/theme-files/img/favicon.ico' %}" />
+    <title> {{ title }} </title>
+    {% include 'MainApp/Layout/_Layout_CSS.html' %}
+    
+    {% block scripts %}
+            
+    {% endblock %}
+
+</head>
+
+<body>
+    <!-- Loading starts -->
+    <div class="loading-wrapper">
+        <div class="loading">
+            <div class="img"></div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Loading ends -->
+
+    <!-- BEGIN .app-wrap -->
+    <div class="app-wrap">
+
+        <!-- BEGIN .app-heading -->
+        <header class="app-header">
+            {% include 'MainApp/Layout/_Layout_Header.html' %}
+        </header>
+        <!-- END: .app-heading -->
+ 
+        <!-- BEGIN .app-container -->
+        <div class="app-container">
+ 
+            <!-- BEGIN Default Sidebar -->
+            <aside class="app-side" id="app-side">
+                <!-- BEGIN .side-content -->
+                <div class="side-content ">
+                    {% include 'MainApp/Layout/_Layout_Sidebar.html' %}
+                </div>
+                <!-- END: .side-content -->
+            </aside>
+            <!-- END Default Sidebar -->
+
+            <!-- BEGIN .app-main -->
+            <div class="app-main">
+                <!-- BEGIN .main-heading -->
+                <header class="main-heading">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                Page Title and Icon
+                                <div class="page-icon">
+                                    <i class="icon-layers"></i>
+                                </div>
+                                <div class="page-title">
+                                    <h5>Default Layout</h5>
+                                    <h6 class="sub-heading">Welcome to Unify Admin Template</h6>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <div class="right-actions">
+                                    <a href="#" class="btn btn-primary float-right" data-toggle="tooltip" data-placement="left" title="Download Reports">
+                                        <i class="icon-download4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- END: .main-heading -->
+
+                <!-- BEGIN .main-content -->
+                <div class="main-content">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                <!-- END: .main-content -->
+
+            </div>
+            <!-- END: .app-main -->
+        </div>
+        <!-- END: .app-container -->
+
+        <!-- BEGIN .main-footer -->
+        <footer class="main-footer fixed-btm"></footer>
+        <!-- END: .main-footer -->
+    </div>
+    <!-- END: .app-wrap -->
+
+    <!-- BEGIN Common Scripts -->
+    {% include 'MainApp/Layout/_Layout_Scripts.html' %}
+    <!-- END Common Scripts Abajo -->
+
+    <!-- BEGIN Scripts -->
+    {% block finalscripts %}
+            
+    {% endblock %}
+    <!-- END Scripts Abajo -->
+</body>
+</html>
+

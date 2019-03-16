@@ -1,0 +1,124 @@
+{% load staticfiles %}
+<!-- Below are Main JS files has to be included all HTML pages -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'MainApp/theme-files/js/jquery.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'MainApp/theme-files/js/tether.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/js/bootstrap.min.js' %}"></script>
+
+<!-- jquery unifyMenu JS -->
+<script src="{% static 'MainApp/theme-files/vendor/unifyMenu/unifyMenu.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/onoffcanvas/onoffcanvas.js' %}"></script>
+
+<!-- Moment JS -->
+<script src="{% static 'MainApp/theme-files/js/moment.js' %}"></script>
+
+<!-- Slimscroll JS -->
+<script src="{% static 'MainApp/theme-files/vendor/slimscroll/slimscroll.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/slimscroll/custom-scrollbar.js' %}"></script>
+
+<!-- Below are additional JS files which are needed for widgets. -->
+<!-- Example Flot Charts / Fullcalendar ------ -->
+ 
+<!-- C3 JS -->
+<script src="{% static 'MainApp/theme-files/vendor/c3/c3.min.js' %}"></script>
+
+<!-- Fullcalendar JS -->
+<script src="{% static 'MainApp/theme-files/vendor/calendar/js/fullcalendar.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/calendar/js/custom-calendar.js' %}"></script>
+
+<!-- Chartist JS -->
+<script src="{% static 'MainApp/theme-files/vendor/chartist/js/chartist.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/chartist/js/chartist-tooltip.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/chartist/js/chartist-plugin-title.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/chartist/js/chartist-plugin-threshold.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/chartist/js/chartist-plugin-accessibility.js' %}"></script>
+<!-- Chartist custom files - All Chartist custom file are included in vendor/chartist/js/custom/ folder. You can use them as per your requirement. -->
+
+<!-- Circleful JS -->
+<script src="{% static 'MainApp/theme-files/vendor/circliful/circliful.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/circliful/circliful.custom.js' %}"></script>
+
+<!-- Content Filter JS -->
+<script src="{% static 'MainApp/theme-files/vendor/content-filter/main.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/content-filter/mixitup.min.js' %}"></script>
+
+<!-- D3 JS -->
+<script src="{% static 'MainApp/theme-files/vendor/d3/d3.min.js' %}"></script>
+
+<!-- Datatables JS -->
+<script src="{% static 'MainApp/theme-files/vendor/datatables/dataTables.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/datatables/dataTables.bootstrap.min.js' %}"></script>
+<!-- Datatables custom files - All Datatables custom file are included in vendor/datatables/custom/ folder. You can use them as per your requirement. -->
+
+<!-- Flot Graphs JS -->
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.pie.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.resize.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.stack.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.time.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/flot/jquery.flot.tooltip.min.js' %}"></script>
+<!-- Flot custom files - All Flot custom file are included in vendor/flot/custom/ folder. You can use them as per your requirement. -->
+
+<!-- G Maps JS -->
+<script src="{#{% static 'MainApp/theme-files/vendor/g-maps/maps.js' %}#}"></script>
+<script src="{#{% static 'MainApp/theme-files/vendor/g-maps/custom-maps.js' %}#}"></script>
+
+<!-- Gallery JS -->
+<script src="{% static 'MainApp/theme-files/vendor/gallery/baguetteBox.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/gallery/custom-gallery.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/gallery/plugins.js' %}"></script>
+
+<!-- jVectormap JS -->
+<!--
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/africa-mill.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/au-mill.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/custom-map.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/de-merc.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/dk-mill.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/europe-mill.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/gdp-data.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/us_aea.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/usa.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/jvectormap/world-mill-en.js' %}"></script>
+-->
+<!-- jVectormap custom files - All jVectormap custom file are included in vendor/jvectormap/custom/ folder. You can use them as per your requirement. -->
+
+<!-- Lobipanel JS -->
+<script src="{#{% static 'MainApp/theme-files/vendor/lobipanel/lobipanel-custom.js' %}#}"></script>
+<script src="{#{% static 'MainApp/theme-files/vendor/lobipanel/lobipanel.js' %}#}"></script>
+
+<!-- Morris JS -->
+<script src="{% static 'MainApp/theme-files/vendor/morris/raphael-min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/morris/morris.min.js' %}"></script>
+<!-- Morris custom files - All Morris custom file are included in vendor/morris/custom/ folder. You can use them as per your requirement. -->
+
+<!-- Newsticker JS -->
+<script src="{% static 'MainApp/theme-files/vendor/newsticker/newsTicker.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/newsticker/custom-newsTicker.js' %}"></script>
+
+<!-- Onoffcanvas JS -->
+<script src="{% static 'MainApp/theme-files/vendor/onoffcanvas/onoffcanvas.js' %}"></script>
+
+<!-- Peity JS -->
+<script src="{% static 'MainApp/theme-files/vendor/peity/peity.min.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/peity/custom-peity.js' %}"></script>
+
+<!-- Rating JS -->
+<script src="{% static 'MainApp/theme-files/vendor/rating/raty.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/rating/raty-custom.js' %}"></script>
+
+<!-- Sparkline JS -->
+<script src="{% static 'MainApp/theme-files/vendor/sparkline/sparkline-retina.js' %}"></script>
+<script src="{% static 'MainApp/theme-files/vendor/sparkline/custom-sparkline.js' %}"></script>
+
+<!-- Unify Menu JS -->
+<script src="{% static 'MainApp/theme-files/vendor/unifyMenu/unifyMenu.js' %}"></script>
+
+<!-- Common JS -->
+<script src="{% static 'MainApp/theme-files/js/common.js' %}"></script>
+<!--
+<script src="{% static 'MainApp/scripts/modernizr-2.6.2.js' %}"></script>
+-->
