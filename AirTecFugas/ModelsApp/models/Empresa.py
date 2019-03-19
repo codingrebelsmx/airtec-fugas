@@ -8,11 +8,13 @@ from .BaseModel import BaseModel
 class Empresa(BaseModel):
     """ Modelo que representa la entidad Empresa en la BD. """
     nombre = models.CharField("Nombre de la Empresa", max_length=100)
-    descripcion = models.TextField(verbose_name="Descripción")
+    descripcion = models.TextField(verbose_name="Descripción", max_length=500, blank=True, null=True)
 
+    # Custom Methods
     def __str__(self):
         return self.nombre
 
 
     def __unicode__(self):
         return self.nombre
+

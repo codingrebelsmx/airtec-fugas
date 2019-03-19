@@ -6,6 +6,8 @@ from datetime import datetime
 from django.conf.urls import url
 from django.conf.urls import re_path
 import django.contrib.auth.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default

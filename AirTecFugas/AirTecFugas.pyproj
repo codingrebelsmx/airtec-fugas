@@ -57,7 +57,31 @@
     <Compile Include="AirTecFugas\wsgi.py" />
     <Compile Include="ModelsApp\admin.py" />
     <Compile Include="ModelsApp\apps.py" />
+    <Compile Include="ModelsApp\forms\AreaForms\CreateAreaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\AreaForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\forms\CustomUserForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\FugaForms\CreateFugaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\FugaForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\MaquinaForms\CreateMaquinaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\MaquinaForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\UbicacionForms\CreateUbicacionForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\UbicacionForms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\__init__.py">
@@ -71,13 +95,25 @@
     </Compile>
     <Compile Include="ModelsApp\migrations\__init__.py" />
     <Compile Include="ModelsApp\models.py" />
+    <Compile Include="ModelsApp\models\Area.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\models\BaseModel.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\models\Empresa.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ModelsApp\models\Fuga.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\models\Maquina.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\models\Planta.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\models\Ubicacion.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\models\User.py" />
@@ -87,6 +123,19 @@
     <Compile Include="ModelsApp\tests.py" />
     <Compile Include="ModelsApp\views.py" />
     <Compile Include="ModelsApp\__init__.py" />
+    <Compile Include="WebApiApp\admin.py" />
+    <Compile Include="WebApiApp\apps.py" />
+    <Compile Include="WebApiApp\migrations\__init__.py" />
+    <Compile Include="WebApiApp\models\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\MaquinaSerializers.py" />
+    <Compile Include="WebApiApp\serializers\__init__.py" />
+    <Compile Include="WebApiApp\tests.py" />
+    <Compile Include="WebApiApp\urls.py" />
+    <Compile Include="WebApiApp\views\MaquinaViews.py" />
+    <Compile Include="WebApiApp\views\__init__.py" />
+    <Compile Include="WebApiApp\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AirTecFugas\" />
@@ -135,6 +184,10 @@
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\unifyMenu\" />
     <Folder Include="MainApp\templates\MainApp\Layout\" />
     <Folder Include="MainApp\templates\MainApp\Home\" />
+    <Folder Include="MainApp\templates\MainApp\Area\" />
+    <Folder Include="MainApp\templates\MainApp\Maquina\" />
+    <Folder Include="MainApp\templates\MainApp\Fuga\" />
+    <Folder Include="MainApp\templates\MainApp\Ubicacion\" />
     <Folder Include="MainApp\views\" />
     <Folder Include="MainApp\static\" />
     <Folder Include="MainApp\static\MainApp\" />
@@ -144,12 +197,23 @@
     <Folder Include="MainApp\templates\" />
     <Folder Include="MainApp\templates\MainApp\" />
     <Folder Include="ModelsApp\" />
+    <Folder Include="ModelsApp\forms\AreaForms\" />
+    <Folder Include="ModelsApp\forms\FugaForms\" />
+    <Folder Include="ModelsApp\forms\MaquinaForms\" />
+    <Folder Include="ModelsApp\forms\UbicacionForms\" />
     <Folder Include="ModelsApp\migrations\" />
     <Folder Include="ModelsApp\models\" />
     <Folder Include="ModelsApp\Helpers\" />
     <Folder Include="ModelsApp\forms\" />
     <Folder Include="ModelsApp\templates\" />
     <Folder Include="ModelsApp\templates\ModelsApp\" />
+    <Folder Include="WebApiApp\" />
+    <Folder Include="WebApiApp\migrations\" />
+    <Folder Include="WebApiApp\models\" />
+    <Folder Include="WebApiApp\serializers\" />
+    <Folder Include="WebApiApp\templates\" />
+    <Folder Include="WebApiApp\templates\WebApiApp\" />
+    <Folder Include="WebApiApp\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainApp\static\MainApp\content\bootstrap.css" />
@@ -159,6 +223,9 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
+    <Content Include="WebApiApp\templates\WebApiApp\index.html" />
     <None Include="MainApp\static\MainApp\scripts\_references.js" />
     <Content Include="MainApp\static\MainApp\scripts\bootstrap.js" />
     <Content Include="MainApp\static\MainApp\scripts\bootstrap.min.js" />

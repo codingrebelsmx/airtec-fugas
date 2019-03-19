@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from ModelsApp.models import User
@@ -25,3 +26,4 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta():
         model = User
         fields = '__all__'
+

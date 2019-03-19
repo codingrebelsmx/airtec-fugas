@@ -20,14 +20,14 @@
 
 <body>
     <!-- Loading starts -->
-    <div class="loading-wrapper">
-        <div class="loading">
-            <div class="img"></div>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+    <div id="loading-wrapper">
+        <div id="loader">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div class="line4"></div>
+            <div class="line5"></div>
+            <div class="line6"></div>
         </div>
     </div>
     <!-- Loading ends -->
@@ -36,22 +36,13 @@
     <div class="app-wrap">
 
         <!-- BEGIN .app-heading -->
-        <header class="app-header">
             {% include 'MainApp/Layout/_Layout_Header.html' %}
-        </header>
         <!-- END: .app-heading -->
  
         <!-- BEGIN .app-container -->
         <div class="app-container">
- 
             <!-- BEGIN Default Sidebar -->
-            <aside class="app-side" id="app-side">
-                <!-- BEGIN .side-content -->
-                <div class="side-content ">
-                    {% include 'MainApp/Layout/_Layout_Sidebar.html' %}
-                </div>
-                <!-- END: .side-content -->
-            </aside>
+            {% include 'MainApp/Layout/_Layout_Sidebar.html' %}
             <!-- END Default Sidebar -->
 
             <!-- BEGIN .app-main -->
@@ -88,7 +79,6 @@
                     {% endblock %}
                 </div>
                 <!-- END: .main-content -->
-
             </div>
             <!-- END: .app-main -->
         </div>

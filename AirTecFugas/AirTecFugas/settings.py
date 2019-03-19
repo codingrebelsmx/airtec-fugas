@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 INSTALLED_APPS = ['MainApp',
     'ModelsApp',
+    'WebApiApp',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
