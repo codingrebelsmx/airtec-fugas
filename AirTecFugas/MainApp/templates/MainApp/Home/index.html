@@ -1,14 +1,14 @@
-{% extends "MainApp/Layout/_Layout.html" %}
+{% extends "MainApp/Layout/_Layout_LogOut.html" %}
 
 {% block content %}
 
 <div class="row gutters">
     <div class="jumbotron">
-        <h1>Django</h1>
-        <p class="lead">Django is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <h1>Airtec</h1>
+        <p class="lead">Airtec Fugas App es una aplicaci&oacute;n para llevar el control y gesti&oacute;n de fugas.</p>
+        <p><a href="{% url "login" %}" class="btn btn-primary btn-large">Login &raquo;</a></p>
     </div>
-
+    <!--
     <div class="row">
         <div class="col-md-4">
             <h2>Getting started</h2>
@@ -17,7 +17,7 @@
                 enables a clean separation of concerns and gives you full control over markup
                 for enjoyable, agile development.
             </p>
-            <p><a class="btn btn-default" href="http://www.djangobook.com/en/2.0/index.html">Learn more &raquo;</a></p>
+            <p><a class="btn btn-default" href="{#{% url "login" %}#}">Login &raquo;</a></p>
         </div>
         <div class="col-md-4">
             <h2>Get more libraries</h2>
@@ -30,5 +30,6 @@
             <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
         </div>
     </div>
+    -->
 </div>
 {% endblock %}

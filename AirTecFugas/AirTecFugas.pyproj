@@ -43,7 +43,25 @@
     <Compile Include="MainApp\migrations\__init__.py" />
     <Compile Include="MainApp\tests.py" />
     <Compile Include="MainApp\urls.py" />
+    <Compile Include="MainApp\views\AreaViews\AreaCreateView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\AreaViews\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\default.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaCreateView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\FugaViews\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\MaquinaCreateView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\__init__.py">
@@ -187,6 +205,8 @@
     <Folder Include="MainApp\templates\MainApp\Area\" />
     <Folder Include="MainApp\templates\MainApp\Maquina\" />
     <Folder Include="MainApp\templates\MainApp\Fuga\" />
+    <Folder Include="MainApp\templates\MainApp\Dashboard\" />
+    <Folder Include="MainApp\templates\MainApp\Authentication\" />
     <Folder Include="MainApp\templates\MainApp\Ubicacion\" />
     <Folder Include="MainApp\views\" />
     <Folder Include="MainApp\static\" />
@@ -196,6 +216,9 @@
     <Folder Include="MainApp\static\MainApp\scripts\" />
     <Folder Include="MainApp\templates\" />
     <Folder Include="MainApp\templates\MainApp\" />
+    <Folder Include="MainApp\views\AreaViews\" />
+    <Folder Include="MainApp\views\FugaViews\" />
+    <Folder Include="MainApp\views\MaquinaViews\" />
     <Folder Include="ModelsApp\" />
     <Folder Include="ModelsApp\forms\AreaForms\" />
     <Folder Include="ModelsApp\forms\FugaForms\" />
@@ -223,8 +246,13 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="MainApp\templates\MainApp\Area\create-area.html" />
+    <Content Include="MainApp\templates\MainApp\Authentication\login.html" />
+    <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
+    <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
+    <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
     <Content Include="WebApiApp\templates\WebApiApp\index.html" />
     <None Include="MainApp\static\MainApp\scripts\_references.js" />
     <Content Include="MainApp\static\MainApp\scripts\bootstrap.js" />

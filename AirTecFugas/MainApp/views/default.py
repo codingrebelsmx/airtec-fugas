@@ -19,6 +19,18 @@ def home(request):
         }
     )
 
+def dashboard(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'MainApp/Dashboard/dashboard.html',
+        {
+            'title':'Dashboard',
+            'year':datetime.now().year,
+        }
+    )
+
 def contact(request):
     """Renders the contact page."""
     assert isinstance(request, HttpRequest)

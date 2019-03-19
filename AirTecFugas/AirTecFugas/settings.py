@@ -136,3 +136,4 @@ AUTH_USER_MODEL = 'ModelsApp.User'
 
 MEDIA_ROOT = 'C:/AirTecFugas/'
 
+LOGIN_REDIRECT_URL="/dashboard/"
