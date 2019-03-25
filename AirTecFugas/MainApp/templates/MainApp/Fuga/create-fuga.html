@@ -1,5 +1,7 @@
 {% extends "MainApp/Layout/_Layout.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
 
 <div class="row gutters">
@@ -7,53 +9,123 @@
         <div class="card">
             <div class="card-header">Registrar Nueva Fuga</div>
             <div class="card-body">
+
                 <form action="/fuga/create/" method="post">
                     {% csrf_token %}
-                    {% for field in form.visible_fields  %}
-                        {% if field.field.widget.input_type != "checkbox" %}
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
-                                {{ field.label_tag }}
-                                {{ field }}
-                                {% if field.help_text %}
-                                    <div class="alert alert-light" role="alert">
-                                        {{ field.help_text|safe }}
-                                    </div>
-                                {% endif %}
-                                {% if field.errors %}
-                                    <div class="alert alert-warning" role="alert">
-                                        {{ field.errors }}
-                                    </div>
-                                {% endif %}
+                                <label for="id_area">&Aacute;rea:</label>
+                                <div class="input-group form-group">
+                                    <select name="area" class="form-control" id="id_area" required>
+                                        <option value="" selected="">Seleccione una &aacute;rea...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+								        <button type="button" class="btn btn-primary"><span class="icon-plus2"></span>&nbsp;Nueva</button>
+							        </span>
+                                </div>
                             </div>
-                        {% else %}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_maquina">M&aacute;quina:</label>
+                                <div class="input-group form-group">
+                                    <select name="maquina" class="form-control" id="id_maquina" required>
+                                        <option value="" selected="">Seleccione una m&aacute;quina...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary"><span class="icon-plus2"></span>&nbsp;Nueva</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_ubicacion">Ubicacion:</label>
+                                <div class="input-group form-group">
+                                    <select name="ubicacion" class="form-control" id="id_ubicacion" required>
+                                        <option value="" selected="">Seleccione una ubicaci&oacute;n...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary"><span class="icon-plus2"></span>&nbsp;Nueva</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_categoria">Categor&iacute;a:</label>
+                                <select name="categoria" class="form-control" id="id_categoria" required>
+                                    <option value="" selected="">Seleccione una categor&iacute;a...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_recomendacion">Recomendaci&oacute;n:</label>
+                                <select name="recomendacion" class="form-control" id="id_recomendacion" required>
+                                    <option value="" selected="">Seleccione una opci&oacute;n</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
+                                <textarea name="refacciones_comentarios" cols="40" rows="10" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        {{ field }}
-                                        {{ field.label }}
+                                        <input type="checkbox" name="nadp" class="form-check-input" id="id_nadp">
+                                        Not Available During Production (NADP)
                                     </label>
                                 </div>
-                                {% if field.help_text %}
-                                    <div class="alert alert-light" role="alert">
-                                        {{ field.help_text|safe }}
-                                    </div>
-                                {% endif %}
-                                {% if field.errors %}
-                                    <div class="alert alert-warning" role="alert">
-                                        {{ field.errors }}
-                                    </div>
-                                {% endif %}
                             </div>
-                        {% endif %}
-                    {% endfor %}
-                    {% if form.hidden_fields %}
-                        {{ form.hidden_fields }}
-                    {% endif %}
-                    <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar Fuga </button>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar Fuga </button>
+                        </div>
+                    </div>
+
+                    <input id="id_PuntoX" name="PuntoX" type="hidden" value="" />
+                    <input id="id_PuntoY" name="PuntoY" type="hidden" value="" />
                 </form>
+
+                <!-- URL Create -->
+                <input id="UrlApiAreaCreate" type="hidden" value="{% url 'area-create' %}" />
+                <input id="UrlApiMaquinaCreate" type="hidden" value="{% url 'maquina-create' %}" />
+
+                <!-- URL's List for Selects -->
+                <input id="UrlApiAreaListSelect" type="hidden" value="{% url 'ApiAreaListSelect' %}" />
+                <input id="UrlApiMaquinaListSelect" type="hidden" value="{% url 'ApiMaquinaListSelect' '0' %}" />
+                <input id="UrlApiUbicacionListSelect" type="hidden" value="{% url 'ApiUbicacionListSelect' %}" />
+                <input id="UrlApiCategoriaListSelect" type="hidden" value="{% url 'ApiCategoriaListSelect' %}" />
+                <input id="UrlApiRecomendacionFugaListSelect" type="hidden" value="{% url 'ApiRecomendacionFugaListSelect' %}" />
+
             </div>
         </div>
     </div>
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block finalscripts %}
+    {#<script src="{% static 'MainApp/theme-files/vendor/select2/select2.min.js' %}"></script>#}
+    {#<script src="{% static 'MainApp/scripts/fuga-js/fuga-create.js' %}"></script>#}
+{% endblock%}

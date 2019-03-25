@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext, gettext_lazy as _
 from ModelsApp.models.Empresa import Empresa
 from ModelsApp.models.Planta import Planta
+from ModelsApp.models.Ubicacion import Ubicacion
 from ModelsApp.models.User import User
 from ModelsApp.forms.CustomUserForm import CustomUserCreationForm, CustomUserChangeForm
 
@@ -27,5 +28,6 @@ class CustomUserAdmin(UserAdmin):
 # Register your models here.
 admin.site.register(Empresa)
 admin.site.register(Planta)
+admin.site.register(Ubicacion)
 admin.site.register(User, CustomUserAdmin)
 

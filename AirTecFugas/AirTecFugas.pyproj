@@ -43,6 +43,9 @@
     <Compile Include="MainApp\migrations\__init__.py" />
     <Compile Include="MainApp\tests.py" />
     <Compile Include="MainApp\urls.py" />
+    <Compile Include="MainApp\views\AreaViews\AreaCreatePartialView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\AreaViews\AreaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -52,16 +55,34 @@
     <Compile Include="MainApp\views\default.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\EmpresaViews\CreateEmpresaPartialView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\EmpresaViews\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\MaquinaCreatePartialView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\MaquinaViews\MaquinaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\MaquinaViews\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\PlantaViews\CreatePlantaPartialView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\PlantaViews\SeleccionPlantaTrabajoView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\PlantaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\__init__.py">
@@ -81,7 +102,19 @@
     <Compile Include="ModelsApp\forms\AreaForms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ModelsApp\forms\AreaTrabajoForms\SeleccionPlantaTrabajoForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\AreaTrabajoForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\forms\CustomUserForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\EmpresaForms\CreateEmpresaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\EmpresaForms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\FugaForms\CreateFugaForm.py">
@@ -94,6 +127,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\MaquinaForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\PlantaForms\CreatePlantaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\PlantaForms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\UbicacionForms\CreateUbicacionForm.py">
@@ -125,6 +164,9 @@
     <Compile Include="ModelsApp\models\Fuga.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ModelsApp\models\ImagenFuga.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\models\Maquina.py">
       <SubType>Code</SubType>
     </Compile>
@@ -147,11 +189,53 @@
     <Compile Include="WebApiApp\models\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WebApiApp\serializers\AreaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\CategoriaFugaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\EmpresaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\EstatusFugaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebApiApp\serializers\MaquinaSerializers.py" />
+    <Compile Include="WebApiApp\serializers\PlantaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\RecomendacionFugaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\serializers\UbicacionSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebApiApp\serializers\__init__.py" />
     <Compile Include="WebApiApp\tests.py" />
     <Compile Include="WebApiApp\urls.py" />
+    <Compile Include="WebApiApp\views\AreaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\CategoriaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\EmpresaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\EstatusFugaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebApiApp\views\MaquinaViews.py" />
+    <Compile Include="WebApiApp\views\PlantaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\RecomendacionFugaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\UbicacionViews.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebApiApp\views\__init__.py" />
     <Compile Include="WebApiApp\__init__.py" />
   </ItemGroup>
@@ -160,6 +244,9 @@
     <Folder Include="MainApp\" />
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
+    <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />
+    <Folder Include="MainApp\static\MainApp\scripts\swal2\" />
+    <Folder Include="MainApp\static\MainApp\scripts\planta-js\" />
     <Folder Include="MainApp\static\MainApp\theme-files\" />
     <Folder Include="MainApp\static\MainApp\theme-files\css\" />
     <Folder Include="MainApp\static\MainApp\theme-files\fonts\" />
@@ -192,11 +279,14 @@
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\lobipanel\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\morris\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\morris\custom\" />
+    <Folder Include="MainApp\static\MainApp\theme-files\vendor\select2\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\newsticker\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\notify\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\onoffcanvas\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\peity\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\rating\" />
+    <Folder Include="MainApp\static\MainApp\theme-files\vendor\select2\css\" />
+    <Folder Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\slimscroll\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\sparkline\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\unifyMenu\" />
@@ -207,6 +297,10 @@
     <Folder Include="MainApp\templates\MainApp\Fuga\" />
     <Folder Include="MainApp\templates\MainApp\Dashboard\" />
     <Folder Include="MainApp\templates\MainApp\Authentication\" />
+    <Folder Include="MainApp\templates\MainApp\Modals\" />
+    <Folder Include="MainApp\templates\MainApp\Empresa\" />
+    <Folder Include="MainApp\templates\MainApp\Planta\" />
+    <Folder Include="MainApp\templates\MainApp\PlantaTrabajo\" />
     <Folder Include="MainApp\templates\MainApp\Ubicacion\" />
     <Folder Include="MainApp\views\" />
     <Folder Include="MainApp\static\" />
@@ -217,12 +311,17 @@
     <Folder Include="MainApp\templates\" />
     <Folder Include="MainApp\templates\MainApp\" />
     <Folder Include="MainApp\views\AreaViews\" />
+    <Folder Include="MainApp\views\EmpresaViews\" />
     <Folder Include="MainApp\views\FugaViews\" />
     <Folder Include="MainApp\views\MaquinaViews\" />
+    <Folder Include="MainApp\views\PlantaViews\" />
     <Folder Include="ModelsApp\" />
     <Folder Include="ModelsApp\forms\AreaForms\" />
+    <Folder Include="ModelsApp\forms\EmpresaForms\" />
     <Folder Include="ModelsApp\forms\FugaForms\" />
     <Folder Include="ModelsApp\forms\MaquinaForms\" />
+    <Folder Include="ModelsApp\forms\AreaTrabajoForms\" />
+    <Folder Include="ModelsApp\forms\PlantaForms\" />
     <Folder Include="ModelsApp\forms\UbicacionForms\" />
     <Folder Include="ModelsApp\migrations\" />
     <Folder Include="ModelsApp\models\" />
@@ -246,13 +345,83 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="MainApp\static\MainApp\scripts\app.js" />
+    <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
+    <Content Include="MainApp\static\MainApp\scripts\planta-js\SeleccionPlantaTrabajo.js" />
+    <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.all.min.js" />
+    <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.min.css" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\css\select2.css" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\css\select2.min.css" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\af.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ar.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\az.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\bg.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\bs.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ca.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\cs.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\da.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\de.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\dsb.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\el.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\en.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\es.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\et.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\eu.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\fa.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\fi.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\fr.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\gl.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\he.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\hi.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\hr.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\hsb.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\hu.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\hy.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\id.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\is.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\it.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ja.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\km.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ko.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\lt.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\lv.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\mk.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ms.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\nb.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\nl.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\pl.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ps.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\pt-BR.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\pt.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ro.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\ru.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\sk.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\sl.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\sr-Cyrl.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\sr.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\sv.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\th.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\tk.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\tr.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\uk.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\vi.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\zh-CN.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\i18n\zh-TW.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\select2.full.min.js" />
+    <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\select2.min.js" />
+    <Content Include="MainApp\templates\MainApp\Area\create-area-partial.html" />
     <Content Include="MainApp\templates\MainApp\Area\create-area.html" />
     <Content Include="MainApp\templates\MainApp\Authentication\login.html" />
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
+    <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
+    <Content Include="MainApp\templates\MainApp\Maquina\create-maquina-partial.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Modals\_GenericFormModal.html" />
+    <Content Include="MainApp\templates\MainApp\PlantaTrabajo\seleccion-planta-trabajo.html" />
+    <Content Include="MainApp\templates\MainApp\Planta\create-planta-partial.html" />
     <Content Include="WebApiApp\templates\WebApiApp\index.html" />
     <None Include="MainApp\static\MainApp\scripts\_references.js" />
     <Content Include="MainApp\static\MainApp\scripts\bootstrap.js" />

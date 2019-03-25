@@ -1,0 +1,53 @@
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">Registrar Nueva M&aacute;quina</div>
+            <div class="card-body">
+                <form action="{% url 'maquina-create' %}" method="post">
+                    {% csrf_token %}
+                    {% for field in form.visible_fields  %}
+                        {% if field.field.widget.input_type != "checkbox" %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <div class="alert alert-light" role="alert">
+                                        {{ field.help_text|safe }}
+                                    </div>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        {{ field }}
+                                        {{ field.label }}
+                                    </label>
+                                </div>
+                                {% if field.help_text %}
+                                    <div class="alert alert-light" role="alert">
+                                        {{ field.help_text|safe }}
+                                    </div>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% if form.hidden_fields %}
+                        {{ form.hidden_fields }}
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar M&aacute;quina </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

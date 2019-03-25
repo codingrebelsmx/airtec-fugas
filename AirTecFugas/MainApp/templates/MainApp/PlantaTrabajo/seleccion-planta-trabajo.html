@@ -1,0 +1,72 @@
+{% extends "MainApp/Layout/_Layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">Selecciona tu &Aacute;rea de trabajo</div>
+            <div class="card-body">
+                <form id="idFormSeleccionaPlantaTrabajo" name="FormSeleccionaPlantaTrabajo" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_cliente">Cliente:</label>
+                                <div class="input-group form-group">
+                                    <select id="id_cliente" name="cliente" class="form-control" required>
+                                        <option>Selecciona un Cliente...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" data-action="AddNewCustomer" data-url="{% url '' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nuevo Cliente
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_planta">Planta:</label>
+                                <div class="input-group form-group">
+                                    <select id="id_planta" name="planta" class="form-control" required>
+                                        <option>Selecciona una planta</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" data-action="AddNewPlant" data-url="{% url '' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nueva Planta
+                                        </button>
+                                    </span>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 col-lg-8 col-md-6 col-sm-6">
+
+                        </div>
+                        <div class="col-xs-4 col-lg-4 col-md-6 col-sm-6">
+                            <button class="btn btn-primary btn-lg">
+                                Seleccionar Planta de Trabajo
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <input id="idUrlApiEmpresaListSelect" name="UrlApiEmpresaListSelect" type="hidden" value="{% url 'ApiEmpresaListSelect'  %}" />
+                <input id="idUrlApiPlantaListSelect" name="UrlApiPlantaListSelect" type="hidden" value="{% url 'ApiPlantaListSelect' '0' %}" />
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "MainApp/Modals/_GenericFormModal.html" %}
+
+{% endblock %}
+
+{% block finalscripts %}
+
+<script src="{% static 'MainApp/scripts/planta-js/SeleccionPlantaTrabajo.js' %}"></script>
+
+{% endblock %}

@@ -6,4 +6,5 @@ from .Area import *
 from .Maquina import *
 from .Ubicacion import *
 from .Fuga import *
+from .ImagenFuga import *
 
