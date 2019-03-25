@@ -1,0 +1,19 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden !important;
+}
+
+#SVGContainer {
+    background: #dadada;
+    position: relative;
+}
+
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#controls circle:hover {
+    fill-opacity: 1;
+}
