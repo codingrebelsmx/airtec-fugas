@@ -13,4 +13,5 @@ class CreatePlantaPartialView(CreateView):
     template_name = "MainApp/Planta/create-planta-partial.html"
     success_url = reverse_lazy('planta-list')
 
-
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)

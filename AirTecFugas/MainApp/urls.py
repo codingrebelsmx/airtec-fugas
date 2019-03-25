@@ -31,15 +31,18 @@ urlpatterns = [# Examples:
 
     ### -------------- CRUD EMPRESA -------------- ###
     re_path(r'^empresa/create/$', CreateEmpresaPartialView.as_view(), name='empresa-create'),
-    #re_path(r'^empresa/edit/(?P<pk>\d+)/$', default.about, name='empresa-edit'),
-    #re_path(r'^empresa/details/(?P<pk>\d+)/$', default.about, name='empresa-details'),
+    #re_path(r'^empresa/edit/(?P<pk>\d+)/$', default.about,
+    #name='empresa-edit'),
+    #re_path(r'^empresa/details/(?P<pk>\d+)/$', default.about,
+    #name='empresa-details'),
     re_path(r'^empresa/list/$', default.about, name='empresa-list'),
 
     ### -------------- CRUD PLANTA -------------- ###
-    re_path(r'^planta/seleccionar-planta/$', CreatePlantaPartialView.as_view(), name='selec-planta-trabajo'),
-    re_path(r'^planta/create/$', FugaCreateView.as_view(), name='planta-create'),
+    re_path(r'^planta/seleccionar-planta/$', SeleccionPlantaTrabajoView.as_view(), name='selec-planta-trabajo'),
+    re_path(r'^planta/create/$', CreatePlantaPartialView.as_view(), name='planta-create'),
     #re_path(r'^planta/edit/(?P<pk>\d+)/$', default.about, name='planta-edit'),
-    #re_path(r'^planta/details/(?P<pk>\d+)/$', default.about, name='planta-details'),
+    #re_path(r'^planta/details/(?P<pk>\d+)/$', default.about,
+    #name='planta-details'),
     re_path(r'^planta/list/$', default.about, name='planta-list'),
 
     ### -------------- CRUD FUGA -------------- ###

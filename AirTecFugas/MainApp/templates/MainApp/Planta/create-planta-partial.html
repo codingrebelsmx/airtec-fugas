@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">Registrar Nueva Planta</div>
             <div class="card-body">
-                <form action="{% url 'planta-create' %}" method="post">
+                <form id="createPlantaForm" action="{% url 'planta-create' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form.visible_fields  %}
                         {% if field.field.widget.input_type != "checkbox" %}

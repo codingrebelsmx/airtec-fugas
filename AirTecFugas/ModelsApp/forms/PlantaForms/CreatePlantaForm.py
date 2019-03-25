@@ -12,7 +12,7 @@ class CreatePlantaForm(forms.ModelForm):
 
     class Meta:
         model = Planta
-        fields = ['nombre', 'descripcion', 'plano']
+        fields = ['nombre', 'descripcion', 'plano', 'empresa']
         widgets = {
             'nombre': forms.TextInput(attrs={"class":"form-control"}),
             'descripcion': forms.Textarea(attrs={"class":"form-control", "style":"resize:none;"}),
