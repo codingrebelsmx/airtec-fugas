@@ -66,4 +66,5 @@ urlpatterns = [# Examples:
                                                     authentication_form= BootstrapAuthenticationForm,
                                                     redirect_authenticated_user=True,
                                                     extra_context={ 'title': 'Log in', 'year': datetime.now().year,}),name = 'login'),
-    re_path(r'^logout$', django.contrib.auth.views.LogoutView.as_view(),name = 'logout'),]
+    re_path(r'^logout$', django.contrib.auth.views.LogoutView.as_view(),name = 'logout'),
+    re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas')]

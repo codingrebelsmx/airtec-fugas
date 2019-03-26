@@ -6,6 +6,7 @@ body {
 #SVGContainer {
     background: #dadada;
     position: relative;
+    cursor: crosshair;
 }
 
 #controls {
@@ -16,4 +17,11 @@ body {
 
 #controls circle:hover {
     fill-opacity: 1;
+}
+
+.custom-menu {
+    z-index: 1000;
+    position: absolute;
+    background-color: #ffffff;
+    cursor: pointer;
 }
