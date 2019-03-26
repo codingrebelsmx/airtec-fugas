@@ -6,8 +6,8 @@ from ModelsApp.models import Empresa
 @python_2_unicode_compatible
 class SeleccionPlantaTrabajoForm(forms.Form):
     """ Form to select Planta de Trabajo """
-    cliente = forms.ModelChoiceField(queryset=Empresa.objects.filter(is_enabled=True), empty_label="Selecciona un cliente")
-    planta = forms.ChoiceField()
+    cliente = forms.IntegerField(min_value=0)
+    planta = forms.IntegerField(min_value=0)
 
 
     def __str__(self):

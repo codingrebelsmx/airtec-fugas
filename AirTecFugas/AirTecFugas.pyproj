@@ -96,6 +96,7 @@
     <Compile Include="AirTecFugas\wsgi.py" />
     <Compile Include="ModelsApp\admin.py" />
     <Compile Include="ModelsApp\apps.py" />
+    <Compile Include="ModelsApp\forms\AreaForms\CreateAreaPartialForm.py" />
     <Compile Include="ModelsApp\forms\AreaForms\CreateAreaForm.py">
       <SubType>Code</SubType>
     </Compile>

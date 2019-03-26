@@ -10,7 +10,7 @@
             <div class="card-header">Registrar Nueva Fuga</div>
             <div class="card-body">
 
-                <form action="/fuga/create/" method="post">
+                <form id="idFormCreateFuga" name="FormCreateFuga" action="/fuga/create/" method="post">
                     {% csrf_token %}
 
                     <div class="row gutters">
@@ -22,7 +22,9 @@
                                         <option value="" selected="">Seleccione una &aacute;rea...</option>
                                     </select>
                                     <span class="input-group-btn">
-								        <button type="button" class="btn btn-primary"><span class="icon-plus2"></span>&nbsp;Nueva</button>
+								        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewArea" data-url="{% url 'area-create-partial' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nueva
+                                        </button>
 							        </span>
                                 </div>
                             </div>
@@ -35,7 +37,9 @@
                                         <option value="" selected="">Seleccione una m&aacute;quina...</option>
                                     </select>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-primary"><span class="icon-plus2"></span>&nbsp;Nueva</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewMachine" data-url="{% url 'maquina-create-partial' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nueva
+                                        </button>
                                     </span>
                                 </div>
                             </div>
@@ -98,7 +102,7 @@
                             <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar Fuga </button>
                         </div>
                     </div>
-
+                    <input id="id_tecnico" name="tecnico" type="hidden" value="{{ id_tecnico|default_if_none:"" }}" />
                     <input id="id_PuntoX" name="PuntoX" type="hidden" value="" />
                     <input id="id_PuntoY" name="PuntoY" type="hidden" value="" />
                 </form>
@@ -119,6 +123,8 @@
     </div>
 </div>
 
+{% include "MainApp/Modals/_GenericFormModal.html" %}
+
 {% endblock %}
 
 {% block scripts %}
@@ -126,6 +132,7 @@
 {% endblock %}
 
 {% block finalscripts %}
-    {#<script src="{% static 'MainApp/theme-files/vendor/select2/select2.min.js' %}"></script>#}
-    {#<script src="{% static 'MainApp/scripts/fuga-js/fuga-create.js' %}"></script>#}
-{% endblock%}
+
+<script src="{% static 'MainApp/scripts/fuga-js/fuga-create.js' %}"></script>
+
+{% endblock %}

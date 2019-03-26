@@ -14,7 +14,10 @@ class FugaCreateView(CreateView):
     success_url = reverse_lazy('fuga-list')
 
     def get_context_data(self, **kwargs):
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        id_tecnico = self.request.user.id
+        context["id_tecnico"] = id_tecnico
+        return context
 
     def dispatch(self, request, *args, **kwargs):
         cliente = self.request.session.get("id_cliente", None)
@@ -24,4 +27,10 @@ class FugaCreateView(CreateView):
             return super().dispatch(request, *args, **kwargs)
         else:
             return redirect('selec-planta-trabajo')
+
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.tecnico = self.request.user.id
+        return obj
 

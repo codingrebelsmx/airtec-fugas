@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">Registrar Nueva M&aacute;quina</div>
             <div class="card-body">
-                <form action="{% url 'maquina-create' %}" method="post">
+                <form id="idFormCreateNewMachine" name="FormCreateNewMachine" action="{% url 'maquina-create' %}" method="post">
                     {% csrf_token %}
                     {% for field in form.visible_fields  %}
                         {% if field.field.widget.input_type != "checkbox" %}

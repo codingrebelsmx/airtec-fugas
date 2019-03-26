@@ -20,12 +20,13 @@ class CreateFugaForm(forms.ModelForm):
 
     class Meta:
         model = Fuga
-        fields = ['area', 'maquina', 'ubicacion', 'categoria', 'recomendacion', 'refacciones_comentarios', 'nadp']
+        fields = ['area', 'maquina', 'ubicacion', 'categoria', 'recomendacion', 'refacciones_comentarios', 'nadp', 'tecnico']
         widgets = {
             'maquina': forms.Select(attrs={'class': "form-control"}),
             'categoria': forms.Select(attrs={'class': "form-control"}),
             'recomendacion': forms.Select(attrs={'class': "form-control"}),
             'refacciones_comentarios': forms.Textarea(attrs={'style':'resize:None;', 'class':'form-control'}),
-            'nadp': forms.CheckboxInput(attrs={'class':"form-check-input"})
+            'nadp': forms.CheckboxInput(attrs={'class':"form-check-input"}),
+            'tecnico': forms.HiddenInput(),
         }
 

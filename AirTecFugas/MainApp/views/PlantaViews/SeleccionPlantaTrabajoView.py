@@ -13,21 +13,24 @@ class SeleccionPlantaTrabajoView(FormView):
     success_url = reverse_lazy("dashboard")
 
     def get(self, request, *args, **kwargs):
-        cliente = self.request.session.get("id_cliente", None)
-        planta = self.request.session.get("id_planta", None)
+        #cliente = self.request.session.get("id_cliente", None)
+        #planta = self.request.session.get("id_planta", None)
 
-        if cliente != None and planta != None:
-            return redirect("dashboard")
+        #if cliente != None and planta != None:
+        #    return redirect("dashboard")
         return super().get(request, *args, **kwargs)
 
 
     def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
+        try:
+            return super().post(request, *args, **kwargs)
+        except Exception as excep:
+            return "Error"
 
 
     def form_valid(self, form):
-        self.request.session.pop("id_cliente", form.cleaned_data['cliente'])
-        self.request.session.pop("id_planta", form.cleaned_data['planta'])
+        self.request.session["id_cliente"] = form.cleaned_data['cliente']
+        self.request.session["id_planta"] = form.cleaned_data['planta']
         return super().form_valid(form)
 
 

@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">Registrar Nueva &Aring;rea</div>
             <div class="card-body">
-                <form action="{% url 'area-create' %}" method="post">
+                <form id="idFormCreateNewArea" name="FormCreateNewArea" action="{% url 'area-create' %}" method="post">
                     {% csrf_token %}
                     {% for field in form.visible_fields  %}
                         {% if field.field.widget.input_type != "checkbox" %}
@@ -46,6 +46,7 @@
                         {{ form.hidden_fields }}
                     {% endif %}
                     <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar &Aring;rea </button>
+                    <input id="id_planta" name="planta" type="hidden" value="{{ id_planta|default_if_none:"" }}" />
                 </form>
             </div>
         </div>
