@@ -16,6 +16,7 @@ class CreatePlantaForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={"class":"form-control"}),
             'descripcion': forms.Textarea(attrs={"class":"form-control", "style":"resize:none;"}),
+            'plano': forms.FileInput(attrs={"accept":".svg"})
             }
 
 

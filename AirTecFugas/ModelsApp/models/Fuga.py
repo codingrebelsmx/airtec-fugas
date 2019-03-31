@@ -10,6 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class Fuga(BaseModel):
     """ Model to represents the abstract object called Fuga """
+
     # Categorias
     categorias = ((1,"Baja"),(2,"Normal"),(3, "Alta"))
     categorias_dict = [{"id":1, "nombre": "Baja"},{"id":2, "nombre": "Normal"},{"id":3, "nombre": "Alta"}]
@@ -29,6 +30,8 @@ class Fuga(BaseModel):
     nadp = models.BooleanField("Not Available During Production (NADP)", default=False)
     estatus = models.SmallIntegerField("Estatus", default=1, choices=estatus_fuga)
     tecnico = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Técnico Registró")
+    punto_x = models.DecimalField(verbose_name="Coordenada X", max_digits=20, decimal_places=12)
+    punto_y = models.DecimalField(verbose_name="Coordenada Y", max_digits=20, decimal_places=12)
 
     #Custom Methods
     def __str__(self):

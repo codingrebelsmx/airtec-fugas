@@ -4,6 +4,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from .BaseModel import BaseModel
 from .Empresa import Empresa
 from ModelsApp.Helpers.UploadsTo import get_full_path
+import os
 
 
 @python_2_unicode_compatible
@@ -14,6 +15,13 @@ class Planta(BaseModel):
     nombre = models.CharField("Nombre de la Planta", max_length=50)
     descripcion = models.CharField("Descripción", max_length=500, blank=True, null=True)
     plano = models.FileField(verbose_name = "Plano", upload_to=get_full_path)
+
+
+    def get_extension(self):
+        name , exten = os.path.splitext(self.plano.name)
+        exten = exten.lower().replace(".","")
+        return exten
+
 
     # Custom Methods
     def __str__(self):

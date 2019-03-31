@@ -6,6 +6,6 @@ from WebApiApp.serializers.EmpresaSerializers import EmpresaSelectSerializer
 class EmpresaListSelectView(viewsets.ModelViewSet):
     """ View to returns list of Ubicaciones with a form for Select Control """
     serializer_class = EmpresaSelectSerializer
-    queryset = Empresa.objects.filter(is_enabled=True)
+    queryset = Empresa.objects.filter(is_enabled=True).order_by('pk')
    
 

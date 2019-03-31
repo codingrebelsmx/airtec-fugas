@@ -14,7 +14,7 @@ from MainApp.views import default
 from MainApp.views.FugaViews import FugaCreateView
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
-from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView
+from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
 from MainApp.views.EmpresaViews import CreateEmpresaPartialView
 
 
@@ -39,6 +39,7 @@ urlpatterns = [# Examples:
 
     ### -------------- CRUD PLANTA -------------- ###
     re_path(r'^planta/seleccionar-planta/$', SeleccionPlantaTrabajoView.as_view(), name='selec-planta-trabajo'),
+    re_path(r'^planta/plano/(?P<pk>\d+)/$', PlanoPlantaView.as_view(), name='planta-plano-view'),
     re_path(r'^planta/create/$', CreatePlantaPartialView.as_view(), name='planta-create'),
     #re_path(r'^planta/edit/(?P<pk>\d+)/$', default.about, name='planta-edit'),
     #re_path(r'^planta/details/(?P<pk>\d+)/$', default.about,

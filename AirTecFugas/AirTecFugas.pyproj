@@ -79,6 +79,9 @@
     <Compile Include="MainApp\views\PlantaViews\CreatePlantaPartialView.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\PlantaViews\PlanoPlantaView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\PlantaViews\SeleccionPlantaTrabajoView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -122,6 +125,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\FugaForms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\CreateImgFugaForms\CreateImgFugaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\CreateImgFugaForms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\MaquinaForms\CreateMaquinaForm.py">
@@ -326,6 +335,7 @@
     <Folder Include="ModelsApp\forms\FugaForms\" />
     <Folder Include="ModelsApp\forms\MaquinaForms\" />
     <Folder Include="ModelsApp\forms\AreaTrabajoForms\" />
+    <Folder Include="ModelsApp\forms\CreateImgFugaForms\" />
     <Folder Include="ModelsApp\forms\PlantaForms\" />
     <Folder Include="ModelsApp\forms\UbicacionForms\" />
     <Folder Include="ModelsApp\migrations\" />

@@ -92,6 +92,21 @@
 
                     <div class="row gutters">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label class="custom-file">
+								<input type="file" id="id_imagen_1" name="imagen_1" class="custom-file-input">
+								<span class="custom-file-control">Foto 1</span>
+							</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label class="custom-file">
+								<input type="file" id="id_imagen_2" name="imagen_2" class="custom-file-input">
+								<span class="custom-file-control">Foto 2</span>
+							</label>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -106,8 +121,8 @@
                         </div>
                     </div>
                     <input id="id_tecnico" name="tecnico" type="hidden" value="{{ id_tecnico|default_if_none:"" }}" />
-                    <input id="id_PuntoX" name="PuntoX" type="hidden" value="" />
-                    <input id="id_PuntoY" name="PuntoY" type="hidden" value="" />
+                    <input id="id_punto_x" name="punto_x" type="hidden" value="" />
+                    <input id="id_punto_y" name="punto_y" type="hidden" value="" />
                 </form>
 
                 <!-- URL Create -->

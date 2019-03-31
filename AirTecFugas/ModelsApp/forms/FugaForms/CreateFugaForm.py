@@ -13,6 +13,9 @@ class CreateFugaForm(forms.ModelForm):
                                        empty_label="Seleccione una ubicación...",
                                        widget = forms.Select(attrs={'class':"form-control"}))
 
+    imagen_1 = forms.ImageField(required=False, label="Imagen 1", help_text="Imagen 1 de la fuga")
+    imagen_2 = forms.ImageField(required=False, label="Imagen 2", help_text="Imagen 2 de la fuga")
+
     #def __init__(self, *args, **kwargs):
     #    form = super().__init__(*args, **kwargs)
     #    form.fields["maquina"].widget.empty_label = "Selecciona una máquina"
@@ -20,7 +23,7 @@ class CreateFugaForm(forms.ModelForm):
 
     class Meta:
         model = Fuga
-        fields = ['area', 'maquina', 'ubicacion', 'categoria', 'recomendacion', 'refacciones_comentarios', 'nadp', 'tecnico']
+        fields = ['area', 'maquina', 'ubicacion', 'categoria', 'recomendacion', 'refacciones_comentarios', 'nadp', 'tecnico', 'punto_x', 'punto_y']
         widgets = {
             'maquina': forms.Select(attrs={'class': "form-control"}),
             'categoria': forms.Select(attrs={'class': "form-control"}),
@@ -28,5 +31,7 @@ class CreateFugaForm(forms.ModelForm):
             'refacciones_comentarios': forms.Textarea(attrs={'style':'resize:None;', 'class':'form-control'}),
             'nadp': forms.CheckboxInput(attrs={'class':"form-check-input"}),
             'tecnico': forms.HiddenInput(),
+            'punto_x':forms.HiddenInput(),
+            'punto_y':forms.HiddenInput()
         }
 

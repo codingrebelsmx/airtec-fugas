@@ -9,7 +9,7 @@ class PlantaListSelectView(viewsets.ModelViewSet):
     
     def get_queryset(self):
         id_empresa = self.kwargs.get('id_empresa',None)
-        queryset = Planta.objects.filter(is_enabled=True, empresa__id=id_empresa) if id_empresa is not None else Planta.objects.filter(is_enabled=True)
+        queryset = Planta.objects.filter(is_enabled=True, empresa__id=id_empresa).order_by('nombre') if id_empresa is not None else Planta.objects.filter(is_enabled=True).order_by('pk')
         return queryset
 
 
