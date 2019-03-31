@@ -84,7 +84,7 @@ function InitForm(idForm, alwaysCallBack) {
 
 // Descarga datos de una API para ser incrustados como opciones de un select
 
-function DownloadFromApiToSelect(idSelect, theURL, emptyLabel) {
+function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
     var $objSelect = $("#" + idSelect);
     $objSelect.empty();
     $objSelect.append('<option value="">' + emptyLabel + '</option>');
@@ -117,6 +117,7 @@ function DownloadFromApiToSelect(idSelect, theURL, emptyLabel) {
             'warning'
         );
     }).always(function () {
-        
+        if (alwaysCallBack != undefined && alwaysCallBack != null)
+            alwaysCallBack();
     });
 }
