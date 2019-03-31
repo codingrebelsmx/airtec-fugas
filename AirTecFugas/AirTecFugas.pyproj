@@ -160,6 +160,13 @@
     <Compile Include="ModelsApp\Helpers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ModelsApp\management\commands\SeedPermissions.py" />
+    <Compile Include="ModelsApp\management\commands\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\management\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModelsApp\migrations\__init__.py" />
     <Compile Include="ModelsApp\models.py" />
     <Compile Include="ModelsApp\models\Area.py">
@@ -338,6 +345,8 @@
     <Folder Include="ModelsApp\forms\CreateImgFugaForms\" />
     <Folder Include="ModelsApp\forms\PlantaForms\" />
     <Folder Include="ModelsApp\forms\UbicacionForms\" />
+    <Folder Include="ModelsApp\management\" />
+    <Folder Include="ModelsApp\management\commands\" />
     <Folder Include="ModelsApp\migrations\" />
     <Folder Include="ModelsApp\models\" />
     <Folder Include="ModelsApp\Helpers\" />

@@ -10,7 +10,7 @@
             <div class="card-header">Registrar Nueva Fuga</div>
             <div class="card-body">
 
-                <form id="idFormCreateFuga" name="FormCreateFuga" action="/fuga/create/" method="post">
+                <form id="idFormCreateFuga" name="FormCreateFuga" action="/fuga/create/{{ punto_x|default_if_none:"0" }}/{{ punto_y|default_if_none:"0" }}/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <div class="row gutters">
@@ -92,16 +92,16 @@
 
                     <div class="row gutters">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <label class="custom-file">
-								<input type="file" id="id_imagen_1" name="imagen_1" class="custom-file-input">
-								<span class="custom-file-control">Foto 1</span>
-							</label>
+                            <div class="form-group">
+                                <label for="id_imagen_1">Imagen 1:</label>
+                                <input type="file" id="id_imagen_1" name="imagen_1" value="Buscar..." accept="image/*">
+                            </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <label class="custom-file">
-								<input type="file" id="id_imagen_2" name="imagen_2" class="custom-file-input">
-								<span class="custom-file-control">Foto 2</span>
-							</label>
+                            <div class="form-group">
+                                <label for="id_imagen_2">Imagen 2:</label>
+                                <input type="file" id="id_imagen_2" name="imagen_2" value="Buscar..." accept="image/*">
+                            </div>
                         </div>
                     </div>
 
@@ -121,8 +121,8 @@
                         </div>
                     </div>
                     <input id="id_tecnico" name="tecnico" type="hidden" value="{{ id_tecnico|default_if_none:"" }}" />
-                    <input id="id_punto_x" name="punto_x" type="hidden" value="" />
-                    <input id="id_punto_y" name="punto_y" type="hidden" value="" />
+                    <input id="id_punto_x" name="punto_x" type="hidden" value="{{ punto_x|default_if_none:"0" }}" />
+                    <input id="id_punto_y" name="punto_y" type="hidden" value="{{ punto_y|default_if_none:"0" }}" />
                 </form>
 
                 <!-- URL Create -->

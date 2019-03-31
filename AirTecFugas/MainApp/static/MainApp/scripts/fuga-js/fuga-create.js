@@ -72,7 +72,9 @@ function AlwaysCallBackAfterFormHasBeenSent() {
     if (globalAction == "AddNewArea")
         DownloadFromApiToSelect("id_area", $("#" + ID_HIDDEN_FIELD_URL_AREA).val(), "Selecciona una área...");
     if (globalAction == "AddNewMachine") {
-        $("#id_area").trigger("change");
+        let idArea = $("#id_area").val();
+        if (idArea != undefined && idArea != null && idArea != "")
+            $("#id_area").trigger("change");
         //DownloadFromApiToSelect("id_maquina", $("#" + ID_HIDDEN_FIELD_URL_MACHINE).val().replace("0", $("#id_area").val()), "Selecciona una máquina...");
     }
     //DownloadFromApiToSelect("id_cliente", $("#idUrlApiEmpresaListSelect").val(), "Selecciona un Cliente...");

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from ModelsApp.models import Fuga, Area, Ubicacion, Maquina 
+from ModelsApp.models import Fuga, Area, Ubicacion, Maquina, ImagenFuga 
 
 class CreateFugaForm(forms.ModelForm):
     """ Class to represents a form to create a new Fuga """
@@ -16,10 +16,18 @@ class CreateFugaForm(forms.ModelForm):
     imagen_1 = forms.ImageField(required=False, label="Imagen 1", help_text="Imagen 1 de la fuga")
     imagen_2 = forms.ImageField(required=False, label="Imagen 2", help_text="Imagen 2 de la fuga")
 
-    #def __init__(self, *args, **kwargs):
-    #    form = super().__init__(*args, **kwargs)
-    #    form.fields["maquina"].widget.empty_label = "Selecciona una máquina"
-    #    return form
+    def save(self, commit=True):
+        instance = super().save(commit)
+        #img_1 = self.cleaned_data["imagen_1"]
+        #img_2 = self.cleaned_data["imagen_2"]
+
+        #if img_1 != None:
+        #   img = ImagenFuga(imagen=img_1, fuga=instance)
+        #   img.save()
+        #if img_2 != None:
+        #    ImagenFuga(imagen=img_2, fuga=instance)
+        #    img_2.save()
+        return instance
 
     class Meta:
         model = Fuga

@@ -15,5 +15,5 @@ class AreaListSelectView(viewsets.ModelViewSet):
         if id_planta is None or id_empresa is None:
             return super().get_queryset()
         else:
-            return Area.objects.filter(is_enabled=True, planta__id=id_planta)
+            return Area.objects.filter(is_enabled=True, planta__id=id_planta).order_by('nombre')
    

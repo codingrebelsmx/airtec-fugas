@@ -47,7 +47,8 @@ urlpatterns = [# Examples:
     re_path(r'^planta/list/$', default.about, name='planta-list'),
 
     ### -------------- CRUD FUGA -------------- ###
-    re_path(r'^fuga/create/$', FugaCreateView.as_view(), name='fuga-create'),
+    re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas'),
+    re_path(r'^fuga/create/(?P<punto_x>\d+\.\d+)/(?P<punto_y>\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', default.about, name='fuga-edit'),
     re_path(r'^fuga/details/(?P<pk>\d+)/$', default.about, name='fuga-details'),
     re_path(r'^fuga/list/$', default.about, name='fuga-list'),
@@ -70,5 +71,4 @@ urlpatterns = [# Examples:
                                                     authentication_form= BootstrapAuthenticationForm,
                                                     redirect_authenticated_user=True,
                                                     extra_context={ 'title': 'Log in', 'year': datetime.now().year,}),name = 'login'),
-    re_path(r'^logout$', django.contrib.auth.views.LogoutView.as_view(),name = 'logout'),
-    re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas')]
+    re_path(r'^logout$', django.contrib.auth.views.LogoutView.as_view(),name = 'logout')]

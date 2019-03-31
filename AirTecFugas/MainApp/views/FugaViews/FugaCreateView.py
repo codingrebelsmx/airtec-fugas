@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import CreateView
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from ModelsApp.models import Fuga
+from ModelsApp.models import Fuga, ImagenFuga
 from ModelsApp.forms.FugaForms import CreateFugaForm
 
 
@@ -15,8 +16,12 @@ class FugaCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        punto_x = self.kwargs.get('punto_x',None)
+        punto_y = self.kwargs.get('punto_y',None)
         id_tecnico = self.request.user.id
         context["id_tecnico"] = id_tecnico
+        context["punto_x"] = punto_x
+        context["punto_y"] = punto_y
         return context
 
     def dispatch(self, request, *args, **kwargs):
@@ -33,4 +38,25 @@ class FugaCreateView(CreateView):
         obj = super().get_object(queryset)
         obj.tecnico = self.request.user.id
         return obj
+
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        if type(result) is HttpResponseRedirect:
+
+            img1 = form.files.get("imagen_1",None)
+            if img1 != None:
+                imgFuga = ImagenFuga()
+                imgFuga.fuga = self.object
+                imgFuga.imagen = img1
+                imgFuga.imagen.save(img1.name,img1)
+                
+            img2 = form.files.get("imagen_2",None)
+            if img2 != None:
+                imgFuga = ImagenFuga()
+                imgFuga.fuga = self.object
+                imgFuga.imagen = img2
+                imgFuga.imagen.save(img2.name,img2)
+
+        return result
 

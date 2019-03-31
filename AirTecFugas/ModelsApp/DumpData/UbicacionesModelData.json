@@ -1,0 +1,134 @@
+[
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 1,
+    "fields": {
+        "added": "2019-03-31T08:17:30.111Z",
+        "updated": "2019-03-31T08:17:30.111Z",
+        "is_enabled": true,
+        "nombre": "Interior de la m\u00e1quina",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 2,
+    "fields": {
+        "added": "2019-03-31T08:11:25.607Z",
+        "updated": "2019-03-31T08:11:25.607Z",
+        "is_enabled": true,
+        "nombre": "L\u00ednea Principal a manguera",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 3,
+    "fields": {
+        "added": "2019-03-31T08:11:34.850Z",
+        "updated": "2019-03-31T08:11:34.850Z",
+        "is_enabled": true,
+        "nombre": "Manguera a unidad",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 4,
+    "fields": {
+        "added": "2019-03-31T08:11:41.586Z",
+        "updated": "2019-03-31T08:11:41.586Z",
+        "is_enabled": true,
+        "nombre": "Salida de unidad",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 5,
+    "fields": {
+        "added": "2019-03-31T08:11:56.687Z",
+        "updated": "2019-03-31T08:11:56.687Z",
+        "is_enabled": true,
+        "nombre": "Manguera a herramienta",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 6,
+    "fields": {
+        "added": "2019-03-31T08:12:02.800Z",
+        "updated": "2019-03-31T08:12:02.800Z",
+        "is_enabled": true,
+        "nombre": "Herramienta",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 7,
+    "fields": {
+        "added": "2019-03-31T08:12:10.482Z",
+        "updated": "2019-03-31T08:12:10.482Z",
+        "is_enabled": true,
+        "nombre": "Empalme T",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 8,
+    "fields": {
+        "added": "2019-03-31T08:12:16.606Z",
+        "updated": "2019-03-31T08:12:16.606Z",
+        "is_enabled": true,
+        "nombre": "FRL",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 9,
+    "fields": {
+        "added": "2019-03-31T08:12:22.743Z",
+        "updated": "2019-03-31T08:12:22.743Z",
+        "is_enabled": true,
+        "nombre": "Electrov\u00e1lvula",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 10,
+    "fields": {
+        "added": "2019-03-31T08:12:28.913Z",
+        "updated": "2019-03-31T08:12:28.913Z",
+        "is_enabled": true,
+        "nombre": "Actuador",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 11,
+    "fields": {
+        "added": "2019-03-31T08:13:59.000Z",
+        "updated": "2019-03-31T08:13:59.000Z",
+        "is_enabled": true,
+        "nombre": "M\u00e1quina",
+        "descripcion": null
+    }
+},
+{
+    "model": "ModelsApp.ubicacion",
+    "pk": 12,
+    "fields": {
+        "added": "2019-03-31T08:15:45.276Z",
+        "updated": "2019-03-31T08:15:45.276Z",
+        "is_enabled": true,
+        "nombre": "Interior de punteadora/dif\u00edcil acceso",
+        "descripcion": null
+    }
+}
+]

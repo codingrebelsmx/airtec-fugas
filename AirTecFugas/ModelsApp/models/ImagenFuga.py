@@ -10,7 +10,7 @@ import os
 class ImagenFuga(BaseModel):
     """ Model to represents the abstract object called ImagenFuga """
 
-    imagen = models.ImageField("Imagen de la fuga", upload_to=get_full_path_img_fuga)
+    imagen = models.ImageField("Imagen de la fuga", upload_to=get_full_path_img_fuga, max_length=1000)
     fuga = models.ForeignKey(Fuga, on_delete=models.PROTECT)
 
 

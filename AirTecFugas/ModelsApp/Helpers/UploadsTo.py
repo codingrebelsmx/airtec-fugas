@@ -18,7 +18,7 @@ def get_full_path_img_fuga(instance, filename):
     planta_nombre_folder = hashlib.sha1(str(instance.fuga.area.planta.pk).encode("ascii","ignore")).hexdigest()
     area_nombre_folder = hashlib.sha1(str(instance.fuga.area.pk).encode("ascii","ignore")).hexdigest()
     fuga_nombre_folder = hashlib.sha1(str(instance.fuga.pk).encode("ascii","ignore")).hexdigest()
-    img_nombre_archivo = str(instance.fuga.area.pk) + "-" + str(instance.fuga.pk) + "-" + str(instance.pk)
+    img_nombre_archivo = str(instance.fuga.area.pk) + "-" + str(instance.fuga.pk) + "-" + str(instance.added)
     img_nombre_archivo = hashlib.sha1(img_nombre_archivo.encode("ascii","ignore")).hexdigest() + "." + instance.get_extension()
     return "{0}/{1}/{2}/{3}/{4}".format(imgs_fugas_nombre_folder, planta_nombre_folder, area_nombre_folder, fuga_nombre_folder, img_nombre_archivo)
 
