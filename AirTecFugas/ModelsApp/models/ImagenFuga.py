@@ -20,6 +20,12 @@ class ImagenFuga(BaseModel):
         return exten
 
 
+    def get_content_type(self):
+        name , exten = os.path.splitext(self.imagen.name)
+        exten = exten.lower().replace(".","")
+        return exten
+
+
     def __str__(self):
         return self.imagen.name
 

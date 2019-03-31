@@ -3,8 +3,8 @@ const ID_HIDDEN_FIELD_URL_MACHINE = "UrlApiMaquinaListSelect";
 const ID_HIDDEN_FIELD_URL_LOCATION = "UrlApiUbicacionListSelect";
 const ID_HIDDEN_FIELD_URL_CATEGORY = "UrlApiCategoriaListSelect";
 const ID_HIDDEN_FIELD_URL_SUGGESTION = "UrlApiRecomendacionFugaListSelect";
-
 var globalAction = "";
+
 
 $(document).ready(function () {
     InitSelects();
@@ -14,6 +14,7 @@ $(document).ready(function () {
     //    LimpiarControles();
     //});
 });
+
 
 function LimpiarControles() {
     InitSelects();
@@ -82,6 +83,7 @@ function InitModalEvents() {
     });
 }
 
+
 function AlwaysCallBackAfterFormHasBeenSent() {
 
     $('#genericModal').modal('hide');
@@ -94,6 +96,8 @@ function AlwaysCallBackAfterFormHasBeenSent() {
     }
 }
 
+
 var OnCloseModalCallBack = function () {
     window.location = $("#UrlMapaFugasCreate").val();
 };
+

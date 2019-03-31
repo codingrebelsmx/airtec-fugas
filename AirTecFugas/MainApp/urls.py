@@ -11,11 +11,12 @@ from django.conf.urls.static import static
 
 from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default
-from MainApp.views.FugaViews import FugaCreateView, FugaListView
+from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
 from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
 from MainApp.views.EmpresaViews import CreateEmpresaPartialView
+from MainApp.views.ImagenFugaViews import DetailImagenView
 
 
 # Uncomment the next lines to enable the admin:
@@ -51,6 +52,7 @@ urlpatterns = [# Examples:
     re_path(r'^fuga/create/(?P<punto_x>\d+\.\d+)/(?P<punto_y>\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', default.about, name='fuga-edit'),
     re_path(r'^fuga/details/(?P<pk>\d+)/$', default.about, name='fuga-details'),
+    re_path(r'^fuga/imagenes/(?P<pk>\d+)/$', FugaDetailsViews.ImagenesFugaDetailView.as_view(), name='fuga-images'),
     re_path(r'^fuga/list/$', FugaListView.as_view(), name='fuga-list'),
 
     ### -------------- CRUD AREA -------------- ###
@@ -66,6 +68,9 @@ urlpatterns = [# Examples:
     re_path(r'^maquina/edit/(?P<pk>\d+)/$', default.about, name='maquina-edit'),
     re_path(r'^maquina/details/(?P<pk>\d+)/$', default.about, name='maquina-details'),
     re_path(r'^maquina/list/$', default.about, name='maquina-list'),
+
+    ### -------------- IMAGENES FUGA -------------- ###
+    re_path(r'^imagen-fuga/detail/(?P<pk>\d+)/$', DetailImagenView.as_view(), name='imagen-fuga-view'),
 
     re_path(r'^login/$',django.contrib.auth.views.LoginView.as_view(template_name= 'MainApp/Authentication/login.html', 
                                                     authentication_form= BootstrapAuthenticationForm,
