@@ -1,6 +1,7 @@
     # -*- coding: utf-8 -*-
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django.utils.encoding import python_2_unicode_compatible
 from ModelsApp.models import Area
 from ModelsApp.forms.AreaForms import CreateAreaPartialForm
 
@@ -24,3 +25,4 @@ class AreaCreatePartialView(CreateView):
         object = super().get_object(queryset)
         object.id_planta = self.request.session.get("id_planta", None)
         return object
+
