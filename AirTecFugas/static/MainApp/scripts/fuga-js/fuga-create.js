@@ -18,6 +18,8 @@ function LimpiarControles() {
     InitSelects();
     $("#id_refacciones_comentarios").val("");
     $("#id_nadp").removeAttr("checked");
+    $("#id_imagen_1").val("");
+    $("#id_imagen_2").val("");
 }
 
 
@@ -33,11 +35,18 @@ function InitSelects() {
     DownloadFromApiToSelect("id_area", $("#" + ID_HIDDEN_FIELD_URL_AREA).val(), "Selecciona una área...");
     // EventHandler OnChange Cliente's Select
     $("#id_area").on("change", function () {
-        $("#id_maquina").attr("disabled", "disabled");
-        DownloadFromApiToSelect("id_maquina", $("#" + ID_HIDDEN_FIELD_URL_MACHINE).val().replace("0", $("#id_area").val()),
-            "Selecciona una máquina...", function () {
-                $("#id_maquina").removeAttr("disabled");
-            });
+        if ($(this).val() != null && $(this).val() != "") {
+            $("#id_maquina").attr("disabled", "disabled");
+            DownloadFromApiToSelect("id_maquina", $("#" + ID_HIDDEN_FIELD_URL_MACHINE).val().replace("0", $("#id_area").val()),
+                "Selecciona una máquina...", function () {
+                    $("#id_maquina").removeAttr("disabled");
+                });
+        }
+        else {
+            var $objSelect = $("#id_maquina");
+            $objSelect.empty();
+            $objSelect.append('<option value="">' + "Selecciona una máquina..." + '</option>');
+        }
     });
     DownloadFromApiToSelect("id_ubicacion", $("#" + ID_HIDDEN_FIELD_URL_LOCATION).val(), "Selecciona una ubicación...");
     DownloadFromApiToSelect("id_categoria", $("#" + ID_HIDDEN_FIELD_URL_CATEGORY).val(), "Selecciona una categoría...");

@@ -218,6 +218,9 @@
     <Compile Include="WebApiApp\serializers\EstatusFugaSerializers.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WebApiApp\serializers\FugaSerializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WebApiApp\serializers\MaquinaSerializers.py" />
     <Compile Include="WebApiApp\serializers\PlantaSerializers.py">
       <SubType>Code</SubType>
@@ -241,6 +244,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WebApiApp\views\EstatusFugaViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebApiApp\views\FugaViews.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WebApiApp\views\MaquinaViews.py" />

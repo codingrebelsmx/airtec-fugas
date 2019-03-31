@@ -5,6 +5,7 @@ Definition of urls for WebApi App.
 from django.conf.urls import re_path
 from WebApiApp.views import MaquinaViews, AreaViews, UbicacionViews, CategoriaViews
 from WebApiApp.views import EstatusFugaViews, RecomendacionFugaViews, PlantaViews, EmpresaViews
+from WebApiApp.views import FugaViews
 
 
 urlpatterns = [### -------------- LIST API PARA SELECTS -------------- ###
@@ -14,5 +15,9 @@ urlpatterns = [### -------------- LIST API PARA SELECTS -------------- ###
     re_path(r'^maquina/list-select/(?P<id_area>[0-9]+)/$', MaquinaViews.MaquinaListSelectView.as_view({'get': 'list'}), name='ApiMaquinaListSelect'),
     re_path(r'^ubicacion/list-select/$', UbicacionViews.UbicacionListSelectView.as_view({'get': 'list'}), name='ApiUbicacionListSelect'),
     re_path(r'^categoria-fuga/list-select/$', CategoriaViews.CategoriaListSelectView.as_view({'get': 'list'}), name='ApiCategoriaListSelect'),
-    re_path(r'^recomendacion-fuga/list-select/$', RecomendacionFugaViews.RecomendacionFugaListSelectView.as_view({'get': 'list'}), name='ApiRecomendacionFugaListSelect'),]
+    re_path(r'^recomendacion-fuga/list-select/$', RecomendacionFugaViews.RecomendacionFugaListSelectView.as_view({'get': 'list'}), name='ApiRecomendacionFugaListSelect'),
+    
+    ### ----------------- GENERIC LIST ----------------- ###
+    re_path(r'^fuga/point-list/$', FugaViews.FugaPointListView.as_view({'get': 'list'}), name='api-fuga-point-list'),
+    ]
 

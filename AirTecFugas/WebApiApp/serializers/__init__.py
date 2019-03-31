@@ -6,4 +6,5 @@ from .RecomendacionFugaSerializers import *
 from .EstatusFugaSerializers import *
 from .PlantaSerializers import *
 from .EmpresaSerializers import *
+from .FugaSerializers import *
 
