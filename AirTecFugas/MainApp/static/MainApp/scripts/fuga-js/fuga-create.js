@@ -18,6 +18,8 @@ function LimpiarControles() {
     InitSelects();
     $("#id_refacciones_comentarios").val("");
     $("#id_nadp").removeAttr("checked");
+    $("#id_imagen_1").val("");
+    $("#id_imagen_2").val("");
 }
 
 
