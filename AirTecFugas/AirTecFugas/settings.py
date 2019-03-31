@@ -37,6 +37,7 @@ INSTALLED_APPS = ['MainApp',
     'django_filters',
     'rest_framework.authtoken',
     # Add your apps here to enable them
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

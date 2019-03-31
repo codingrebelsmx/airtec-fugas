@@ -43,6 +43,12 @@
     <Compile Include="MainApp\migrations\__init__.py" />
     <Compile Include="MainApp\tests.py" />
     <Compile Include="MainApp\urls.py" />
+    <Compile Include="MainApp\utils\Permissions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\utils\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\AreaViews\AreaCreatePartialView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -62,6 +68,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaCreateView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaListView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\FugaViews\UpdateFugaViews.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\__init__.py">
@@ -267,6 +279,7 @@
     <Folder Include="MainApp\" />
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
+    <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
     <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\" />
@@ -378,6 +391,7 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="MainApp\static\MainApp\scripts\app.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
+    <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-list.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js.map" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.min.js" />
@@ -451,6 +465,7 @@
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\list-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\mapa-fugas.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />

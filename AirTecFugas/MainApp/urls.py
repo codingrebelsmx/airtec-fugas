@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 
 from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default
-from MainApp.views.FugaViews import FugaCreateView
+from MainApp.views.FugaViews import FugaCreateView, FugaListView
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
 from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
@@ -51,7 +51,7 @@ urlpatterns = [# Examples:
     re_path(r'^fuga/create/(?P<punto_x>\d+\.\d+)/(?P<punto_y>\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', default.about, name='fuga-edit'),
     re_path(r'^fuga/details/(?P<pk>\d+)/$', default.about, name='fuga-details'),
-    re_path(r'^fuga/list/$', default.about, name='fuga-list'),
+    re_path(r'^fuga/list/$', FugaListView.as_view(), name='fuga-list'),
 
     ### -------------- CRUD AREA -------------- ###
     re_path(r'^area/create/$', AreaCreateView.as_view(), name='area-create'),
