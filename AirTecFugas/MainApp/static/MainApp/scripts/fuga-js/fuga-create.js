@@ -9,9 +9,10 @@ var globalAction = "";
 $(document).ready(function () {
     InitSelects();
     InitModalEvents();
-    InitForm("idFormCreateFuga", function () {
-        LimpiarControles();
-    });
+    InitForm("idFormCreateFuga", LimpiarControles, OnCloseModalCallBack);
+    //InitForm("idFormCreateFuga", function () {
+    //    LimpiarControles();
+    //});
 });
 
 function LimpiarControles() {
@@ -56,9 +57,9 @@ function InitSelects() {
 
 function InitModalEvents() {
     $('#genericModal').on('show.bs.modal', function (e) {
+        $LoadingBlockUI.fadeIn(500);
         var url = $(e.relatedTarget).data("url");
         var action = $(e.relatedTarget).data("action");
-
         if (url != undefined && url != null) {
             $("#GenericModalBody").load(url, function (response, status, xhr) {
                 if (status != "error") {
@@ -75,12 +76,14 @@ function InitModalEvents() {
                         'error'
                     );
                 }
+                $LoadingBlockUI.fadeOut(1000);
             });
         }
     });
 }
 
 function AlwaysCallBackAfterFormHasBeenSent() {
+
     $('#genericModal').modal('hide');
     if (globalAction == "AddNewArea")
         DownloadFromApiToSelect("id_area", $("#" + ID_HIDDEN_FIELD_URL_AREA).val(), "Selecciona una área...");
@@ -88,8 +91,9 @@ function AlwaysCallBackAfterFormHasBeenSent() {
         let idArea = $("#id_area").val();
         if (idArea != undefined && idArea != null && idArea != "")
             $("#id_area").trigger("change");
-        //DownloadFromApiToSelect("id_maquina", $("#" + ID_HIDDEN_FIELD_URL_MACHINE).val().replace("0", $("#id_area").val()), "Selecciona una máquina...");
     }
-    //DownloadFromApiToSelect("id_cliente", $("#idUrlApiEmpresaListSelect").val(), "Selecciona un Cliente...");
 }
 
+var OnCloseModalCallBack = function () {
+    window.location = $("#UrlMapaFugasCreate").val();
+};
