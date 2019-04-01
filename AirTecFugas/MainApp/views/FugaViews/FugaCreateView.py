@@ -3,16 +3,18 @@ from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from ModelsApp.models import Fuga, ImagenFuga
 from ModelsApp.forms.FugaForms import CreateFugaForm
 
 
-class FugaCreateView(CreateView):
+class FugaCreateView(PermissionRequiredMixin, CreateView):
     """ View to register a new Fuga """
     model = Fuga
     form_class = CreateFugaForm
     template_name = "MainApp/Fuga/create-fuga.html"
     success_url = reverse_lazy('fuga-list')
+    permission_required = ("ModelsApp.add_fuga",)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,4 +1,5 @@
 var csrftoken = getCookie("csrftoken");
+var $LoadingBlockUI = $("#loading-wrapper");
 
 /**
  * AJUSTES Y PLUGINS
@@ -41,9 +42,10 @@ function csrfSafeMethod(method) {
 // Inicializa un formulario para ser enviado por ajas según sus
 // propios atributos
 
-function InitForm(idForm, alwaysCallBack) {
+function InitForm(idForm, alwaysCallBack, onCloseModalCallBack) {
     var $form = $("#" + idForm);
     $form.submit(function (event) {
+        $LoadingBlockUI.fadeIn(3000);
         event.preventDefault();
         var formData = new FormData(this);
 
@@ -56,13 +58,25 @@ function InitForm(idForm, alwaysCallBack) {
             processData: false
         }).done(function (data, textStatus, jqXHR) {
             if (textStatus == "success") {
-                Swal.fire("Operación Exitosa!", "Se registró correctamente.", "success");
+                Swal.fire({
+                    'title': "Operación Exitosa!",
+                    'text': "Se registró correctamente.",
+                    'type': "success",
+                    'onClose': function () {
+                        if (onCloseModalCallBack != undefined && onCloseModalCallBack != null)
+                            onCloseModalCallBack();
+                    }
+                });
             } else {
-                Swal.fire(
-                    'Error',
-                    "Hubo un error y no se regitró.",
-                    'error'
-                );
+                Swal.fire({
+                    'title': 'Error',
+                    'text': "Hubo un error y no se regitró.",
+                    'type': 'error',
+                    'onClose': function () {
+                        if (onCloseModalCallBack != undefined && onCloseModalCallBack != null)
+                            onCloseModalCallBack();
+                    }
+                });
             }
         }).fail(function (jqXHR, textStatus) {
             if (jqXHR.status == 403) {
@@ -70,12 +84,17 @@ function InitForm(idForm, alwaysCallBack) {
             } else {
                 text = "Ha ocurrido un problema al intentar realizar la operación. Intente de nuevo.";
             }
-            Swal.fire(
-                'Advertencia',
-                text,
-                'warning'
-            );
+            Swal.fire({
+                'title': 'Advertencia',
+                'text': text,
+                'type': 'warning',
+                'onClose': function () {
+                    if (onCloseModalCallBack != undefined && onCloseModalCallBack != null)
+                        onCloseModalCallBack();
+                }
+            });
         }).always(function () {
+            $LoadingBlockUI.fadeOut(1000);
             if (alwaysCallBack != null)
                 alwaysCallBack();
         });

@@ -1,0 +1,125 @@
+{% extends "MainApp/Layout/_Layout.html" %}
+
+{% load staticfiles %}
+
+{% load humanize %}
+
+{% block content %}
+
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">Listado de Fugas</div>
+            <div class="card-body">
+
+                <table id="TableFugaList" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                &Aacute;rea
+                            </th>
+                            <th>
+                                M&aacute;quina
+                            </th>
+                            <th>
+                                Ubicaci&oacute;n
+                            </th>
+                            <th>
+                                Categor&iacute;a
+                            </th>
+                            <th>
+                                Recomendaci&oacute;n
+                            </th>
+                            <th>
+                                Estatus
+                            </th>
+                            <th>
+                                Fecha Registro
+                            </th>
+                            <th>
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fuga in object_list %}
+                            <tr>
+                                <td>
+                                    {{ fuga.area.nombre }}
+                                </td>
+                                <td>
+                                    {{ fuga.maquina.nombre }}
+                                </td>
+                                <td>
+                                    {{ fuga.ubicacion.nombre }}
+                                </td>
+                                <td>
+                                    {{ fuga.categoria }}
+                                </td>
+                                <td>
+                                    {% if fuga.recomendacion == 'REP' %}
+                                        Reparar
+                                    {% elif fuga.recomendacion == 'REM' %}
+                                        Remplazar
+                                    {% elif fuga.recomendacion == 'OTR' %}
+                                        Otro
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if fuga.estatus == 1 %}
+                                        Registrado
+                                    {% elif fuga.estatus == 2 %}
+                                        Corregido
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ fuga.added|date }}
+                                </td>
+                                <td>
+                                    {% if fuga.estatus == 1 %}
+                                        <button class="btn btn-default">
+                                            <span class="icon-tick-outline"></span>&nbsp; Corregido
+                                        </button>
+                                    {% endif %}
+                                    <button class="btn btn-primary">
+                                        <span class="icon-edit"></span>&nbsp; Editar
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <span class="icon-trash"></span>&nbsp; Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+                <!-- URL Create -->
+                <input id="UrlApiAreaCreate" type="hidden" value="{% url 'area-create' %}" />
+                <input id="UrlApiMaquinaCreate" type="hidden" value="{% url 'maquina-create' %}" />
+
+                <!-- URL's List for Selects -->
+                <input id="UrlApiAreaListSelect" type="hidden" value="{% url 'ApiAreaListSelect' %}" />
+                <input id="UrlApiMaquinaListSelect" type="hidden" value="{% url 'ApiMaquinaListSelect' '0' %}" />
+                <input id="UrlApiUbicacionListSelect" type="hidden" value="{% url 'ApiUbicacionListSelect' %}" />
+                <input id="UrlApiCategoriaListSelect" type="hidden" value="{% url 'ApiCategoriaListSelect' %}" />
+                <input id="UrlApiRecomendacionFugaListSelect" type="hidden" value="{% url 'ApiRecomendacionFugaListSelect' %}" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "MainApp/Modals/_GenericFormModal.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block finalscripts %}
+
+<script src="{% static 'MainApp/scripts/fuga-js/fuga-list.js' %}"></script>
+
+{% endblock %}
