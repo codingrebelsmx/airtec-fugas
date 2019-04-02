@@ -1,7 +1,9 @@
-var pt = null;
-var svgId = 'svg72055';
+var point = null;
+var svgPanZoomInstance = null;
+var svgDrawInstance = null;
+var svgId = "";
+
 $(document).ready(function () {
-    var point = { x: 0, y: 0 };
     //var svg = document.getElementById("svg72055");
     //var pt = svg.createSVGPoint();
     //svg.addEventListener("mousedown", alert_click, false);
@@ -22,13 +24,22 @@ $(document).ready(function () {
     //    var y =  dim.top;
     //    console.log("x: " + x + " y:" + y);
     //});
+
     $.get("/planta/plano/1/", function (data, status) {
-        svgId = $(data).find('svg')[0].id;
+        var svgObj = $(data).find('svg')[0];
+        svgDrawInstance = SVG(svgObj);
+        $("#SVGContainer").append(svgObj);
+        svgId = svgObj.id;
+        if (svgId === "") {
+            svgId = "new-id-svg-planta";
+            svgObj.id = svgId;
+        }
         InitSVGControls();
+        DrawLeaks();
     });
 
     function InitSVGControls() {
-        var svgPlanta = new SVGPanZoom($('#' + svgId)[0], {
+        svgPanZoomInstance = new SVGPanZoom($('#' + svgId)[0], {
             animationTime: 300,
             eventMagnet: $('#SVGContainer')[0],
             zoom: {
@@ -55,6 +66,30 @@ $(document).ready(function () {
 
         $("#" + svgId)[0].setAttribute('width', '100%');
         $("#" + svgId)[0].setAttribute('height', '80%');
+
+        $("#zoom-in-button").click(function () {
+            svgPanZoomInstance.zoomIn(null, 0.5);
+        });
+
+        $("#zoom-out-button").click(function () {
+            svgPanZoomInstance.zoomOut(null, 0.5);
+        });
+
+        $("#reset-button").click(function () {
+            svgPanZoomInstance.reset();
+        });
+    }
+
+    function DrawLeaks() {
+        //var fugas = [
+        //    { x: 793.3054809570312, y: -84.39212036132812 },
+        //    { x: 1036.989013671875, y: 244.66957092285156 },
+        //    { x: 2315.8828125, y: 650.2158813476562 }];
+        var fugas = [];
+        for (var i = 0; i < fugas.length; i++) {
+            var fuga = fugas[i];
+            svgDrawInstance.circle(100).fill('#f06').move(fuga.x, fuga.y);
+        }
     }
     $('div.main-content').css('padding', 0);
     $('div.main-content').css('min-height', 0);
@@ -71,15 +106,13 @@ $(document).ready(function () {
                 left: event.pageX + "px",
                 display: "block"
             });
+
+        var svg = document.getElementById(svgId);
+        point = svg.createSVGPoint();
         point.x = event.pageX;
         point.y = event.pageY;
-        var svg = document.getElementById(svgId);
-        pt = svg.createSVGPoint();
-        pt.x = event.pageX;
-        pt.y = event.pageY;
-        pt = pt.matrixTransform(svg.getScreenCTM().inverse());
-        console.log("x: " + pt.x + " y:" + pt.y);
-
+        point = point.matrixTransform(svg.getScreenCTM().inverse());
+        console.log("x: " + point.x + " y:" + point.y);
     });
 
     $("div.custom-menu").bind("contextmenu", function (event) {
@@ -92,7 +125,7 @@ $(document).ready(function () {
 
 
     $(document).on("click", "div.custom-menu-copy", function (event) {
-        console.log("x: " + pt.x + " y:" + pt.y);
-        window.location = '/fuga/create/' + pt.x + '/' + pt.y + '/';
+        console.log("x: " + point.x + " y:" + point.y);
+        window.location = '/fuga/create/' + point.x + '/' + point.y + '/';
     });
 });

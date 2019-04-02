@@ -13,6 +13,9 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
+    height: 130px;
+    width: 50px;
+}
 }
 
 #controls circle:hover {
