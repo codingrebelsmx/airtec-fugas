@@ -3,30 +3,10 @@ var svgPanZoomInstance = null;
 var svgDrawInstance = null;
 var svgId = "";
 var listFugas = new Array();
-var currentFuga = null;
+var currentLeak = null;
 var overLeak = false;
 
 $(document).ready(function () {
-    //var svg = document.getElementById("svg72055");
-    //var pt = svg.createSVGPoint();
-    //svg.addEventListener("mousedown", alert_click, false);
-    //function alert_click(evt) {
-    //    var cursorpt = cursorPoint(evt);
-    //    console.log("(" + cursorpt.x + ", " + cursorpt.y + ")");
-    //}
-    //function cursorPoint(evt) {
-    //    pt.x = evt.clientX;
-    //    pt.y = evt.clientY;
-
-    //        return pt.matrixTransform(svg.getScreenCTM().inverse());
-    //}
-    //$('#' + svgId).on("click", function (event) {
-    //    var e = event.target;
-    //    var dim = e.getBoundingClientRect();
-    //    var x =  dim.left;
-    //    var y =  dim.top;
-    //    console.log("x: " + x + " y:" + y);
-    //});
 
     $.get("/planta/plano/1/", function (data, status) {
         var svgObj = $(data).find('svg')[0];
@@ -39,7 +19,8 @@ $(document).ready(function () {
         }
         InitSVGControls();
         GetLeaks();
-        DrawLeaks();
+        //dummy data
+        //DrawLeaks();
     });
 
     function InitSVGControls() {
@@ -55,7 +36,15 @@ $(document).ready(function () {
                     doubleClick: true,
                     pinch: true
                 },
-                callback: function callback(multiplier) { }
+                callback: function callback(multiplier) {
+                    //console.log(multiplier);
+                    //console.log(1 / multiplier);
+                    //var scaleF = 1 / multiplier;
+                    //$(".punto-fuga").each(function (index, item) {
+                    //    if (scaleF > 0.4)
+                    //        item.instance.scale(scaleF, scaleF);
+                    //});
+                }
             },
             pan: {
                 factor: 100,
@@ -88,28 +77,27 @@ $(document).ready(function () {
         $.get("/api/fuga/point-list/", function (data, status) {
             listFugas = data;
             DrawLeaks();
+            SetLeaksInfo();
         });
     }
+
     function DrawLeaks() {
-        var fugas = [
-            { id: 1, x: 793.3054809570312, y: -84.39212036132812 },
-            { id: 2, x: 1036.989013671875, y: 244.66957092285156 },
-            { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
-        for (var i = 0; i < fugas.length; i++) {
-            var fuga = fugas[i];
-            var circle = svgDrawInstance.circle(20);
-            circle.move(fuga.x, fuga.y);
+        //var listFugas = [//Dummy data
+        //    { id: 1, x: 793.3054809570312, y: -84.39212036132812 },
+        //    { id: 2, x: 1036.989013671875, y: 244.66957092285156 },
+        //    { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
+        for (var i = 0; i < listFugas.length; i++) {
+            var fuga = listFugas[i];
+            var circle = svgDrawInstance.circle(4);
+            circle.move(fuga.punto_x, fuga.punto_y);
+            circle.fill(GetColor(fuga.categoria));
             circle.addClass('punto-fuga');
             circle.attr('id', 'fuga-circle-' + fuga.id);
-            listFugas.push(fuga);
         }
 
         $(".punto-fuga").click(function () {
             overLeak = true;
-            var fugaId = $(this).attr('id').replace("fuga-circle-", "");
-            currentFuga = $.grep(listFugas, function (n, i) {
-                return n.id === parseInt(fugaId);
-            })[0];
+            SetCurrentLeak(this);
             $("div.menu-actions-copy").remove();
             var html = $("#context-menu-fugas").html();
             var menuObj = $(html);
@@ -122,6 +110,35 @@ $(document).ready(function () {
                     position: "absolute"
                 });
         });
+
+        //$(".punto-fuga").hover(function (event) {
+        //    SetCurrentLeak(this);
+
+        //});
+    }
+
+    function GetColor(categoria) {
+        var color = "#FF0000";//categoria 1
+        if (categoria === 2)
+            color = '#FF4000';
+        else if (categoria === 3)
+            color = '#FFFF00';
+        return color;
+    }
+
+    function SetLeaksInfo() {
+        var countP = $.grep(listFugas, function (n, i) { return n.estatus === 1; });
+        var countR = $.grep(listFugas, function (n, i) { return n.estatus === 2; });
+        $("#total-fugas").text(listFugas.length);
+        $("#fugas-reparadas").text(countR.length);
+        $("#fugas-pendientes").text(countP.length);
+    }
+
+    function SetCurrentLeak(obj) {
+        var fugaId = $(obj).attr('id').replace("fuga-circle-", "");
+        currentLeak = $.grep(listFugas, function (n, i) {
+            return n.id === parseInt(fugaId);
+        })[0];
     }
 
     $('div.main-content').css('padding', 0);
@@ -154,7 +171,7 @@ $(document).ready(function () {
 
     $("#SVGContainer").bind("click", function (event) {
         $("div.custom-menu-copy").remove();
-        if(!overLeak)
+        if (!overLeak)
             $("div.menu-actions-copy").remove();
         overLeak = false;
     });
@@ -165,17 +182,21 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "li.btn-action-reparada", function () {
-        console.log("Marcar como reparada fuga id: " + currentFuga.id);
+        console.log("Marcar como reparada fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
     });
 
-    $(document).on("click", "li.btn-action-foto", function () {
-        console.log("Mostrar foto fuga id: " + currentFuga.id);
+    $(document).on("click", "li.btn-action-detalles", function () {
+        console.log("Mostrar foto fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
+        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
+            $("#modal-fuga").append(data);
+            $("#modal-fuga").modal('show');
+        });
     });
 
     $(document).on("click", "li.btn-action-termica", function () {
-        console.log("Mostrar Imgane termica fuga id: " + currentFuga.id);
+        console.log("Mostrar Imgane termica fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
     });
 });

@@ -36,7 +36,15 @@ $(document).ready(function () {
                     doubleClick: true,
                     pinch: true
                 },
-                callback: function callback(multiplier) { }
+                callback: function callback(multiplier) {
+                    //console.log(multiplier);
+                    //console.log(1 / multiplier);
+                    //var scaleF = 1 / multiplier;
+                    //$(".punto-fuga").each(function (index, item) {
+                    //    if (scaleF > 0.4)
+                    //        item.instance.scale(scaleF, scaleF);
+                    //});
+                }
             },
             pan: {
                 factor: 100,
@@ -80,7 +88,7 @@ $(document).ready(function () {
         //    { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
         for (var i = 0; i < listFugas.length; i++) {
             var fuga = listFugas[i];
-            var circle = svgDrawInstance.circle(20);
+            var circle = svgDrawInstance.circle(4);
             circle.move(fuga.punto_x, fuga.punto_y);
             circle.fill(GetColor(fuga.categoria));
             circle.addClass('punto-fuga');
@@ -163,7 +171,7 @@ $(document).ready(function () {
 
     $("#SVGContainer").bind("click", function (event) {
         $("div.custom-menu-copy").remove();
-        if(!overLeak)
+        if (!overLeak)
             $("div.menu-actions-copy").remove();
         overLeak = false;
     });
@@ -178,9 +186,12 @@ $(document).ready(function () {
         $("div.menu-actions-copy").remove();
     });
 
-    $(document).on("click", "li.btn-action-foto", function () {
+    $(document).on("click", "li.btn-action-detalles", function () {
         console.log("Mostrar foto fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
+        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
+            $("#modal-fuga-body").append(data);
+        });
     });
 
     $(document).on("click", "li.btn-action-termica", function () {

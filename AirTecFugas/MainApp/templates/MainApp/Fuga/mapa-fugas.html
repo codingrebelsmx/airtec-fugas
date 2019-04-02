@@ -25,30 +25,30 @@
    <div id="context-menu-fugas" class="d-none">
        <div class="menu-actions">
            <ul class="list-group">
-               <li class="list-group-item d-flex justify-content-between align-items-center btn-action-reparada" style="padding: 0 !important;">
+               <!--<li class="list-group-item d-flex justify-content-between align-items-center btn-action-reparada" style="padding: 0 !important;">
                    <div style="padding: 12px 20px;">
 				   <span class="icon" style="padding-right: 10px;">
 						<i class="icon-wrench"></i>
 					</span>
                    Reparada
 				   </div>
-               </li>
-			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-foto" style="padding: 0 !important;">
+               </li>-->
+			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-detalles" style="padding: 0 !important;"  data-toggle="modal" data-target="#modal-fugas">
                    <div style="padding: 12px 20px;">
 				   <span class="icon" style="padding-right: 10px;">
-						<i class="glyphicon-picture"></i>
+						<i class="icon-"></i>
 					</span>
-                   Ver Foto
+                   Detalles
 				   </div>
                </li>
-			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-termica" style="padding: 0 !important;">
+			   <!--<li class="list-group-item d-flex justify-content-between align-items-center btn-action-termica" style="padding: 0 !important;">
                    <div style="padding: 12px 20px;">
 				   <span class="icon" style="padding-right: 10px;">
 						<i class="glyphicon-picture"></i>
 					</span>
                    Ver Imagen Termica
 				   </div>
-               </li>
+               </li>-->
            </ul>
        </div>
    </div> 
@@ -90,6 +90,26 @@
 		<span>Total fugas:</span><span id="total-fugas"></span><br />
 		<span>Fugas reparadas:</span><span id="fugas-reparadas"></span><br />
 		<span>Fugas pendientes:</span><span id="fugas-pendientes"></span>
+	</div>
+
+	<div class="modal fade" id="modal-fugas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Detalles fuga</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modal-fuga-body">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<!--<button type="button" class="btn btn-primary">Guardar</button>-->
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}
 
