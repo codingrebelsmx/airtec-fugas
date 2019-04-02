@@ -12,6 +12,12 @@ class SeleccionPlantaTrabajoView(FormView):
     form_class = SeleccionPlantaTrabajoForm
     success_url = reverse_lazy("dashboard")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        area_seleccionada = "TRABAJO"
+        context["menu"] = area_seleccionada
+        return context
+
     def get(self, request, *args, **kwargs):
         #cliente = self.request.session.get("id_cliente", None)
         #planta = self.request.session.get("id_planta", None)

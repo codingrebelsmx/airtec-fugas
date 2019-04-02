@@ -18,6 +18,8 @@ class FugaCreateView(PermissionRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        area_seleccionada = "FUGAS"
+        context["menu"]=area_seleccionada
         punto_x = self.kwargs.get('punto_x',None)
         punto_y = self.kwargs.get('punto_y',None)
         id_tecnico = self.request.user.id

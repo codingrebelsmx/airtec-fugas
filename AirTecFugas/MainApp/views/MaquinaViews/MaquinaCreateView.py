@@ -11,3 +11,10 @@ class MaquinaCreateView(CreateView):
     form_class = CreateMaquinaForm
     template_name = "MainApp/Maquina/create-maquina.html"
     success_url = reverse_lazy('maquina-list')
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        area_seleccionada = "MAQUINAS"
+        context["menu"] = area_seleccionada
+        return context

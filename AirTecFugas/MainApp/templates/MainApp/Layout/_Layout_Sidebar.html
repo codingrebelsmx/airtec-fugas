@@ -33,7 +33,7 @@
         <nav class="side-nav">
 	        <!-- BEGIN: side-nav-content -->
 	        <ul class="unifyMenu" id="unifyMenu">
-		        <li class="active selected">
+		        <li class="active  {% if menu == 'DASHBOARD' %} selected {% endif %}">
 			        <a href="{% url 'dashboard' %}">
 				        <span class="has-icon">
 					        <i class="icon-laptop_windows"></i>
@@ -41,7 +41,7 @@
 				        <span class="nav-title">Dashboard</span>
 			        </a>
 		        </li>
-                <li  class="active">
+                <li  class="{% if menu == 'TRABAJO' %} active selected {% endif %}">
                     <a href="{% url 'selec-planta-trabajo' %}">
 				        <span class="has-icon">
 					        <i class="icon-address"></i>
@@ -49,7 +49,7 @@
 				        <span class="nav-title">&Aacute;rea de Trabajo</span>
 			        </a>
                 </li>
-		        <li>
+		        <li  class="{% if menu == 'FUGAS' %} active selected {% endif %}">
 			        <a href="#" class="has-arrow" aria-expanded="false">
 				        <span class="has-icon">
 					        <i class="icon-traffic-cone"></i>
@@ -69,7 +69,7 @@
 		        <li class="menu-header">
 			        -- Catalogos
 		        </li>
-		        <li>
+		        <li  class="{% if menu == 'AREAS' %} active selected {% endif %}">
 			        <a href="#" class="has-arrow" aria-expanded="false">
 				        <span class="has-icon">
 					        <i class="icon-layers"></i>
@@ -85,7 +85,7 @@
 				        </li>
 			        </ul>
 		        </li>
-		        <li>
+		        <li  class="{% if menu == 'MAQUINAS' %}active selected{% endif %}">
 			        <a href="#" class="has-arrow" aria-expanded="false">
 				        <span class="has-icon">
 					        <i class="icon-tools-2"></i>

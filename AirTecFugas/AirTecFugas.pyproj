@@ -79,9 +79,6 @@
     <Compile Include="MainApp\views\FugaViews\FugaListView.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainApp\views\FugaViews\UpdateFugaViews.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="MainApp\views\FugaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>

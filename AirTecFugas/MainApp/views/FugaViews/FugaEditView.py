@@ -17,6 +17,13 @@ class FugaEditView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('fuga-list')
     permission_required = ("ModelsApp.change_fuga",)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        area_seleccionada = "FUGAS"
+        context["menu"] = area_seleccionada
+        return context
+
+
 
 
 class FugaPartialEditView(PermissionRequiredMixin, UpdateView):

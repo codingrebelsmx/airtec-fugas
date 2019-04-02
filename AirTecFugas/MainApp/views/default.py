@@ -30,6 +30,7 @@ def dashboard(request):
             {
                 'title':'Dashboard',
                 'year':datetime.now().year,
+                'menu':"DASHBOARD"
             })
     else:
         return redirect("selec-planta-trabajo")

@@ -15,6 +15,13 @@ class FugaDetailView(PermissionRequiredMixin, DetailView):
     permission_required = ("ModelsApp.view_fuga",)
 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        area_seleccionada = "FUGAS"
+        context["menu"] = area_seleccionada
+        return context
+
+
 class FugaDetailPartialView(PermissionRequiredMixin, DetailView):
     """ View to register a new Fuga """
     model = Fuga
