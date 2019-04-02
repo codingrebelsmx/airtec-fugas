@@ -49,7 +49,7 @@ urlpatterns = [# Examples:
 
     ### -------------- CRUD FUGA -------------- ###
     re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas'),
-    re_path(r'^fuga/create/(?P<punto_x>\d+\.\d+)/(?P<punto_y>\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
+    re_path(r'^fuga/create/(?P<punto_x>-?\d+\.\d+)/(?P<punto_y>-?\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', default.about, name='fuga-edit'),
     re_path(r'^fuga/details/(?P<pk>\d+)/$', default.about, name='fuga-details'),
     re_path(r'^fuga/imagenes/(?P<pk>\d+)/$', FugaDetailsViews.ImagenesFugaDetailView.as_view(), name='fuga-images'),

@@ -11,7 +11,7 @@ body {
 
 #controls {
     position: absolute;
-    top: 10px;
+    top: 80px;
     left: 10px;
     height: 130px;
     width: 50px;
@@ -27,4 +27,35 @@ body {
     position: absolute;
     background-color: #ffffff;
     cursor: pointer;
+}
+
+.punto-fuga {
+    cursor: pointer;
+    animation: blinker 1s linear infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+@-webkit-keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+
+    to {
+        opacity: 0.1;
+    }
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+    background-color: #007ae1;
+    color: white;
+}
+
+.info-fugas {
+    position: absolute;
+    top: 0px;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: #afafaf 0px -1px 10px 4px;
+    border-radius: 10px;
 }
