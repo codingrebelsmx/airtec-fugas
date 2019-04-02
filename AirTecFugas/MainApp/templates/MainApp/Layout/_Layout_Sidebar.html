@@ -6,6 +6,7 @@
         <!-- BEGIN .user-profile -->
         <div class="user-profile">
 	        <img src="{% static 'MainApp/theme-files/img/user.png' %}" class="profile-thumb" alt="User Thumb">
+            <!--
 	        <h6 class="profile-name">Yuki Hayashi</h6>
 	        <ul class="profile-actions">
 		        <li>
@@ -25,6 +26,7 @@
 			        </a>
 		        </li>
 	        </ul>
+            -->
         </div>
         <!-- END .user-profile -->
         <!-- BEGIN .side-nav -->
@@ -39,10 +41,18 @@
 				        <span class="nav-title">Dashboard</span>
 			        </a>
 		        </li>
+                <li  class="active">
+                    <a href="{% url 'selec-planta-trabajo' %}">
+				        <span class="has-icon">
+					        <i class="icon-address"></i>
+				        </span>
+				        <span class="nav-title">&Aacute;rea de Trabajo</span>
+			        </a>
+                </li>
 		        <li>
 			        <a href="#" class="has-arrow" aria-expanded="false">
 				        <span class="has-icon">
-					        <i class="icon-adjust2"></i>
+					        <i class="icon-traffic-cone"></i>
 				        </span>
 				        <span class="nav-title">Fugas</span>
 			        </a>
@@ -78,7 +88,7 @@
 		        <li>
 			        <a href="#" class="has-arrow" aria-expanded="false">
 				        <span class="has-icon">
-					        <i class="icon-chart-area-outline"></i>
+					        <i class="icon-tools-2"></i>
 				        </span>
 				        <span class="nav-title">Maquinas</span>
 			        </a>
