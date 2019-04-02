@@ -76,17 +76,26 @@
                                     {{ fuga.added|date }}
                                 </td>
                                 <td>
+                                    <button data-toggle="modal" data-target="#genericModal" data-action="DetailsFuga" data-url="{% url 'fuga-partial-details' fuga.pk %}" class="btn btn-dark">
+                                        <span class="icon-magnifying-glass">&nbsp;Detalles</span>
+                                    </button>
                                     {% if fuga.estatus == 1 %}
-                                        <button class="btn btn-default">
-                                            <span class="icon-tick-outline"></span>&nbsp; Corregido
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#genericModal" data-action="EditFugaCorregida" data-url="{% url 'fuga-corregida' fuga.pk %}">
+                                            <span class="icon-tick-outline"></span>&nbsp;Corregido
                                         </button>
+                                        <a href="{% url 'fuga-edit' fuga.pk %}" class="btn btn-primary">
+                                            <span class="icon-edit"></span>&nbsp;Editar
+                                        </a>
                                     {% endif %}
-                                    <button class="btn btn-primary">
-                                        <span class="icon-edit"></span>&nbsp; Editar
+                                    <!--
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="PartialEditFuga" data-url="{% url 'fuga-partial-edit' fuga.pk %}">
+                                        <span class="icon-edit"></span>&nbsp;Editar
                                     </button>
+                                    
                                     <button class="btn btn-danger">
-                                        <span class="icon-trash"></span>&nbsp; Eliminar
+                                        <span class="icon-trash"></span>&nbsp;Eliminar
                                     </button>
+                                    -->
                                 </td>
                             </tr>
                         {% endfor %}
@@ -105,12 +114,16 @@
                 <input id="UrlApiCategoriaListSelect" type="hidden" value="{% url 'ApiCategoriaListSelect' %}" />
                 <input id="UrlApiRecomendacionFugaListSelect" type="hidden" value="{% url 'ApiRecomendacionFugaListSelect' %}" />
 
+                <!-- URL's for actions -->
+                
+
             </div>
         </div>
     </div>
 </div>
 
-{% include "MainApp/Modals/_GenericFormModal.html" %}
+{#{% include "MainApp/Modals/_GenericFormModal.html" %}#}
+{% include "MainApp/Modals/_GenericFormLgModal.html" %}
 
 {% endblock %}
 

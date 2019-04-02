@@ -5,6 +5,7 @@ from .Area import Area
 from .Maquina import Maquina
 from .Ubicacion import Ubicacion
 from .User import User
+# from .ImagenFuga import ImagenFuga
 from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
@@ -32,6 +33,13 @@ class Fuga(BaseModel):
     tecnico = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Técnico Registró")
     punto_x = models.DecimalField(verbose_name="Coordenada X", max_digits=26, decimal_places=18)
     punto_y = models.DecimalField(verbose_name="Coordenada Y", max_digits=26, decimal_places=18)
+
+    @property
+    def imagenes(self):
+        return self.imagenfuga_set.filter(is_enabled=True)
+        #return ImagenFuga.objects.filter(fuga__id=self.pk, is_enabled=True)
+
+        
 
     #Custom Methods
     def __str__(self):

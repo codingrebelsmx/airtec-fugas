@@ -1,12 +1,6 @@
-{% extends "MainApp/Layout/_Layout.html" %}
-
-{% load staticfiles %}
-
-{% block content %}
-
 <div class="row gutters">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <div class="card">
+        <div class="card top-grey-bdr">
             <div class="card-header">Detalles Fuga</div>
             <div class="card-body">
                 <div class="row gutters">
@@ -116,40 +110,8 @@
                     </div>
                 </div>
                 {% endif %}
-
-                <input id="id_tecnico" name="tecnico" type="hidden" value="{{ id_tecnico|default_if_none:"" }}" />
-                <input id="id_punto_x" name="punto_x" type="hidden" value="{{ punto_x|default_if_none:"0" }}" />
-                <input id="id_punto_y" name="punto_y" type="hidden" value="{{ punto_y|default_if_none:"0" }}" />
-
-                <!-- URL Create -->
-                <input id="UrlApiAreaCreate" type="hidden" value="{% url 'area-create' %}" />
-                <input id="UrlApiMaquinaCreate" type="hidden" value="{% url 'maquina-create' %}" />
-
-                <!-- URL's List for Selects -->
-                <input id="UrlApiAreaListSelect" type="hidden" value="{% url 'ApiAreaListSelect' %}" />
-                <input id="UrlApiMaquinaListSelect" type="hidden" value="{% url 'ApiMaquinaListSelect' '0' %}" />
-                <input id="UrlApiUbicacionListSelect" type="hidden" value="{% url 'ApiUbicacionListSelect' %}" />
-                <input id="UrlApiCategoriaListSelect" type="hidden" value="{% url 'ApiCategoriaListSelect' %}" />
-                <input id="UrlApiRecomendacionFugaListSelect" type="hidden" value="{% url 'ApiRecomendacionFugaListSelect' %}" />
-
-                <!-- URL Redirect -->
-                <input id="UrlMapaFugasCreate" type="hidden" value="{% url 'mapa-fugas' %}" />
-
+                
             </div>
         </div>
     </div>
 </div>
-
-{% include "MainApp/Modals/_GenericFormModal.html" %}
-
-{% endblock %}
-
-{% block scripts %}
-
-{% endblock %}
-
-{% block finalscripts %}
-
-<script src="{% static 'MainApp/scripts/fuga-js/fuga-create.js' %}"></script>
-
-{% endblock %}

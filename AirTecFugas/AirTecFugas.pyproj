@@ -73,6 +73,9 @@
     <Compile Include="MainApp\views\FugaViews\FugaDetailsViews.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaEditView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaListView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -401,6 +404,7 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="MainApp\static\MainApp\scripts\app.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
+    <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-edit.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-list.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js.map" />
@@ -475,13 +479,18 @@
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\detail-partial-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\detail-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\list-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\mapa-fugas.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\update-corregir-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\update-partial-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\update-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina-partial.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Modals\_GenericFormLgModal.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericFormModal.html" />
     <Content Include="MainApp\templates\MainApp\PlantaTrabajo\seleccion-planta-trabajo.html" />
     <Content Include="MainApp\templates\MainApp\Planta\create-planta-partial.html" />

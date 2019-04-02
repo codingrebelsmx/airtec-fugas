@@ -1,0 +1,187 @@
+{% extends "MainApp/Layout/_Layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">Editar Fuga</div>
+            <div class="card-body">
+
+                <form id="idFormUpdateFuga" name="FormUpdateFuga" action="{% url 'fuga-edit' object.pk %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_area">&Aacute;rea:</label>
+                                <div class="input-group form-group">
+                                    <select name="area" class="form-control" id="id_area" required data-value="{{ object.area.id }}">
+                                        <option value="" selected="">Seleccione una &aacute;rea...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+								        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewArea" data-url="{% url 'area-create-partial' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nueva
+                                        </button>
+							        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_maquina">M&aacute;quina:</label>
+                                <div class="input-group form-group">
+                                    <select name="maquina" class="form-control" id="id_maquina" required data-value="{{ object.maquina.id }}">
+                                        <option value="" selected="">Seleccione una m&aacute;quina...</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewMachine" data-url="{% url 'maquina-create-partial' %}">
+                                            <span class="icon-plus2"></span>&nbsp;Nueva
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_ubicacion">Ubicacion:</label>
+                                <select name="ubicacion" class="form-control" id="id_ubicacion" required data-value="{{ object.ubicacion.id }}">
+                                    <option value="" selected="">Seleccione una ubicaci&oacute;n...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_categoria">Categor&iacute;a:</label>
+                                <select name="categoria" class="form-control" id="id_categoria" required data-value="{{ object.categoria }}">
+                                    <option value="" selected="">Seleccione una categor&iacute;a...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_recomendacion">Recomendaci&oacute;n:</label>
+                                <select name="recomendacion" class="form-control" id="id_recomendacion" required data-value="{{ object.recomendacion }}">
+                                    <option value="" selected="">Seleccione una opci&oacute;n</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_recomendacion">NADP:</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="nadp" class="form-check-input" id="id_nadp" {% if object.nadp %} checked {% endif %} />
+                                        Not Available During Production
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
+                                <textarea name="refacciones_comentarios"  rows="5" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios">{{ object.refacciones_comentarios|default_if_none:"" }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        {% if object.imagenes|length == 0 %}
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_1">Imagen 1:</label>
+                                    <input type="file" id="id_imagen_1" name="imagen_1" value="Buscar..." accept="image/*">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_2">Imagen 2:</label>
+                                    <input type="file" id="id_imagen_2" name="imagen_2" value="Buscar..." accept="image/*">
+                                </div>
+                            </div>
+                        {% elif object.imagenes|length == 1 %}
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_1">Imagen 1:</label>
+                                    <img src="{% url 'imagen-fuga-view' object.imagenes.0.pk %}" class="card-img-top"/>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_2">Imagen 2:</label>
+                                    <input type="file" id="id_imagen_2" name="imagen_2" value="Buscar..." accept="image/*">
+                                </div>
+                            </div>
+                        {% elif object.imagenes|length == 2 %}
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_1">Imagen 1:</label>
+                                    <img src="{% url 'imagen-fuga-view' object.imagenes.0.pk %}" class="card-img-top"/>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_imagen_2">Imagen 2:</label>
+                                    <img src="{% url 'imagen-fuga-view' object.imagenes.1.pk %}" class="card-img-top"/>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <button type="submit" class="btn btn-primary"><i class="icon-save2"></i>&nbsp; Guardar Fuga </button>
+                        </div>
+                    </div>
+
+                    <input id="id_tecnico" name="tecnico" type="hidden" value="{{ object.tecnico.pk|default_if_none:"" }}" />
+                    <input id="id_punto_x" name="punto_x" type="hidden" value="{{ object.punto_x|default_if_none:"0" }}" />
+                    <input id="id_punto_y" name="punto_y" type="hidden" value="{{ object.punto_y|default_if_none:"0" }}" />
+                </form>
+
+                <!-- URL Create -->
+                <input id="UrlApiAreaCreate" type="hidden" value="{% url 'area-create' %}" />
+                <input id="UrlApiMaquinaCreate" type="hidden" value="{% url 'maquina-create' %}" />
+
+                <!-- URL's List for Selects -->
+                <input id="UrlApiAreaListSelect" type="hidden" value="{% url 'ApiAreaListSelect' %}" />
+                <input id="UrlApiMaquinaListSelect" type="hidden" value="{% url 'ApiMaquinaListSelect' '0' %}" />
+                <input id="UrlApiUbicacionListSelect" type="hidden" value="{% url 'ApiUbicacionListSelect' %}" />
+                <input id="UrlApiCategoriaListSelect" type="hidden" value="{% url 'ApiCategoriaListSelect' %}" />
+                <input id="UrlApiRecomendacionFugaListSelect" type="hidden" value="{% url 'ApiRecomendacionFugaListSelect' %}" />
+
+                <!-- URL Redirect -->
+                <input id="UrlMapaFugasList" type="hidden" value="{% url 'fuga-list' %}" />
+                <input id="UrlMapaFugasCreate" type="hidden" value="{% url 'mapa-fugas' %}" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "MainApp/Modals/_GenericFormModal.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block finalscripts %}
+
+<script src="{% static 'MainApp/scripts/fuga-js/fuga-edit.js' %}"></script>
+
+{% endblock %}

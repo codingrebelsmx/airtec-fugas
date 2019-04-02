@@ -1,0 +1,126 @@
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card top-red-bdr">
+            <div class="card-header">Est&aacute; seguro de marcar la fuga como corregida?</div>
+            <div class="card-body">
+                <!--
+                <div class="row">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="row">
+                    <form id="idFormCorregirUpdateFuga" name="FormCorregirUpdateFuga" action="{% url 'fuga-corregida' object.pk %}" method="post">
+                        {% csrf_token %}
+
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_area">&Aacute;rea:</label>
+                                    <div class="input-group form-group">
+                                        <input type="text" value="{{ object.area.nombre }}" class="form-control" disabled readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_maquina">M&aacute;quina:</label>
+                                    <div class="input-group form-group">
+                                        <input type="text" value="{{ object.maquina.nombre }}"  class="form-control" disabled readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_ubicacion">Ubicacion:</label>
+                                    <input type="text" value="{{ object.ubicacion }}"  class="form-control" disabled readonly/>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_categoria">Categor&iacute;a:</label>
+                                    <input type="text" value="{{ object.categoria }}"  class="form-control" disabled readonly/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_recomendacion">Recomendaci&oacute;n:</label>
+                                    <input type="text"
+                                           {% if fuga.recomendacion == 'REP' %}
+                                                value="Reparar"
+                                            {% elif fuga.recomendacion == 'REM' %}
+                                                value="Remplazar"
+                                            {% elif fuga.recomendacion == 'OTR' %}
+                                                value="Otro"
+                                            {% endif %}
+                                           class="form-control" disabled readonly/>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_recomendacion">Estatus:</label>
+                                    <input type="text" {% if object.estatus == 1 %} value="Registrada"  {% elif object.estatus == 2 %} value="Corregida"  {% endif %} class="form-control" disabled readonly/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_nadp">Not Available During Production:</label>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" name="nadp" class="form-check-input" id="id_nadp" {% if object.nadp %} checked {% endif %} readonly disabled />
+                                            (NADP)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_recomendacion">Fecha de Registro:</label>
+                                    <input type="text" value="{{ object.added|date }}"  class="form-control" disabled readonly/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
+                                    <textarea name="refacciones_comentarios" cols="100" rows="3" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios" disabled readonly>
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row gutters">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    <i class="icon-cancel-outline"></i>&nbsp;Cancelar
+                                </button>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="icon-save2"></i>&nbsp;Fuga Corregida
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

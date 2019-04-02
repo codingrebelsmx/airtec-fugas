@@ -15,6 +15,12 @@ class FugaDetailView(PermissionRequiredMixin, DetailView):
     permission_required = ("ModelsApp.view_fuga",)
 
 
+class FugaDetailPartialView(PermissionRequiredMixin, DetailView):
+    """ View to register a new Fuga """
+    model = Fuga
+    template_name = "MainApp/Fuga/detail-partial-fuga.html"
+    permission_required = ("ModelsApp.view_fuga",)
+
 
 class ImagenesFugaDetailView(PermissionRequiredMixin, DetailView):
     model = Fuga
@@ -32,5 +38,4 @@ class ImagenesFugaDetailView(PermissionRequiredMixin, DetailView):
             return JsonResponse(urls, safe=False)
         else:
             raise Http404()
-
 

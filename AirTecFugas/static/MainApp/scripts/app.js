@@ -45,7 +45,7 @@ function csrfSafeMethod(method) {
 function InitForm(idForm, alwaysCallBack, onCloseModalCallBack) {
     var $form = $("#" + idForm);
     $form.submit(function (event) {
-        $LoadingBlockUI.fadeIn(3000);
+        $LoadingBlockUI.fadeIn(750);
         event.preventDefault();
         var formData = new FormData(this);
 
@@ -94,7 +94,7 @@ function InitForm(idForm, alwaysCallBack, onCloseModalCallBack) {
                 }
             });
         }).always(function () {
-            $LoadingBlockUI.fadeOut(1000);
+            $LoadingBlockUI.fadeOut(750);
             if (alwaysCallBack != null)
                 alwaysCallBack();
         });
@@ -105,8 +105,11 @@ function InitForm(idForm, alwaysCallBack, onCloseModalCallBack) {
 
 function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
     var $objSelect = $("#" + idSelect);
+    var defaultValue = $objSelect.data("value");
     $objSelect.empty();
     $objSelect.append('<option value="">' + emptyLabel + '</option>');
+
+
     $.ajax({
         type: "GET",
         url: theURL,
@@ -114,7 +117,10 @@ function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
         if (data != undefined) {
             if (data.length > 0) {
                 data.map(function (obj, index) {
-                    $objSelect.append('<option value="' + obj.id + '">' + obj.nombre + '</option>');
+
+                    let strOption = '<option value="' + obj.id + '" ' + ReturnSelectedAttr(defaultValue) + '>';
+                    strOption += (obj.nombre + '</option>');
+                    $objSelect.append(strOption);
                 });
             }
         } else {
@@ -139,4 +145,14 @@ function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
         if (alwaysCallBack != undefined && alwaysCallBack != null)
             alwaysCallBack();
     });
+}
+
+function ReturnSelectedAttr(defaultValue) {
+    let strSelected = "";
+
+    if (defaultValue != undefined && defaultValue != null && defaultValue != "") {
+        strSelected = "selected";
+    }
+
+    return strSelected;
 }
