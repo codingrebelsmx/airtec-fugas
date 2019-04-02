@@ -1,7 +1,12 @@
-var pt = null;
-var svgId = 'svg72055';
+var point = null;
+var svgPanZoomInstance = null;
+var svgDrawInstance = null;
+var svgId = "";
+var listFugas = new Array();
+var currentFuga = null;
+var overLeak = false;
+
 $(document).ready(function () {
-    var point = { x: 0, y: 0 };
     //var svg = document.getElementById("svg72055");
     //var pt = svg.createSVGPoint();
     //svg.addEventListener("mousedown", alert_click, false);
@@ -22,13 +27,23 @@ $(document).ready(function () {
     //    var y =  dim.top;
     //    console.log("x: " + x + " y:" + y);
     //});
+
     $.get("/planta/plano/1/", function (data, status) {
-        svgId = $(data).find('svg')[0].id;
+        var svgObj = $(data).find('svg')[0];
+        svgDrawInstance = SVG(svgObj);
+        $("#SVGContainer").append(svgObj);
+        svgId = svgObj.id;
+        if (svgId === "") {
+            svgId = "new-id-svg-planta";
+            svgObj.id = svgId;
+        }
         InitSVGControls();
+        GetLeaks();
+        DrawLeaks();
     });
 
     function InitSVGControls() {
-        var svgPlanta = new SVGPanZoom($('#' + svgId)[0], {
+        svgPanZoomInstance = new SVGPanZoom($('#' + svgId)[0], {
             animationTime: 300,
             eventMagnet: $('#SVGContainer')[0],
             zoom: {
@@ -55,7 +70,60 @@ $(document).ready(function () {
 
         $("#" + svgId)[0].setAttribute('width', '100%');
         $("#" + svgId)[0].setAttribute('height', '80%');
+
+        $("#zoom-in-button").click(function () {
+            svgPanZoomInstance.zoomIn(null, 0.5);
+        });
+
+        $("#zoom-out-button").click(function () {
+            svgPanZoomInstance.zoomOut(null, 0.5);
+        });
+
+        $("#reset-button").click(function () {
+            svgPanZoomInstance.reset();
+        });
     }
+
+    function GetLeaks() {
+        $.get("/api/fuga/point-list/", function (data, status) {
+            listFugas = data;
+            DrawLeaks();
+        });
+    }
+    function DrawLeaks() {
+        var fugas = [
+            { id: 1, x: 793.3054809570312, y: -84.39212036132812 },
+            { id: 2, x: 1036.989013671875, y: 244.66957092285156 },
+            { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
+        for (var i = 0; i < fugas.length; i++) {
+            var fuga = fugas[i];
+            var circle = svgDrawInstance.circle(20);
+            circle.move(fuga.x, fuga.y);
+            circle.addClass('punto-fuga');
+            circle.attr('id', 'fuga-circle-' + fuga.id);
+            listFugas.push(fuga);
+        }
+
+        $(".punto-fuga").click(function () {
+            overLeak = true;
+            var fugaId = $(this).attr('id').replace("fuga-circle-", "");
+            currentFuga = $.grep(listFugas, function (n, i) {
+                return n.id === parseInt(fugaId);
+            })[0];
+            $("div.menu-actions-copy").remove();
+            var html = $("#context-menu-fugas").html();
+            var menuObj = $(html);
+            menuObj.addClass('menu-actions-copy');
+            menuObj.appendTo("body").css(
+                {
+                    top: event.pageY + "px",
+                    left: event.pageX + "px",
+                    display: "block",
+                    position: "absolute"
+                });
+        });
+    }
+
     $('div.main-content').css('padding', 0);
     $('div.main-content').css('min-height', 0);
 
@@ -71,15 +139,13 @@ $(document).ready(function () {
                 left: event.pageX + "px",
                 display: "block"
             });
+
+        var svg = document.getElementById(svgId);
+        point = svg.createSVGPoint();
         point.x = event.pageX;
         point.y = event.pageY;
-        var svg = document.getElementById(svgId);
-        pt = svg.createSVGPoint();
-        pt.x = event.pageX;
-        pt.y = event.pageY;
-        pt = pt.matrixTransform(svg.getScreenCTM().inverse());
-        console.log("x: " + pt.x + " y:" + pt.y);
-
+        point = point.matrixTransform(svg.getScreenCTM().inverse());
+        console.log("x: " + point.x + " y:" + point.y);
     });
 
     $("div.custom-menu").bind("contextmenu", function (event) {
@@ -88,11 +154,28 @@ $(document).ready(function () {
 
     $("#SVGContainer").bind("click", function (event) {
         $("div.custom-menu-copy").remove();
+        if(!overLeak)
+            $("div.menu-actions-copy").remove();
+        overLeak = false;
     });
 
+    $(document).on("click", "div.custom-menu-copy", function () {
+        console.log("x: " + point.x + " y:" + point.y);
+        window.location = '/fuga/create/' + point.x + '/' + point.y + '/';
+    });
 
-    $(document).on("click", "div.custom-menu-copy", function (event) {
-        console.log("x: " + pt.x + " y:" + pt.y);
-        window.location = '/fuga/create/' + pt.x + '/' + pt.y + '/';
+    $(document).on("click", "li.btn-action-reparada", function () {
+        console.log("Marcar como reparada fuga id: " + currentFuga.id);
+        $("div.menu-actions-copy").remove();
+    });
+
+    $(document).on("click", "li.btn-action-foto", function () {
+        console.log("Mostrar foto fuga id: " + currentFuga.id);
+        $("div.menu-actions-copy").remove();
+    });
+
+    $(document).on("click", "li.btn-action-termica", function () {
+        console.log("Mostrar Imgane termica fuga id: " + currentFuga.id);
+        $("div.menu-actions-copy").remove();
     });
 });

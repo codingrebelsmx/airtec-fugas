@@ -291,6 +291,7 @@
     <Folder Include="MainApp\" />
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
+    <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
     <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />
@@ -409,6 +410,8 @@
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js.map" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.min.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\mapa-fugas\mapa-fugas.js" />
     <Content Include="MainApp\static\MainApp\scripts\planta-js\SeleccionPlantaTrabajo.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.all.min.js" />
