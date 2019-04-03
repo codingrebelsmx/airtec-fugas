@@ -292,8 +292,8 @@
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
     <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />
-    <Folder Include="MainApp\static\MainApp\scripts\lib\_SVGPanZoom\" />
-    <Folder Include="MainApp\static\MainApp\scripts\_Mapa-Fugas\" />
+    <Folder Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\" />
+    <Folder Include="MainApp\static\MainApp\scripts\Mapa-Fugas\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\" />
     <Folder Include="MainApp\static\MainApp\scripts\swal2\" />
     <Folder Include="MainApp\static\MainApp\scripts\planta-js\" />
@@ -404,12 +404,12 @@
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-edit.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-list.js" />
-    <Content Include="MainApp\static\MainApp\scripts\lib\_SVGPanZoom\SVGPanZoom.js" />
-    <Content Include="MainApp\static\MainApp\scripts\lib\_SVGPanZoom\SVGPanZoom.js.map" />
-    <Content Include="MainApp\static\MainApp\scripts\lib\_SVGPanZoom\SVGPanZoom.min.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js.map" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.min.js" />
-    <Content Include="MainApp\static\MainApp\scripts\_Mapa-Fugas\mapa-fugas.js" />
+    <Content Include="MainApp\static\MainApp\scripts\Mapa-Fugas\mapa-fugas.js" />
     <Content Include="MainApp\static\MainApp\scripts\planta-js\SeleccionPlantaTrabajo.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.all.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.min.css" />
@@ -475,7 +475,7 @@
     <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\select2.min.js" />
     <Content Include="MainApp\templates\MainApp\Area\create-area-partial.html" />
     <Content Include="MainApp\templates\MainApp\Area\create-area.html" />
-    <Content Include="MainApp\templates\MainApp\Authentication\_login.html" />
+    <Content Include="MainApp\templates\MainApp\Authentication\login.html" />
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
