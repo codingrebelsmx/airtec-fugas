@@ -190,8 +190,7 @@ $(document).ready(function () {
         console.log("Mostrar foto fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
         $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
-            $("#modal-fuga").append(data);
-            $("#modal-fuga").modal('show');
+            $("#modal-fuga-body").append(data);
         });
     });
 
