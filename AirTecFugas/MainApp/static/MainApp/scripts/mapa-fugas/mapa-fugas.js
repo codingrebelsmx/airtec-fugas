@@ -5,6 +5,8 @@ var svgId = "";
 var listFugas = new Array();
 var currentLeak = null;
 var overLeak = false;
+var leakImages = new Array();
+var currentImageIndex = 0;
 
 $(document).ready(function () {
 
@@ -88,7 +90,7 @@ $(document).ready(function () {
         //    { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
         for (var i = 0; i < listFugas.length; i++) {
             var fuga = listFugas[i];
-            var circle = svgDrawInstance.circle(4);
+            var circle = svgDrawInstance.circle(2);
             circle.move(fuga.punto_x, fuga.punto_y);
             circle.fill(GetColor(fuga.categoria));
             circle.addClass('punto-fuga');
@@ -181,21 +183,64 @@ $(document).ready(function () {
         window.location = '/fuga/create/' + point.x + '/' + point.y + '/';
     });
 
+    $(document).on("click", "li.btn-action-detalles", function () {
+        $("div.menu-actions-copy").remove();
+        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
+            $("#modal-fuga-body").empty().append(data);
+        });
+    });
+
     $(document).on("click", "li.btn-action-reparada", function () {
         console.log("Marcar como reparada fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
     });
 
-    $(document).on("click", "li.btn-action-detalles", function () {
-        console.log("Mostrar foto fuga id: " + currentLeak.id);
+    $(document).on("click", "li.btn-action-images", function () {
+        console.log("Mostrar imagenes fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
-        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
-            $("#modal-fuga-body").append(data);
+        $.get('/fuga/imagenes/' + currentLeak.id + '/', function (data, status) {
+            LoadImagesModal(data);
         });
+        //'/imagen-fuga/detail/<pk_imagen_fuga>/'
     });
 
-    $(document).on("click", "li.btn-action-termica", function () {
-        console.log("Mostrar Imgane termica fuga id: " + currentLeak.id);
-        $("div.menu-actions-copy").remove();
+    function LoadImagesModal(images) {
+        leakImages = images;
+        ShowImagesModal();
+        //$.each(images, function (index, item) {
+        //    console.log(item.url);
+        //    $.get(item.url, function (data, status) {
+        //        leakImages.push(data);
+        //        if (leakImages.length === images.length)
+        //            ShowImagesModal();
+        //    });
+        //});
+    }
+
+    function ShowImagesModal() {
+        currentImageIndex = 0;
+        if (leakImages.length > 0) {
+            $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+            $("#modal-images").removeClass('d-none');
+        }
+    }
+    $('#change-image-left').click(function () {
+        if (currentImageIndex > 0)
+            currentImageIndex--;
+        else
+            currentImageIndex = leakImages.length - 1;
+        $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+    });
+
+    $('#change-image-right').click(function () {
+        if (currentImageIndex < leakImages.length - 1)
+            currentImageIndex++;
+        else
+            currentImageIndex = 0;
+        $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+    });
+
+    $("#close-image-modal").click(function () {
+        $("#modal-images").addClass('d-none');
     });
 });

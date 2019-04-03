@@ -36,19 +36,19 @@
 			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-detalles" style="padding: 0 !important;"  data-toggle="modal" data-target="#modal-fugas">
                    <div style="padding: 12px 20px;">
 				   <span class="icon" style="padding-right: 10px;">
-						<i class="icon-"></i>
+						<i class="icon-file-text"></i>
 					</span>
                    Detalles
 				   </div>
                </li>
-			   <!--<li class="list-group-item d-flex justify-content-between align-items-center btn-action-termica" style="padding: 0 !important;">
+			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-images" style="padding: 0 !important;">
                    <div style="padding: 12px 20px;">
 				   <span class="icon" style="padding-right: 10px;">
-						<i class="glyphicon-picture"></i>
+						<i class="icon-image"></i>
 					</span>
-                   Ver Imagen Termica
+                    Ver Imágenes
 				   </div>
-               </li>-->
+               </li>-
            </ul>
        </div>
    </div> 
@@ -104,13 +104,15 @@
 				<div class="modal-body" id="modal-fuga-body">
 					
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<!--<button type="button" class="btn btn-primary">Guardar</button>-->
-				</div>
 			</div>
 		</div>
 	</div>
+    <div id="modal-images" class="div-images d-none">
+        <span id="close-image-modal" class="icon-cross" style="font-size: 25px; color: #a7a7a7; cursor: pointer; position: absolute; top: 5%; left: 92%; margin-right: 2%;"></span>
+        <span id="change-image-left" class="icon-chevron-left2" style="font-size: 100px; color: #a7a7a7; cursor:pointer; position: absolute; top: 45%; left: 5%;"></span>
+        <img id="img-dynamic" src="" style="width: auto; height: auto; max-height: 90%; max-width: 90%; display: inline-block;" />
+        <span id="change-image-right" class="icon-chevron-right2" style="font-size: 100px; color: #a7a7a7; cursor:pointer; position: absolute; top: 45%; left: 85%;"></span>
+    </div>
 {% endblock %}
 
 {% block finalscripts %}

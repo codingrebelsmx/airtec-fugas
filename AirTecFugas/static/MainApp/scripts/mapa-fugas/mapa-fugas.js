@@ -88,7 +88,7 @@ $(document).ready(function () {
         //    { id: 3, x: 2315.8828125, y: 650.2158813476562 }];
         for (var i = 0; i < listFugas.length; i++) {
             var fuga = listFugas[i];
-            var circle = svgDrawInstance.circle(4);
+            var circle = svgDrawInstance.circle(2);
             circle.move(fuga.punto_x, fuga.punto_y);
             circle.fill(GetColor(fuga.categoria));
             circle.addClass('punto-fuga');
@@ -190,8 +190,7 @@ $(document).ready(function () {
         console.log("Mostrar foto fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
         $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
-            $("#modal-fuga").append(data);
-            $("#modal-fuga").modal('show');
+            $("#modal-fuga-body").append(data);
         });
     });
 

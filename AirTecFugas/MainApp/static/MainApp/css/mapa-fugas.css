@@ -59,3 +59,13 @@ body {
     box-shadow: #afafaf 0px -1px 10px 4px;
     border-radius: 10px;
 }
+.div-images {
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    padding: 20px 50px;
+    text-align: center;
+    background-color: #131313b8;
+}
