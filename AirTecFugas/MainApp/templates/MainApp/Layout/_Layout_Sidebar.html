@@ -1,5 +1,7 @@
 {% load staticfiles %}
 
+{% load customFilters %}
+
 <aside class="app-side" id="app-side">
     <!-- BEGIN .side-content -->
     <div class="side-content ">
@@ -41,82 +43,87 @@
 				        <span class="nav-title">Dashboard</span>
 			        </a>
 		        </li>
-                <li  class="{% if menu == 'TRABAJO' %} active selected {% endif %}">
-                    <a href="{% url 'selec-planta-trabajo' %}">
-				        <span class="has-icon">
-					        <i class="icon-address"></i>
-				        </span>
-				        <span class="nav-title">&Aacute;rea de Trabajo</span>
-			        </a>
-                </li>
-		        <li  class="{% if menu == 'FUGAS' %} active selected {% endif %}">
-			        <a href="#" class="has-arrow" aria-expanded="false">
-				        <span class="has-icon">
-					        <i class="icon-traffic-cone"></i>
-				        </span>
-				        <span class="nav-title">Fugas</span>
-			        </a>
-			        <ul aria-expanded="false">
-				        <li>
-					        <a href="{% url 'mapa-fugas' %}">Registrar</a>
-				        </li>
-				        <li>
-					        <a href="{% url 'fuga-list' %}">Lista de Fugas</a>
-				        </li>
-			        </ul>
-		        </li>
+
+                {% if request.user|is_in_group:"Administradores" or request.user|is_in_group:"Tecnicos" %}
+                    <li  class="{% if menu == 'TRABAJO' %} active selected {% endif %}">
+                        <a href="{% url 'selec-planta-trabajo' %}">
+				            <span class="has-icon">
+					            <i class="icon-address"></i>
+				            </span>
+				            <span class="nav-title">&Aacute;rea de Trabajo</span>
+			            </a>
+                    </li>
+		            <li  class="{% if menu == 'FUGAS' %} active selected {% endif %}">
+			            <a href="#" class="has-arrow" aria-expanded="false">
+				            <span class="has-icon">
+					            <i class="icon-traffic-cone"></i>
+				            </span>
+				            <span class="nav-title">Fugas</span>
+			            </a>
+			            <ul aria-expanded="false">
+				            <li>
+					            <a href="{% url 'mapa-fugas' %}">Registrar</a>
+				            </li>
+				            <li>
+					            <a href="{% url 'fuga-list' %}">Lista de Fugas</a>
+				            </li>
+			            </ul>
+		            </li>
+                {% endif %}
 		        
-		        <li class="menu-header">
-			        -- Catalogos
-		        </li>
-		        <li  class="{% if menu == 'AREAS' %} active selected {% endif %}">
-			        <a href="#" class="has-arrow" aria-expanded="false">
-				        <span class="has-icon">
-					        <i class="icon-layers"></i>
-				        </span>
-				        <span class="nav-title">Areas</span>
-			        </a>
-			        <ul aria-expanded="false">
-				        <li>
-					        <a href='{% url 'area-create' %}'>Agregar</a>
-				        </li>
-				        <li>
-					        <a href='{% url 'area-list' %}'>Lista de Areas</a>
-				        </li>
-			        </ul>
-		        </li>
-		        <li  class="{% if menu == 'MAQUINAS' %}active selected{% endif %}">
-			        <a href="#" class="has-arrow" aria-expanded="false">
-				        <span class="has-icon">
-					        <i class="icon-tools-2"></i>
-				        </span>
-				        <span class="nav-title">Maquinas</span>
-			        </a>
-			        <ul aria-expanded="false">
-				        <li>
-					        <a href='{% url 'maquina-create' %}'>Registrar</a>
-				        </li>
-				        <li>
-					        <a href='{% url 'maquina-list' %}'>Lista de Maquinas</a>
-				        </li>
-			        </ul>
-		        </li>
-		        <li>
-			        <a href="#" class="has-arrow" aria-expanded="false">
-				        <span class="has-icon">
-					        <i class="icon-center_focus_strong"></i>
-				        </span>
-				        <span class="nav-title">Ubicaciones</span>
-			        </a>
-			        <ul aria-expanded="false">
-				        <li>
-					        <a href='#'>Agregar</a>
-				        </li>
-				        <li>
-					        <a href='#'>Lista de Ubicaciones</a>
-				        </li>
-			        </ul>
-		        </li>
+                {% if request.user|is_in_group:"Administradores" %}
+		            <li class="menu-header">
+			            -- Catalogos
+		            </li>
+		            <li  class="{% if menu == 'AREAS' %} active selected {% endif %}">
+			            <a href="#" class="has-arrow" aria-expanded="false">
+				            <span class="has-icon">
+					            <i class="icon-layers"></i>
+				            </span>
+				            <span class="nav-title">Areas</span>
+			            </a>
+			            <ul aria-expanded="false">
+				            <li>
+					            <a href='{% url 'area-create' %}'>Agregar</a>
+				            </li>
+				            <li>
+					            <a href='{% url 'area-list' %}'>Lista de Areas</a>
+				            </li>
+			            </ul>
+		            </li>
+		            <li  class="{% if menu == 'MAQUINAS' %}active selected{% endif %}">
+			            <a href="#" class="has-arrow" aria-expanded="false">
+				            <span class="has-icon">
+					            <i class="icon-tools-2"></i>
+				            </span>
+				            <span class="nav-title">Maquinas</span>
+			            </a>
+			            <ul aria-expanded="false">
+				            <li>
+					            <a href='{% url 'maquina-create' %}'>Registrar</a>
+				            </li>
+				            <li>
+					            <a href='{% url 'maquina-list' %}'>Lista de Maquinas</a>
+				            </li>
+			            </ul>
+		            </li>
+		            <li>
+			            <a href="#" class="has-arrow" aria-expanded="false">
+				            <span class="has-icon">
+					            <i class="icon-center_focus_strong"></i>
+				            </span>
+				            <span class="nav-title">Ubicaciones</span>
+			            </a>
+			            <ul aria-expanded="false">
+				            <li>
+					            <a href='#'>Agregar</a>
+				            </li>
+				            <li>
+					            <a href='#'>Lista de Ubicaciones</a>
+				            </li>
+			            </ul>
+		            </li>
+                {% endif %}
 	        </ul>
 	        <!-- END: side-nav-content -->
         </nav>

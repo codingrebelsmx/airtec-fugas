@@ -41,8 +41,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\migrations\__init__.py" />
+    <Compile Include="MainApp\templatetags\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\tests.py" />
     <Compile Include="MainApp\urls.py" />
+    <Compile Include="MainApp\templatetags\customFilters.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\utils\Permissions.py">
       <SubType>Code</SubType>
     </Compile>
@@ -293,6 +299,7 @@
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
+    <Folder Include="MainApp\templatetags\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
     <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />

@@ -108,27 +108,5 @@
         "nombre": "Actuador",
         "descripcion": null
     }
-},
-{
-    "model": "ModelsApp.ubicacion",
-    "pk": 11,
-    "fields": {
-        "added": "2019-03-31T08:13:59.000Z",
-        "updated": "2019-03-31T08:13:59.000Z",
-        "is_enabled": true,
-        "nombre": "M\u00e1quina",
-        "descripcion": null
-    }
-},
-{
-    "model": "ModelsApp.ubicacion",
-    "pk": 12,
-    "fields": {
-        "added": "2019-03-31T08:15:45.276Z",
-        "updated": "2019-03-31T08:15:45.276Z",
-        "is_enabled": true,
-        "nombre": "Interior de punteadora/dif\u00edcil acceso",
-        "descripcion": null
-    }
 }
 ]
