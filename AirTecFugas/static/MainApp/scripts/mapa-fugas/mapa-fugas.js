@@ -5,7 +5,38 @@ var svgId = "";
 var listFugas = new Array();
 var currentLeak = null;
 var overLeak = false;
+var leakImages = new Array();
+var currentImageIndex = 0;
+//var timer;
+(function ($) {
 
+    $.event.special.doubletap = {
+        bindType: 'touchend',
+        delegateType: 'touchend',
+
+        handle: function (event) {
+            var handleObj = event.handleObj,
+                targetData = jQuery.data(event.target),
+                now = new Date().getTime(),
+                delta = targetData.lastTouch ? now - targetData.lastTouch : 0,
+                delay = delay == null ? 300 : delay;
+
+            if (delta < delay && delta > 30) {
+                targetData.lastTouch = null;
+                event.type = handleObj.origType;
+                ['clientX', 'clientY', 'pageX', 'pageY'].forEach(function (property) {
+                    event[property] = event.originalEvent.changedTouches[0][property];
+                })
+
+                // let jQuery handle the triggering of "doubletap" event handlers
+                handleObj.handler.apply(this, arguments);
+            } else {
+                targetData.lastTouch = now;
+            }
+        }
+    };
+
+})(jQuery);
 $(document).ready(function () {
 
     $.get("/planta/plano/1/", function (data, status) {
@@ -144,8 +175,34 @@ $(document).ready(function () {
     $('div.main-content').css('padding', 0);
     $('div.main-content').css('min-height', 0);
 
+    $("#SVGContainer").doubletap(function (event) {
+        event.preventDefault();
+        SetPointLeak(event);
+    });
+
+    $("#SVGContainer").taphold(function (event) {
+        event.preventDefault();
+        SetPointLeak(event);
+    });
+    //$("#SVGContainer").on('doubletap', function (event) {
+    //    SetPointLeak(event);
+    //});
+
+    //$('#SVGContainer').on("mousedown", function (event) {
+    //    var mouseE = event;
+    //    timer = setTimeout(function () {
+    //        SetPointLeak(mouseE);
+    //    }, 1 * 1000);
+    //}).on("mouseup mouseleave", function () {
+    //    clearTimeout(timer);
+    //});
+
     $("#SVGContainer").bind("contextmenu", function (event) {
         event.preventDefault();
+        SetPointLeak(event);
+    });
+
+    function SetPointLeak(event) {
         $("div.custom-menu-copy").remove();
         var html = $("#context-menu").html();
         var contextMenuObj = $(html);
@@ -163,7 +220,7 @@ $(document).ready(function () {
         point.y = event.pageY;
         point = point.matrixTransform(svg.getScreenCTM().inverse());
         console.log("x: " + point.x + " y:" + point.y);
-    });
+    }
 
     $("div.custom-menu").bind("contextmenu", function (event) {
         event.preventDefault();
@@ -181,21 +238,64 @@ $(document).ready(function () {
         window.location = '/fuga/create/' + point.x + '/' + point.y + '/';
     });
 
+    $(document).on("click", "li.btn-action-detalles", function () {
+        $("div.menu-actions-copy").remove();
+        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
+            $("#modal-fuga-body").empty().append(data);
+        });
+    });
+
     $(document).on("click", "li.btn-action-reparada", function () {
         console.log("Marcar como reparada fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
     });
 
-    $(document).on("click", "li.btn-action-detalles", function () {
-        console.log("Mostrar foto fuga id: " + currentLeak.id);
+    $(document).on("click", "li.btn-action-images", function () {
+        console.log("Mostrar imagenes fuga id: " + currentLeak.id);
         $("div.menu-actions-copy").remove();
-        $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
-            $("#modal-fuga-body").append(data);
+        $.get('/fuga/imagenes/' + currentLeak.id + '/', function (data, status) {
+            LoadImagesModal(data);
         });
+        //'/imagen-fuga/detail/<pk_imagen_fuga>/'
     });
 
-    $(document).on("click", "li.btn-action-termica", function () {
-        console.log("Mostrar Imgane termica fuga id: " + currentLeak.id);
-        $("div.menu-actions-copy").remove();
+    function LoadImagesModal(images) {
+        leakImages = images;
+        ShowImagesModal();
+        //$.each(images, function (index, item) {
+        //    console.log(item.url);
+        //    $.get(item.url, function (data, status) {
+        //        leakImages.push(data);
+        //        if (leakImages.length === images.length)
+        //            ShowImagesModal();
+        //    });
+        //});
+    }
+
+    function ShowImagesModal() {
+        currentImageIndex = 0;
+        if (leakImages.length > 0) {
+            $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+            $("#modal-images").removeClass('d-none');
+        }
+    }
+    $('#change-image-left').click(function () {
+        if (currentImageIndex > 0)
+            currentImageIndex--;
+        else
+            currentImageIndex = leakImages.length - 1;
+        $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+    });
+
+    $('#change-image-right').click(function () {
+        if (currentImageIndex < leakImages.length - 1)
+            currentImageIndex++;
+        else
+            currentImageIndex = 0;
+        $("#img-dynamic").attr('src', leakImages[currentImageIndex].url);
+    });
+
+    $("#close-image-modal").click(function () {
+        $("#modal-images").addClass('d-none');
     });
 });

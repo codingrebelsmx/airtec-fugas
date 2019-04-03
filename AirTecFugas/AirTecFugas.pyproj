@@ -291,6 +291,9 @@
     <Folder Include="MainApp\" />
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
+    <Folder Include="MainApp\static\MainApp\scripts\lib\longclick\" />
+    <Folder Include="MainApp\static\MainApp\scripts\lib\double-tap\" />
+    <Folder Include="MainApp\static\MainApp\scripts\lib\PressAndHold\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
@@ -407,6 +410,10 @@
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-edit.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-list.js" />
+    <Content Include="MainApp\static\MainApp\scripts\jquery.mobile-events.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\double-tap\doubleTap.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\longclick\jquery.longclick.js" />
+    <Content Include="MainApp\static\MainApp\scripts\lib\PressAndHold\jquery.pressAndHold.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.js.map" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.min.js" />
