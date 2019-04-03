@@ -46,6 +46,7 @@
     <Compile Include="MainApp\utils\Permissions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\utils\SoftDeleterMixin.py" />
     <Compile Include="MainApp\utils\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -68,6 +69,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaCreateView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaDeleteView.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaDetailsViews.py">

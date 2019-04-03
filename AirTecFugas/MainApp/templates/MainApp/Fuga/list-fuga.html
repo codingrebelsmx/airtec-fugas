@@ -76,16 +76,22 @@
                                     {{ fuga.added|date }}
                                 </td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#genericModal" data-action="DetailsFuga" data-url="{% url 'fuga-partial-details' fuga.pk %}" class="btn btn-dark">
+                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#genericModal" data-action="DetailsFuga" data-url="{% url 'fuga-partial-details' fuga.pk %}">
                                         <span class="icon-magnifying-glass">&nbsp;Detalles</span>
                                     </button>
                                     {% if fuga.estatus == 1 %}
-                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#genericModal" data-action="EditFugaCorregida" data-url="{% url 'fuga-corregida' fuga.pk %}">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#genericModal" data-action="EditFugaCorregida" data-url="{% url 'fuga-corregida' fuga.pk %}">
                                             <span class="icon-tick-outline"></span>&nbsp;Corregido
                                         </button>
-                                        <a href="{% url 'fuga-edit' fuga.pk %}" class="btn btn-primary">
+                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#genericModal" data-action="DeleteFugaCorregida" data-url="{% url 'fuga-delete' fuga.pk %}">
+                                            <span class="icon-trash"></span>&nbsp;Eliminar
+                                        </button>
+                                    {% elif fuga.estatus == 100 %}
+                                        <!--
+                                        <a href="{#{% url 'fuga-edit' fuga.pk %}#}" class="btn btn-primary">
                                             <span class="icon-edit"></span>&nbsp;Editar
                                         </a>
+                                        -->
                                     {% endif %}
                                     <!--
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="PartialEditFuga" data-url="{% url 'fuga-partial-edit' fuga.pk %}">

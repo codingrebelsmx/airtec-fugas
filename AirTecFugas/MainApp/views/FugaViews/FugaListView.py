@@ -21,7 +21,7 @@ class FugaListView(PermissionRequiredMixin, ListView):
         id_planta = self.request.session.get("id_planta", None)
 
         if id_planta == None:
-            return super().get_object(queryset)
+            return super().get_queryset(queryset)
         else:
             return Fuga.objects.filter(area__planta__id=id_planta, is_enabled=True).order_by("-updated")
 
