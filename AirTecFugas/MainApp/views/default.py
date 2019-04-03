@@ -59,13 +59,19 @@ def about(request):
 
 def mapafugas(request):
     """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'MainApp/Fuga/mapa-fugas.html',
-        {
-            'title':'Mapa fugas',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+    cliente = request.session.get("id_cliente",None)
+    planta = request.session.get("id_planta",None)
+
+    if cliente != None and planta != None:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'MainApp/Fuga/mapa-fugas.html',
+            {
+                'title':'Mapa fugas',
+                'message':'Your application description page.',
+                'year':datetime.now().year,
+            }
+        )
+    else:
+        return redirect("selec-planta-trabajo")
