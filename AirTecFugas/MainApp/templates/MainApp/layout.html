@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,6 +7,14 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'MainApp/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'MainApp/content/site.css' %}" />
+    <style type="text/css">
+        body {
+          -webkit-user-select: none !important;  /* Chrome all / Safari all */
+          -moz-user-select: none !important;     /* Firefox all */
+          -ms-user-select: none !important;      /* IE 10+ */
+          user-select: none !important;          /* Likely future */      
+        }
+    </style>
     <script src="{% static 'MainApp/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 

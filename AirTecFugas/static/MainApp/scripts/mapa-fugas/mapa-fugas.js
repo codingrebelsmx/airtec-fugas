@@ -8,6 +8,7 @@ var overLeak = false;
 var leakImages = new Array();
 var currentImageIndex = 0;
 var timer;
+var counter = 0;
 
 $(document).ready(function () {
 
@@ -28,7 +29,7 @@ $(document).ready(function () {
 
     function InitSVGControls() {
         svgPanZoomInstance = new SVGPanZoom($('#' + svgId)[0], {
-            animationTime: 300,
+            animationTime: 100,
             eventMagnet: $('#SVGContainer')[0],
             zoom: {
                 factor: 0.25,
@@ -93,7 +94,7 @@ $(document).ready(function () {
             var fuga = listFugas[i];
             var circle = svgDrawInstance.circle(2);
             circle.move(fuga.punto_x, fuga.punto_y);
-            circle.fill(GetColor(fuga.categoria));
+            circle.fill(GetColor(fuga.categoria, fuga.estatus));
             circle.addClass('punto-fuga');
             circle.attr('id', 'fuga-circle-' + fuga.id);
         }
@@ -120,8 +121,10 @@ $(document).ready(function () {
         //});
     }
 
-    function GetColor(categoria) {
-        var color = "#FF0000";//categoria 1
+    function GetColor(categoria, estatus) {
+        if (estatus === 2)//estatus corregida
+            return '#00FF00';
+        var color = '#FF0000';//categoria 1
         if (categoria === 2)
             color = '#FF4000';
         else if (categoria === 3)
@@ -146,44 +149,64 @@ $(document).ready(function () {
 
     $('div.main-content').css('padding', 0);
     $('div.main-content').css('min-height', 0);
-    
+
     //$("#SVGContainer").taphold(function (event) {
     //    event.preventDefault();
     //    SetPointLeak(event);
     //});
-    $("#SVGContainer").doubletap( function (event) {
-        SetPointLeak(event);
-    });
+    //$("#SVGContainer").doubletap( function (event) {
+    //    SetPointLeak(event);
+    //});
 
     //var counter = 0,
     //    timer;
 
-    //function onTimerTick() {
-    //    counter++;
-    //    $('#counter').prop('value', counter);
-    //};
-
-    //$('#hold').on('touchstart', function (ev) {
-    //    timer = setInterval(onTimerTick, 250); // 250ms interval
+    //$("#resumen-fugas").on('touchstart', function (ev) {
+    //    timer = setInterval(function () {
+    //        counter++;
+    //        $('#div-preuba').text('touched ' + counter);
+    //        if (counter === 2)
+    //            alert('ora perro');
+    //    }, 250); // 250ms interval
     //    return false;
     //});
-    //$('#hold').on('touchend', function (ev) {
+    //$("#resumen-fugas").on('touchend', function (ev) {
     //    clearInterval(timer);
+    //    counter = 0;
     //    return false;
     //});
-    $('#SVGContainer').on("mousedown", function (event) {
-        var mouseE = event;
-        timer = setTimeout(function () {
-            SetPointLeak(mouseE);
-        }, 1 * 1000);
-    }).on("mouseup mouseleave", function () {
-        clearTimeout(timer);
-    });
 
-    $("#SVGContainer").on("contextmenu", function (event) {
-        event.preventDefault();
-        SetPointLeak(event);
+    $("#SVGContainer").on('touchstart', function (ev) {
+        $("div.custom-menu-copy").remove();
+        if (!overLeak)
+            $("div.menu-actions-copy").remove();
+        overLeak = false;
+        timer = setInterval(function () {
+            counter++;
+            $('#div-preuba').text('touched' + counter);
+            if (counter === 2)
+                SetPointLeak(ev);
+        }, 250); // 250ms interval
+        return false;
     });
+    $("#SVGContainer").on('touchend', function (ev) {
+        clearInterval(timer);
+        counter = 0;
+        return false;
+    });
+    //$('#SVGContainer').on("mousedown", function (event) {
+    //    var mouseE = event;
+    //    timer = setTimeout(function () {
+    //        SetPointLeak(mouseE);
+    //    }, 1 * 1000);
+    //}).on("mouseup mouseleave", function () {
+    //    clearTimeout(timer);
+    //});
+
+    //$("#SVGContainer").on("contextmenu", function (event) {
+    //    event.preventDefault();
+    //    SetPointLeak(event);
+    //});
 
     function SetPointLeak(event) {
         $("div.custom-menu-copy").remove();
@@ -205,16 +228,20 @@ $(document).ready(function () {
         console.log("x: " + point.x + " y:" + point.y);
     }
 
+    function UpdateLeakColor() {
+        $('#fuga-circle-' + currentLeak.id).fill('#00FF00');
+    }
+
     $("div.custom-menu").bind("contextmenu", function (event) {
         event.preventDefault();
     });
 
-    $("#SVGContainer").bind("click", function (event) {
-        $("div.custom-menu-copy").remove();
-        if (!overLeak)
-            $("div.menu-actions-copy").remove();
-        overLeak = false;
-    });
+    //$("#SVGContainer").bind("click", function (event) {
+    //    $("div.custom-menu-copy").remove();
+    //    if (!overLeak)
+    //        $("div.menu-actions-copy").remove();
+    //    overLeak = false;
+    //});
 
     $(document).on("click", "div.custom-menu-copy", function () {
         console.log("x: " + point.x + " y:" + point.y);
@@ -225,6 +252,10 @@ $(document).ready(function () {
         $("div.menu-actions-copy").remove();
         $.get('/fuga/corregida/' + currentLeak.id + '/', function (data, status) {
             $("#modal-fuga-body").empty().append(data);
+            InitForm("idFormCorregirUpdateFuga", null, function () {
+                $LoadingBlockUI.fadeIn(750);
+                window.location = "/mapa-fugas/";
+            });
         });
     });
 

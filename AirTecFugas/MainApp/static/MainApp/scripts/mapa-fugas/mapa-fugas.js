@@ -8,7 +8,7 @@ var overLeak = false;
 var leakImages = new Array();
 var currentImageIndex = 0;
 var timer;
-var counter;
+var counter = 0;
 
 $(document).ready(function () {
 
@@ -99,20 +99,34 @@ $(document).ready(function () {
             circle.attr('id', 'fuga-circle-' + fuga.id);
         }
 
-        $(".punto-fuga").click(function () {
+        function HandleClickFugaPoint(obj, event) {
             overLeak = true;
-            SetCurrentLeak(this);
+            SetCurrentLeak(obj);
+            $("div.custom-menu-copy").remove();
             $("div.menu-actions-copy").remove();
             var html = $("#context-menu-fugas").html();
             var menuObj = $(html);
+            var x = event.pageX;
+            var y = event.pageY;
+            if (x === undefined || y === undefined) {
+                x = event.touches[event.touches.length - 1].pageX;
+                y = event.touches[event.touches.length - 1].pageY;
+            }
             menuObj.addClass('menu-actions-copy');
             menuObj.appendTo("body").css(
                 {
-                    top: event.pageY + "px",
-                    left: event.pageX + "px",
+                    top: y + "px",
+                    left: x + "px",
                     display: "block",
                     position: "absolute"
                 });
+        }
+
+        $('.punto-fuga').on('touchstart', function (ev) {
+            HandleClickFugaPoint(this, ev);
+        });
+        $(".punto-fuga").click(function (ev) {
+            HandleClickFugaPoint(this, ev);
         });
 
         //$(".punto-fuga").hover(function (event) {
@@ -161,18 +175,37 @@ $(document).ready(function () {
     //var counter = 0,
     //    timer;
 
-
+    //$("#resumen-fugas").on('touchstart', function (ev) {
+    //    timer = setInterval(function () {
+    //        counter++;
+    //        $('#div-preuba').text('touched ' + counter);
+    //        if (counter === 2)
+    //            alert('ora perro');
+    //    }, 250); // 250ms interval
+    //    return false;
+    //});
+    //$("#resumen-fugas").on('touchend', function (ev) {
+    //    clearInterval(timer);
+    //    counter = 0;
+    //    return false;
+    //});
 
     $("#SVGContainer").on('touchstart', function (ev) {
-        timer = setinterval(function () {
-            counter++;
-            if (counter === 2)
-                SetPointLeak(ev);
-        }, 250); // 250ms interval
+        if (event.touches.length === 1) {
+            timer = setInterval(function () {
+                counter++;
+                //$('#div-preuba').text('touched' + counter);
+                if (counter === 2)
+                    SetPointLeak(ev);
+            }, 250); // 250ms interval
+        } else
+            console.log('Nel perro ' + event.touches.length);
         return false;
     });
     $("#SVGContainer").on('touchend', function (ev) {
-        clearinterval(timer);
+        console.log('Touchend ' );
+        clearInterval(timer);
+        counter = 0;
         return false;
     });
     //$('#SVGContainer').on("mousedown", function (event) {
@@ -185,26 +218,34 @@ $(document).ready(function () {
     //});
 
     $("#SVGContainer").on("contextmenu", function (event) {
+        console.log('context menu');
         event.preventDefault();
         SetPointLeak(event);
     });
 
     function SetPointLeak(event) {
         $("div.custom-menu-copy").remove();
+        $("div.menu-actions-copy").remove();
         var html = $("#context-menu").html();
         var contextMenuObj = $(html);
         contextMenuObj.addClass('custom-menu-copy');
+        var x = event.pageX;
+        var y = event.pageY;
+        if (x === undefined || y === undefined) {
+            x = event.touches[event.touches.length - 1].pageX;
+            y = event.touches[event.touches.length - 1].pageY;
+        }
         contextMenuObj.appendTo("body").css(
             {
-                top: event.pageY + "px",
-                left: event.pageX + "px",
+                top: y + "px",
+                left: x + "px",
                 display: "block"
             });
 
         var svg = document.getElementById(svgId);
         point = svg.createSVGPoint();
-        point.x = event.pageX;
-        point.y = event.pageY;
+        point.x = x;
+        point.y = y;
         point = point.matrixTransform(svg.getScreenCTM().inverse());
         console.log("x: " + point.x + " y:" + point.y);
     }
@@ -218,6 +259,7 @@ $(document).ready(function () {
     });
 
     $("#SVGContainer").bind("click", function (event) {
+        console.log('svgcontainer click');
         $("div.custom-menu-copy").remove();
         if (!overLeak)
             $("div.menu-actions-copy").remove();
