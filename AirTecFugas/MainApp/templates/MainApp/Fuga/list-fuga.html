@@ -11,104 +11,107 @@
         <div class="card">
             <div class="card-header">Listado de Fugas</div>
             <div class="card-body">
-
-                <table id="TableFugaList" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                &Aacute;rea
-                            </th>
-                            <th>
-                                M&aacute;quina
-                            </th>
-                            <th>
-                                Ubicaci&oacute;n
-                            </th>
-                            <th>
-                                Categor&iacute;a
-                            </th>
-                            <th>
-                                Recomendaci&oacute;n
-                            </th>
-                            <th>
-                                Estatus
-                            </th>
-                            <th>
-                                Fecha Registro
-                            </th>
-                            <th>
-                                Acciones
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for fuga in object_list %}
+                <!--
+                <div class="table-responsive">
+                    -->
+                    <table id="TableFugaList" class="table table-striped table-bordered table-responsive">
+                        <thead>
                             <tr>
-                                <td>
-                                    {{ fuga.area.nombre }}
-                                </td>
-                                <td>
-                                    {{ fuga.maquina.nombre }}
-                                </td>
-                                <td>
-                                    {{ fuga.ubicacion.nombre }}
-                                </td>
-                                <td>
-                                    {{ fuga.categoria }}
-                                </td>
-                                <td>
-                                    {% if fuga.recomendacion == 'REP' %}
-                                        Reparar
-                                    {% elif fuga.recomendacion == 'REM' %}
-                                        Remplazar
-                                    {% elif fuga.recomendacion == 'OTR' %}
-                                        Otro
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if fuga.estatus == 1 %}
-                                        Registrado
-                                    {% elif fuga.estatus == 2 %}
-                                        Corregido
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {{ fuga.added|date }}
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#genericModal" data-action="DetailsFuga" data-url="{% url 'fuga-partial-details' fuga.pk %}">
-                                        <span class="icon-magnifying-glass">&nbsp;Detalles</span>
-                                    </button>
-                                    {% if fuga.estatus == 1 %}
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#genericModal" data-action="EditFugaCorregida" data-url="{% url 'fuga-corregida' fuga.pk %}">
-                                            <span class="icon-tick-outline"></span>&nbsp;Corregido
+                                <th>
+                                    &Aacute;rea
+                                </th>
+                                <th>
+                                    M&aacute;quina
+                                </th>
+                                <th>
+                                    Ubicaci&oacute;n
+                                </th>
+                                <th>
+                                    Categor&iacute;a
+                                </th>
+                                <th>
+                                    Recomendaci&oacute;n
+                                </th>
+                                <th>
+                                    Estatus
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                                <th>
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for fuga in object_list %}
+                                <tr class="{% if fuga.estatus == 1 %}table-danger{% elif fuga.estatus == 2 %}table-success{% endif %}">
+                                    <td>
+                                        {{ fuga.area.nombre }}
+                                    </td>
+                                    <td>
+                                        {{ fuga.maquina.nombre }}
+                                    </td>
+                                    <td>
+                                        {{ fuga.ubicacion.nombre }}
+                                    </td>
+                                    <td>
+                                        {{ fuga.categoria }}
+                                    </td>
+                                    <td>
+                                        {% if fuga.recomendacion == 'REP' %}
+                                            Reparar
+                                        {% elif fuga.recomendacion == 'REM' %}
+                                            Remplazar
+                                        {% elif fuga.recomendacion == 'OTR' %}
+                                            Otro
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if fuga.estatus == 1 %}
+                                            Registrado
+                                        {% elif fuga.estatus == 2 %}
+                                            Corregido
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{ fuga.added|date }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#genericModal" data-action="DetailsFuga" data-url="{% url 'fuga-partial-details' fuga.pk %}">
+                                            <span class="icon-magnifying-glass">&nbsp;Detalles</span>
                                         </button>
-                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#genericModal" data-action="DeleteFugaCorregida" data-url="{% url 'fuga-delete' fuga.pk %}">
+                                        {% if fuga.estatus == 1 %}
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#genericModal" data-action="EditFugaCorregida" data-url="{% url 'fuga-corregida' fuga.pk %}">
+                                                <span class="icon-tick-outline"></span>&nbsp;Corregido
+                                            </button>
+                                            <button class="btn btn-secondary"  data-toggle="modal" data-target="#genericModal" data-action="DeleteFugaCorregida" data-url="{% url 'fuga-delete' fuga.pk %}">
+                                                <span class="icon-trash"></span>&nbsp;Eliminar
+                                            </button>
+                                        {% elif fuga.estatus == 100 %}
+                                            <!--
+                                            <a href="{#{% url 'fuga-edit' fuga.pk %}#}" class="btn btn-primary">
+                                                <span class="icon-edit"></span>&nbsp;Editar
+                                            </a>
+                                            -->
+                                        {% endif %}
+                                        <!--
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="PartialEditFuga" data-url="{% url 'fuga-partial-edit' fuga.pk %}">
+                                            <span class="icon-edit"></span>&nbsp;Editar
+                                        </button>
+                                    
+                                        <button class="btn btn-danger">
                                             <span class="icon-trash"></span>&nbsp;Eliminar
                                         </button>
-                                    {% elif fuga.estatus == 100 %}
-                                        <!--
-                                        <a href="{#{% url 'fuga-edit' fuga.pk %}#}" class="btn btn-primary">
-                                            <span class="icon-edit"></span>&nbsp;Editar
-                                        </a>
                                         -->
-                                    {% endif %}
-                                    <!--
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="PartialEditFuga" data-url="{% url 'fuga-partial-edit' fuga.pk %}">
-                                        <span class="icon-edit"></span>&nbsp;Editar
-                                    </button>
-                                    
-                                    <button class="btn btn-danger">
-                                        <span class="icon-trash"></span>&nbsp;Eliminar
-                                    </button>
-                                    -->
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                <!--
+                </div>
+                -->
                 <!-- URL Create -->
                 <input id="UrlApiAreaCreate" type="hidden" value="{% url 'area-create' %}" />
                 <input id="UrlApiMaquinaCreate" type="hidden" value="{% url 'maquina-create' %}" />
