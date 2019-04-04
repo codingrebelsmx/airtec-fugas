@@ -26,6 +26,11 @@ function InitModalEvents() {
                             $LoadingBlockUI.fadeIn(750);
                             window.location = "/fuga/list/";
                         });
+                    else if (action == "DeleteFugaCorregida")
+                        InitForm("idFormFugaDelete", AlwaysCallBackAfterFormHasBeenSent, function () {
+                            $LoadingBlockUI.fadeIn(750);
+                            window.location = "/fuga/list/";
+                        });
                     globalAction = action;
                 }
                 else {

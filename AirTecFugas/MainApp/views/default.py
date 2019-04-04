@@ -5,6 +5,7 @@ Definition of views.
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.template import RequestContext
+from django.contrib.auth.decorators import permission_required, login_required
 from datetime import datetime
 
 def home(request):
@@ -20,6 +21,7 @@ def home(request):
     else:
         return redirect('dashboard')
 
+@login_required
 def dashboard(request):
     """Renders the home page."""
     cliente = request.session.get("id_cliente",None)
@@ -30,6 +32,7 @@ def dashboard(request):
             {
                 'title':'Dashboard',
                 'year':datetime.now().year,
+                'menu':"DASHBOARD"
             })
     else:
         return redirect("selec-planta-trabajo")
@@ -56,15 +59,23 @@ def about(request):
             'year':datetime.now().year,
         })
 
+@login_required
+@permission_required('ModelsApp.view_fuga')
 def mapafugas(request):
     """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'MainApp/Fuga/mapa-fugas.html',
-        {
-            'title':'Mapa fugas',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+    cliente = request.session.get("id_cliente",None)
+    planta = request.session.get("id_planta",None)
+
+    if cliente != None and planta != None:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'MainApp/Fuga/mapa-fugas.html',
+            {
+                'title':'Mapa fugas',
+                'message':'Your application description page.',
+                'year':datetime.now().year,
+            }
+        )
+    else:
+        return redirect("selec-planta-trabajo")

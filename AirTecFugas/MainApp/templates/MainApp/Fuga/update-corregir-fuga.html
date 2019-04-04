@@ -97,7 +97,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
-                                    <textarea name="refacciones_comentarios" cols="100" rows="3" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios" disabled readonly>
+                                    <textarea name="refacciones_comentarios" cols="100" rows="3" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios" disabled readonly>{{ object.refacciones_comentarios|default_if_none:"" }}
                                     </textarea>
                                 </div>
                             </div>

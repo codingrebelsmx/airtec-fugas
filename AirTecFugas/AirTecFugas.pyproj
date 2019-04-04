@@ -41,11 +41,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\migrations\__init__.py" />
+    <Compile Include="MainApp\templatetags\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\tests.py" />
     <Compile Include="MainApp\urls.py" />
+    <Compile Include="MainApp\templatetags\customFilters.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\utils\Permissions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\utils\SoftDeleterMixin.py" />
     <Compile Include="MainApp\utils\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -70,6 +77,9 @@
     <Compile Include="MainApp\views\FugaViews\FugaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaDeleteView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaDetailsViews.py">
       <SubType>Code</SubType>
     </Compile>
@@ -77,9 +87,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaListView.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainApp\views\FugaViews\UpdateFugaViews.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainApp\views\FugaViews\__init__.py">
@@ -295,11 +302,12 @@
     <Folder Include="MainApp\static\MainApp\scripts\lib\double-tap\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\PressAndHold\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
+    <Folder Include="MainApp\templatetags\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
     <Folder Include="MainApp\static\MainApp\scripts\fuga-js\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\" />
-    <Folder Include="MainApp\static\MainApp\scripts\mapa-fugas\" />
+    <Folder Include="MainApp\static\MainApp\scripts\Mapa-Fugas\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\" />
     <Folder Include="MainApp\static\MainApp\scripts\swal2\" />
     <Folder Include="MainApp\static\MainApp\scripts\planta-js\" />
@@ -419,7 +427,7 @@
     <Content Include="MainApp\static\MainApp\scripts\lib\SVGPanZoom\SVGPanZoom.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.min.js" />
-    <Content Include="MainApp\static\MainApp\scripts\mapa-fugas\mapa-fugas.js" />
+    <Content Include="MainApp\static\MainApp\scripts\Mapa-Fugas\mapa-fugas.js" />
     <Content Include="MainApp\static\MainApp\scripts\planta-js\SeleccionPlantaTrabajo.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.all.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.min.css" />
@@ -489,6 +497,7 @@
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\create-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\delete-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\detail-partial-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\detail-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\list-fuga.html" />

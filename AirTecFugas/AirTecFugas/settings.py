@@ -138,7 +138,7 @@ AUTH_USER_MODEL = 'ModelsApp.User'
 if DEBUG:
     MEDIA_ROOT = 'C:/AirTecFugas/'
 else:
-    MEDIA_ROOT = '/var/www/airtec_fugas_files/'
+    MEDIA_ROOT = '/var/www/media/'
 
 LOGIN_REDIRECT_URL = "/dashboard/"
 LOGOUT_REDIRECT_URL = "/"

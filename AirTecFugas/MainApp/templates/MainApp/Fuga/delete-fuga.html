@@ -1,8 +1,21 @@
 <div class="row gutters">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <div class="card top-grey-bdr">
-            <div class="card-header">Detalles Fuga</div>
-            <div class="card-body">
+    <div class="card">
+        <div class="card-header">
+            Confirmación
+        </div>
+        <div class="card-body">
+            <form id="idFormFugaDelete" name="FormFugaDelete" method="post" action="{% url 'fuga-delete' object.pk %}">
+                {% csrf_token %}
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                        <h5 class="text-danger">
+                            Está seguro que desea borrar la fuga?
+                        </h5>
+                    </div>
+                </div>
+
+                <hr />
+
                 <div class="row gutters">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="form-group">
@@ -42,16 +55,25 @@
                         <div class="form-group">
                             <label for="id_recomendacion">Recomendaci&oacute;n:</label>
                             <input type="text"
-                                   {% if fuga.recomendacion == 'REP' %}
+                                    {% if fuga.recomendacion == 'REP' %}
                                         value="Reparar"
                                     {% elif fuga.recomendacion == 'REM' %}
                                         value="Remplazar"
                                     {% elif fuga.recomendacion == 'OTR' %}
                                         value="Otro"
                                     {% endif %}
-                                   class="form-control" disabled readonly/>
+                                    class="form-control" disabled readonly/>
                         </div>
                     </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="id_recomendacion">Estatus:</label>
+                            <input type="text" {% if object.estatus == 1 %} value="Registrada"  {% elif object.estatus == 2 %} value="Corregida"  {% endif %} class="form-control" disabled readonly/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="form-group">
                             <label for="id_nadp">Not Available During Production:</label>
@@ -63,26 +85,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row gutters">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
-                            <textarea name="refacciones_comentarios" cols="100" rows="3" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios" disabled readonly>
-                                {{ object.refacciones_comentarios|default_if_none:"" }}
-                            </textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row gutters">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="id_recomendacion">Estatus:</label>
-                            <input type="text" {% if object.estatus == 1 %} value="Registrada"  {% elif object.estatus == 2 %} value="Corregida"  {% endif %} class="form-control" disabled readonly/>
-                        </div>
-                    </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="form-group">
                             <label for="id_recomendacion">Fecha de Registro:</label>
@@ -91,28 +93,32 @@
                     </div>
                 </div>
 
-                {% if object.imagenes|length >= 1 %}
                 <div class="row gutters">
-                    <div class="card">
-                        <div class="card-header">
-                            Fotos
-                        </div>
-                        <div class="card-body">
-                            <div class="row gutters">
-                                {% for img in object.imagenes %}
-                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                        <div class="card text-white">
-                                            <img src="{% url 'imagen-fuga-view' img.pk %}" class="card-img-top"/>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="id_refacciones_comentarios">Refacciones y/o comentarios:</label>
+                            <textarea name="refacciones_comentarios" cols="100" rows="3" style="resize:None;" class="form-control" maxlength="1000" id="id_refacciones_comentarios" disabled readonly>{{ object.refacciones_comentarios|default_if_none:"" }}
+                            </textarea>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-                
-            </div>
+               
+                <hr />
+
+                <div class="row gutters">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">
+                            <i class="icon-cancel-outline"></i>&nbsp;Cancelar
+                        </button>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="icon-trash"></i>&nbsp;Eliminar
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+

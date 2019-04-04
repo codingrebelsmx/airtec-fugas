@@ -15,4 +15,11 @@ class AreaCreateView(PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('area-list')
     permission_required = ("ModelsApp.add_area",)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        area_seleccionada = "AREAS"
+        context["menu"] = area_seleccionada
+        return context
+        
+
 

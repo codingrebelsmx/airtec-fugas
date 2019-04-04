@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 
 from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default
-from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews, FugaEditView
+from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews, FugaEditView, FugaDeleteView
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
 from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
@@ -51,6 +51,7 @@ urlpatterns = [# Examples:
     re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas'),
     re_path(r'^fuga/create/(?P<punto_x>-?\d+\.\d+)/(?P<punto_y>-?\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', FugaEditView.FugaEditView.as_view(), name='fuga-edit'),
+    re_path(r'^fuga/delete/(?P<pk>\d+)/$', FugaDeleteView.as_view(), name='fuga-delete'),
     re_path(r'^fuga/partial-edit/(?P<pk>\d+)/$', FugaEditView.FugaPartialEditView.as_view(), name='fuga-partial-edit'),
     re_path(r'^fuga/corregida/(?P<pk>\d+)/$', FugaEditView.FugaCorregidaEditView.as_view(), name='fuga-corregida'),
     re_path(r'^fuga/details/(?P<pk>\d+)/$', FugaDetailsViews.FugaDetailView.as_view(), name='fuga-details'),

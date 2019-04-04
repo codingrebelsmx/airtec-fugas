@@ -263,3 +263,4 @@ __pycache__/
 # Ignore virtual env
 AirTecFugas/env/
 AirTecFugas/web.debug.config
+AirTecFugas/static/
