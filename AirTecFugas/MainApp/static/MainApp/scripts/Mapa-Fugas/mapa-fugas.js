@@ -163,7 +163,7 @@ $(document).ready(function () {
 
 
 
-    $("#svgcontainer").on('touchstart', function (ev) {
+    $("#SVGContainer").on('touchstart', function (ev) {
         timer = setinterval(function () {
             counter++;
             if (counter === 2)
@@ -171,7 +171,7 @@ $(document).ready(function () {
         }, 250); // 250ms interval
         return false;
     });
-    $("#svgcontainer").on('touchend', function (ev) {
+    $("#SVGContainer").on('touchend', function (ev) {
         clearinterval(timer);
         return false;
     });
