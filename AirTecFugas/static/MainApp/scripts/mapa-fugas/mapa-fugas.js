@@ -7,36 +7,8 @@ var currentLeak = null;
 var overLeak = false;
 var leakImages = new Array();
 var currentImageIndex = 0;
-//var timer;
-(function ($) {
+var timer;
 
-    $.event.special.doubletap = {
-        bindType: 'touchend',
-        delegateType: 'touchend',
-
-        handle: function (event) {
-            var handleObj = event.handleObj,
-                targetData = jQuery.data(event.target),
-                now = new Date().getTime(),
-                delta = targetData.lastTouch ? now - targetData.lastTouch : 0,
-                delay = delay == null ? 300 : delay;
-
-            if (delta < delay && delta > 30) {
-                targetData.lastTouch = null;
-                event.type = handleObj.origType;
-                ['clientX', 'clientY', 'pageX', 'pageY'].forEach(function (property) {
-                    event[property] = event.originalEvent.changedTouches[0][property];
-                })
-
-                // let jQuery handle the triggering of "doubletap" event handlers
-                handleObj.handler.apply(this, arguments);
-            } else {
-                targetData.lastTouch = now;
-            }
-        }
-    };
-
-})(jQuery);
 $(document).ready(function () {
 
     $.get("/planta/plano/1/", function (data, status) {
@@ -174,30 +146,41 @@ $(document).ready(function () {
 
     $('div.main-content').css('padding', 0);
     $('div.main-content').css('min-height', 0);
-
-    $("#SVGContainer").doubletap(function (event) {
-        event.preventDefault();
-        SetPointLeak(event);
-    });
-
-    $("#SVGContainer").taphold(function (event) {
-        event.preventDefault();
-        SetPointLeak(event);
-    });
-    //$("#SVGContainer").on('doubletap', function (event) {
+    
+    //$("#SVGContainer").taphold(function (event) {
+    //    event.preventDefault();
     //    SetPointLeak(event);
     //});
+    $("#SVGContainer").doubletap( function (event) {
+        SetPointLeak(event);
+    });
 
-    //$('#SVGContainer').on("mousedown", function (event) {
-    //    var mouseE = event;
-    //    timer = setTimeout(function () {
-    //        SetPointLeak(mouseE);
-    //    }, 1 * 1000);
-    //}).on("mouseup mouseleave", function () {
-    //    clearTimeout(timer);
+    //var counter = 0,
+    //    timer;
+
+    //function onTimerTick() {
+    //    counter++;
+    //    $('#counter').prop('value', counter);
+    //};
+
+    //$('#hold').on('touchstart', function (ev) {
+    //    timer = setInterval(onTimerTick, 250); // 250ms interval
+    //    return false;
     //});
+    //$('#hold').on('touchend', function (ev) {
+    //    clearInterval(timer);
+    //    return false;
+    //});
+    $('#SVGContainer').on("mousedown", function (event) {
+        var mouseE = event;
+        timer = setTimeout(function () {
+            SetPointLeak(mouseE);
+        }, 1 * 1000);
+    }).on("mouseup mouseleave", function () {
+        clearTimeout(timer);
+    });
 
-    $("#SVGContainer").bind("contextmenu", function (event) {
+    $("#SVGContainer").on("contextmenu", function (event) {
         event.preventDefault();
         SetPointLeak(event);
     });
