@@ -1,5 +1,7 @@
 from django.views.generic import ListView
 from ModelsApp.models import Fuga
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
@@ -8,6 +10,16 @@ class FugaListView(PermissionRequiredMixin, ListView):
     model = Fuga
     template_name = "MainApp/Fuga/list-fuga.html"
     permission_required = ("ModelsApp.view_fuga",)
+
+
+    def dispatch(self, request, *args, **kwargs):
+        cliente = self.request.session.get("id_cliente", None)
+        planta = self.request.session.get("id_planta", None)
+
+        if cliente != None and planta != None:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect('selec-planta-trabajo')
 
 
     def get_context_data(self, **kwargs):

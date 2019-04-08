@@ -12,12 +12,14 @@ function InitSelects() {
 
     // EventHandler OnChange Cliente's Select
     $("#id_cliente").on("change", function () {
-        $("#loading-wrapper").fadeIn(1500);
+        $LoadingBlockUI.fadeIn(750);
         $("#id_planta").attr("disabled", "disabled");
-        DownloadFromApiToSelect("id_planta", $("#idUrlApiPlantaListSelect").val().replace("0", $("#id_cliente").val())
-            , "Selecciona una planta...", function () {
+        DownloadFromApiToSelect("id_planta"
+            , $("#idUrlApiPlantaListSelect").val().replace("0", $("#id_cliente").val())
+            , "Selecciona una planta..."
+            , function () {
                 $("#id_planta").removeAttr("disabled");
-                $("#loading-wrapper").fadeOut(5000);
+                $LoadingBlockUI.fadeOut(1500);
             });
     });
 }

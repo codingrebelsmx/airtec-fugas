@@ -19,12 +19,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
+environment = "DEBUG"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'f8bc36b9-9c25-4607-8500-29fd4bca5c96'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if environment != "DEBUG":
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
+else:
+    DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -70,20 +75,44 @@ TEMPLATES = [{
 
 WSGI_APPLICATION = 'AirTecFugas.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'FugasApp_DB',
-        'USER': 'doadmin',
-        'PASSWORD': 'qlg43dfw8jwg174q',
-        'HOST': 'fugasairtec-do-user-188158-0.db.ondigitalocean.com',
-        'PORT': '25060',
-        'OPTIONS': {'sslmode': 'require'},
+if environment == "QA":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'FugasApp_QA',
+            'USER': 'doadmin',
+            'PASSWORD': 'qlg43dfw8jwg174q',
+            'HOST': 'fugasairtec-do-user-188158-0.db.ondigitalocean.com',
+            'PORT': '25060',
+            'OPTIONS': {'sslmode': 'require'},
+        }
     }
-}
+elif environment == "PROD":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'FugasApp',
+            'USER': 'doadmin',
+            'PASSWORD': 'qlg43dfw8jwg174q',
+            'HOST': 'fugasairtec-do-user-188158-0.db.ondigitalocean.com',
+            'PORT': '25060',
+            'OPTIONS': {'sslmode': 'require'},
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'FugasApp_DEV',
+            'USER': 'doadmin',
+            'PASSWORD': 'qlg43dfw8jwg174q',
+            'HOST': 'fugasairtec-do-user-188158-0.db.ondigitalocean.com',
+            'PORT': '25060',
+            'OPTIONS': {'sslmode': 'require'},
+        }
+    }
 
 
 # Password validation
@@ -135,10 +164,14 @@ STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 AUTH_USER_MODEL = 'ModelsApp.User'
 
-if DEBUG:
-    MEDIA_ROOT = 'C:/AirTecFugas/'
-else:
-    MEDIA_ROOT = '/var/www/media/'
-
 LOGIN_REDIRECT_URL = "/dashboard/"
 LOGOUT_REDIRECT_URL = "/"
+
+
+if environment == "QA":
+    MEDIA_ROOT = '/var/www/media-qa/'
+elif environment == "PROD":
+    MEDIA_ROOT = '/var/www/media/'
+else:
+    MEDIA_ROOT = 'C:/AirTecFugas/'
+

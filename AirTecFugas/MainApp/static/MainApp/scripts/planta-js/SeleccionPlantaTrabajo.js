@@ -14,8 +14,10 @@ function InitSelects() {
     $("#id_cliente").on("change", function () {
         $LoadingBlockUI.fadeIn(750);
         $("#id_planta").attr("disabled", "disabled");
-        DownloadFromApiToSelect("id_planta", $("#idUrlApiPlantaListSelect").val().replace("0", $("#id_cliente").val())
-            , "Selecciona una planta...", function () {
+        DownloadFromApiToSelect("id_planta"
+            , $("#idUrlApiPlantaListSelect").val().replace("0", $("#id_cliente").val())
+            , "Selecciona una planta..."
+            , function () {
                 $("#id_planta").removeAttr("disabled");
                 $LoadingBlockUI.fadeOut(1500);
             });
