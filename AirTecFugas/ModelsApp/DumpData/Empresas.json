@@ -1,0 +1,13 @@
+[
+{
+    "model": "ModelsApp.empresa",
+    "pk": 1,
+    "fields": {
+        "added": "2019-04-08T14:49:52.651Z",
+        "updated": "2019-04-08T14:49:52.652Z",
+        "is_enabled": true,
+        "nombre": "Airtec",
+        "descripcion": "Empresa base del sistema."
+    }
+}
+]
