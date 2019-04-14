@@ -12,7 +12,7 @@ from django.conf.urls.static import static
 from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default
 from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews, FugaEditView, FugaDeleteView
-from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView
+from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView, AreaListView, AreaEditsView, AreaDeleteView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
 from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
 from MainApp.views.EmpresaViews import CreateEmpresaPartialView
@@ -62,9 +62,16 @@ urlpatterns = [# Examples:
     ### -------------- CRUD AREA -------------- ###
     re_path(r'^area/create/$', AreaCreateView.as_view(), name='area-create'),
     re_path(r'^area/create/partial/$', AreaCreatePartialView.as_view(), name='area-create-partial'),
-    re_path(r'^area/edit/(?P<pk>\d+)/$', default.about, name='area-edit'),
+
+    re_path(r'^area/edit/(?P<pk>\d+)/$', AreaEditsView.AreaEditView.as_view(), name='area-edit'),
+    re_path(r'^area/edit/partial/(?P<pk>\d+)/$', AreaEditsView.AreaPartialEditView.as_view(), name='area-partial-edit'),
+
+    re_path(r'^area/delete/(?P<pk>\d+)/$', AreaDeleteView.as_view(), name='area-delete'),
+
     re_path(r'^area/details/(?P<pk>\d+)/$', default.about, name='area-details'),
-    re_path(r'^area/list/$', default.about, name='area-list'),
+    re_path(r'^area/details/partial/(?P<pk>\d+)/$', default.about, name='area-partial-details'),
+
+    re_path(r'^area/list/$', AreaListView.as_view(), name='area-list'),
 
     ### -------------- CRUD MAQUINA -------------- ###
     re_path(r'^maquina/create/$', MaquinaCreateView.as_view(), name='maquina-create'),

@@ -62,6 +62,13 @@
     <Compile Include="MainApp\views\AreaViews\AreaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\AreaViews\AreaDeleteView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\AreaViews\AreaEditsView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\AreaViews\AreaListView.py" />
     <Compile Include="MainApp\views\AreaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -302,6 +309,7 @@
     <Folder Include="MainApp\static\MainApp\scripts\lib\double-tap\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\PressAndHold\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
+    <Folder Include="MainApp\static\MainApp\scripts\area-js\" />
     <Folder Include="MainApp\templatetags\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
@@ -415,6 +423,7 @@
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="MainApp\static\MainApp\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="MainApp\static\MainApp\scripts\app.js" />
+    <Content Include="MainApp\static\MainApp\scripts\area-js\area-list.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-create.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-edit.js" />
     <Content Include="MainApp\static\MainApp\scripts\fuga-js\fuga-list.js" />
@@ -493,6 +502,9 @@
     <Content Include="MainApp\static\MainApp\theme-files\vendor\select2\select2.min.js" />
     <Content Include="MainApp\templates\MainApp\Area\create-area-partial.html" />
     <Content Include="MainApp\templates\MainApp\Area\create-area.html" />
+    <Content Include="MainApp\templates\MainApp\Area\delete-area.html" />
+    <Content Include="MainApp\templates\MainApp\Area\list-area.html" />
+    <Content Include="MainApp\templates\MainApp\Area\update-partial-area.html" />
     <Content Include="MainApp\templates\MainApp\Authentication\login.html" />
     <Content Include="MainApp\templates\MainApp\Dashboard\dashboard.html" />
     <Content Include="MainApp\templates\MainApp\Empresa\create-empresa-partial.html" />
@@ -509,6 +521,7 @@
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina-partial.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Modals\_GenericModalSinCont.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericFormLgModal.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericFormModal.html" />
     <Content Include="MainApp\templates\MainApp\PlantaTrabajo\seleccion-planta-trabajo.html" />
