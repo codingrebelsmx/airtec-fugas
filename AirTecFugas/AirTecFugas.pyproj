@@ -111,6 +111,15 @@
     <Compile Include="MainApp\views\MaquinaViews\MaquinaCreateView.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\MaquinaDeleteView.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\MaquinaEditViews.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\views\MaquinaViews\MaquinaListView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\MaquinaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -310,6 +319,7 @@
     <Folder Include="MainApp\static\MainApp\scripts\lib\PressAndHold\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\SVG\" />
     <Folder Include="MainApp\static\MainApp\scripts\area-js\" />
+    <Folder Include="MainApp\static\MainApp\scripts\maquina-js\" />
     <Folder Include="MainApp\templatetags\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
@@ -437,6 +447,7 @@
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.js" />
     <Content Include="MainApp\static\MainApp\scripts\lib\SVG\svg.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\Mapa-Fugas\mapa-fugas.js" />
+    <Content Include="MainApp\static\MainApp\scripts\maquina-js\maquina-list.js" />
     <Content Include="MainApp\static\MainApp\scripts\planta-js\SeleccionPlantaTrabajo.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.all.min.js" />
     <Content Include="MainApp\static\MainApp\scripts\swal2\sweetalert2.min.css" />
@@ -521,6 +532,9 @@
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina-partial.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Maquina\delete-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Maquina\list-maquina.html" />
+    <Content Include="MainApp\templates\MainApp\Maquina\update-partial-maquina.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericModalSinCont.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericFormLgModal.html" />
     <Content Include="MainApp\templates\MainApp\Modals\_GenericFormModal.html" />
