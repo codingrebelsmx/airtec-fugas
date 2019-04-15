@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.views.generic import ListView
 from ModelsApp.models import Area
 from django.urls import reverse_lazy

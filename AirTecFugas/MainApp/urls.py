@@ -13,7 +13,7 @@ from MainApp.forms import BootstrapAuthenticationForm
 from MainApp.views import default
 from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews, FugaEditView, FugaDeleteView
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView, AreaListView, AreaEditsView, AreaDeleteView
-from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView
+from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView, MaquinaListView, MaquinaEditViews, MaquinaDeleteView
 from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
 from MainApp.views.EmpresaViews import CreateEmpresaPartialView
 from MainApp.views.ImagenFugaViews import DetailImagenView
@@ -42,9 +42,6 @@ urlpatterns = [# Examples:
     re_path(r'^planta/seleccionar-planta/$', SeleccionPlantaTrabajoView.as_view(), name='selec-planta-trabajo'),
     re_path(r'^planta/plano/(?P<pk>\d+)/$', PlanoPlantaView.as_view(), name='planta-plano-view'),
     re_path(r'^planta/create/$', CreatePlantaPartialView.as_view(), name='planta-create'),
-    #re_path(r'^planta/edit/(?P<pk>\d+)/$', default.about, name='planta-edit'),
-    #re_path(r'^planta/details/(?P<pk>\d+)/$', default.about,
-    #name='planta-details'),
     re_path(r'^planta/list/$', default.about, name='planta-list'),
 
     ### -------------- CRUD FUGA -------------- ###
@@ -61,24 +58,19 @@ urlpatterns = [# Examples:
 
     ### -------------- CRUD AREA -------------- ###
     re_path(r'^area/create/$', AreaCreateView.as_view(), name='area-create'),
-    re_path(r'^area/create/partial/$', AreaCreatePartialView.as_view(), name='area-create-partial'),
+    re_path(r'^area/partial-create/$', AreaCreatePartialView.as_view(), name='area-create-partial'),
 
-    re_path(r'^area/edit/(?P<pk>\d+)/$', AreaEditsView.AreaEditView.as_view(), name='area-edit'),
-    re_path(r'^area/edit/partial/(?P<pk>\d+)/$', AreaEditsView.AreaPartialEditView.as_view(), name='area-partial-edit'),
-
-    re_path(r'^area/delete/(?P<pk>\d+)/$', AreaDeleteView.as_view(), name='area-delete'),
-
-    re_path(r'^area/details/(?P<pk>\d+)/$', default.about, name='area-details'),
-    re_path(r'^area/details/partial/(?P<pk>\d+)/$', default.about, name='area-partial-details'),
-
+    re_path(r'^area/partial-edit/(?P<pk>\d+)/$', AreaEditsView.AreaPartialEditView.as_view(), name='area-partial-edit'),
+    re_path(r'^area/partial-delete/(?P<pk>\d+)/$', AreaDeleteView.as_view(), name='area-delete'),
     re_path(r'^area/list/$', AreaListView.as_view(), name='area-list'),
 
     ### -------------- CRUD MAQUINA -------------- ###
     re_path(r'^maquina/create/$', MaquinaCreateView.as_view(), name='maquina-create'),
-    re_path(r'^maquina/create/partial/$', MaquinaCreatePartialView.as_view(), name='maquina-create-partial'),
-    re_path(r'^maquina/edit/(?P<pk>\d+)/$', default.about, name='maquina-edit'),
-    re_path(r'^maquina/details/(?P<pk>\d+)/$', default.about, name='maquina-details'),
-    re_path(r'^maquina/list/$', default.about, name='maquina-list'),
+    re_path(r'^maquina/partial-create/$', MaquinaCreatePartialView.as_view(), name='maquina-create-partial'),
+
+    re_path(r'^maquina/partial-edit/(?P<pk>\d+)/$', MaquinaEditViews.MaquinaPartialEditView.as_view(), name='maquina-partial-edit'),
+    re_path(r'^maquina/partial-delete/(?P<pk>\d+)/$', MaquinaDeleteView.as_view(), name='maquina-partial-delete'),
+    re_path(r'^maquina/list/$', MaquinaListView.as_view(), name='maquina-list'),
 
     ### -------------- IMAGENES FUGA -------------- ###
     re_path(r'^imagen-fuga/detail/(?P<pk>\d+)/$', DetailImagenView.as_view(), name='imagen-fuga-view'),

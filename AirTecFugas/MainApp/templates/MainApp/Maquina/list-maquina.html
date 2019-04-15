@@ -1,11 +1,89 @@
-<!DOCTYPE html>
+{% extends "MainApp/Layout/_Layout.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+{% load staticfiles %}
 
-</body>
-</html>
+{% load humanize %}
+
+{% block content %}
+
+<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <span class="icon-book-open"></span>
+                Listado de M&aacute;quinas
+            </div>
+            <div class="card-body">
+                <!--
+                <div class="table-responsive">
+                    -->
+                    <table id="TableMaquinaList" class="table table-striped table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    M&aacute;quina
+                                </th>
+                                <th>
+                                    &Aacute;rea
+                                </th>
+                                <th>
+                                    Descripci&oacute;n
+                                </th>
+                                <th>
+                                    Fecha Registro
+                                </th>
+                                <th>
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for maquina in object_list %}
+                                <tr class="{% if maquina.estatus == 1 %}table-danger{% elif maquina.estatus == 2 %}table-success{% endif %}">
+                                    <td>
+                                        {{ maquina.nombre }}
+                                    </td>
+                                    <td>
+                                        {{ maquina.area.nombre }}
+                                    </td>
+                                    <td>
+                                        {{ maquina.descripcion|default_if_none:"" }}
+                                    </td>
+                                    <td>
+                                        {{ maquina.added|date }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#genericModal" data-action="EditMaquina" data-url="{% url 'maquina-partial-edit' maquina.pk %}">
+                                            <span class="icon-edit2"></span>&nbsp;Editar
+                                        </button>
+                                        <button class="btn btn-secondary"  data-toggle="modal" data-target="#genericModal" data-action="DeleteMaquina" data-url="{% url 'maquina-partial-delete' maquina.pk %}">
+                                            <span class="icon-trash"></span>&nbsp;Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                <!--
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+    <input id="idUrlApiAreaListSelect" name="UrlApiAreaListSelect" type="hidden" value="{% url 'ApiAreaListSelect' %}" />
+    <input id="idUrlMaquinaList" name="UrlAreaList" type="hidden" value="{% url 'maquina-list' %}" />
+</div>
+
+{% include "MainApp/Modals/_GenericModalSinCont.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block finalscripts %}
+
+<script src="{% static 'MainApp/scripts/maquina-js/maquina-list.js' %}"></script>
+
+{% endblock %}
