@@ -22,5 +22,13 @@
         "name": "Consultores",
         "permissions": []
     }
+},
+{
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+        "name": "Ejecutivos",
+        "permissions": []
+    }
 }
 ]

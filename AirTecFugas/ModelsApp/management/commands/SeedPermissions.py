@@ -41,8 +41,16 @@ class Command(BaseCommand):
                 "delete_user",
                 "view_user"]
 
-    consultores = [
-                "view_area",
+    ejecutivos = ["add_area",
+              "view_area",
+                "view_empresa",
+                "view_fuga",
+                "view_imagenfuga",
+                "view_maquina",
+                "add_planta",
+                "view_planta"]
+
+    consultores = ["view_area",
                 "view_empresa",
                 "view_fuga",
                 "view_imagenfuga",
@@ -69,6 +77,7 @@ class Command(BaseCommand):
 
     grupos = {
         "Administradores": admins,
+        "Ejecutivos":ejecutivos,
         "Consultores": consultores,
         "Tecnicos": tecnicos
     }

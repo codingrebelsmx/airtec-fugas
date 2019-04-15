@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -6,7 +7,7 @@ from ModelsApp.forms.AreaTrabajoForms import SeleccionPlantaTrabajoForm
 
 
 
-class SeleccionPlantaTrabajoView(FormView):
+class SeleccionPlantaTrabajoView(LoginRequiredMixin, FormView):
     """ View to select planta de trabajo """
     template_name = "MainApp/PlantaTrabajo/seleccion-planta-trabajo.html"
     form_class = SeleccionPlantaTrabajoForm
@@ -16,23 +17,15 @@ class SeleccionPlantaTrabajoView(FormView):
         context = super().get_context_data(**kwargs)
         area_seleccionada = "TRABAJO"
         context["menu"] = area_seleccionada
+        context["ejecutivo"] = self.request.user.groups.all().filter(name="Ejecutivos").first() != None
+        context["id_empresa"] = self.request.user.empresa.id
         return context
-
-    def get(self, request, *args, **kwargs):
-        #cliente = self.request.session.get("id_cliente", None)
-        #planta = self.request.session.get("id_planta", None)
-
-        #if cliente != None and planta != None:
-        #    return redirect("dashboard")
-        return super().get(request, *args, **kwargs)
-
 
     def post(self, request, *args, **kwargs):
         try:
             return super().post(request, *args, **kwargs)
         except Exception as excep:
             return "Error"
-
 
     def form_valid(self, form):
         self.request.session["id_cliente"] = form.cleaned_data['cliente']

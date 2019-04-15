@@ -1,12 +1,13 @@
     # -*- coding: utf-8 -*-
 from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse, HttpResponseForbidden, Http404
 from django.urls import reverse_lazy
 from ModelsApp.models import Planta
 from ModelsApp.forms.PlantaForms import CreatePlantaForm
 
 
-class PlanoPlantaView(DetailView):
+class PlanoPlantaView(LoginRequiredMixin, DetailView):
     """ View que permitirá retornar el contenido del archivo svg del plano de la planta """
     model = Planta
     template_name = ""
