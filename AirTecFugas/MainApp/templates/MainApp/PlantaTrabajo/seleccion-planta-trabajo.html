@@ -16,14 +16,22 @@
                             <div class="form-group">
                                 <label for="id_cliente">Cliente:</label>
                                 <div class="input-group form-group">
-                                    <select id="id_cliente" name="cliente" class="form-control" required>
-                                        <option>Selecciona un Cliente...</option>
-                                    </select>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewCustomer" data-url="{% url 'empresa-create' %}">
-                                            <span class="icon-plus2"></span>&nbsp;Nuevo Cliente
-                                        </button>
-                                    </span>
+                                    {% if not ejecutivo %}
+                                        <select id="id_cliente" name="cliente" class="form-control" data-value="{{ id_empresa|default_if_none:'' }}" required>
+                                            <option>Selecciona un Cliente...</option>
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#genericModal" data-action="AddNewCustomer" 
+                                                    data-url="{% url 'empresa-create' %}">
+                                                <span class="icon-plus2"></span>&nbsp;Nuevo Cliente
+                                            </button>
+                                        </span>
+                                    {% else %}
+                                        <select id="idSelectCliente" name="SelectCliente" class="form-control" data-value="{{ id_empresa|default_if_none:'' }}" disabled readonly required>
+                                            <option>Selecciona un Cliente...</option>
+                                        </select>
+                                        <input type="hidden" name="cliente" id="id_cliente" value="{{ id_empresa|default_if_none:'' }}" />
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -56,6 +64,7 @@
                 </form>
                 <input id="idUrlApiEmpresaListSelect" name="UrlApiEmpresaListSelect" type="hidden" value="{% url 'ApiEmpresaListSelect'  %}" />
                 <input id="idUrlApiPlantaListSelect" name="UrlApiPlantaListSelect" type="hidden" value="{% url 'ApiPlantaListSelect' '0' %}" />
+                <input id="idEsEjecutivo" name="EsEjecutivo" type="hidden" value="{{ ejecutivo }}"/>
             </div>
         </div>
     </div>

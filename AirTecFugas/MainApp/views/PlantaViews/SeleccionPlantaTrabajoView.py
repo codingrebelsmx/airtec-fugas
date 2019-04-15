@@ -18,7 +18,7 @@ class SeleccionPlantaTrabajoView(LoginRequiredMixin, FormView):
         area_seleccionada = "TRABAJO"
         context["menu"] = area_seleccionada
         context["ejecutivo"] = self.request.user.groups.all().filter(name="Ejecutivos").first() != None
-        context["id_empresa"] = self.request.user.empresa.id
+        context["id_empresa"] = self.request.user.empresa.id if context["ejecutivo"] else None
         return context
 
     def post(self, request, *args, **kwargs):
