@@ -1,36 +1,21 @@
 # -*- coding: utf-8 -*-
-from django.views.generic import ListView
+from django.views.generic import FormView
 from django.http import HttpResponse, Http404
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from ModelsApp.models import Fuga
+from ModelsApp.forms.FugaForms import ExportCSVForm
 import csv
 
 
-class FugaListView(PermissionRequiredMixin, ListView):
-    """ Abstract class to response for list of fugas request """
+class FugaExportCSVFormView(PermissionRequiredMixin, FormView):
+    """ View to export fugas to csv file """
     model = Fuga
-    template_name = "MainApp/Fuga/list-fuga.html"
+    form_class = ExportCSVForm
+    template_name = "MainApp/Fuga/export-csv-fuga.html"
     permission_required = ("ModelsApp.view_fuga",)
 
-
-    def dispatch(self, request, *args, **kwargs):
-        cliente = self.request.session.get("id_cliente", None)
-        planta = self.request.session.get("id_planta", None)
-
-        if cliente != None and planta != None:
-            return super().dispatch(request, *args, **kwargs)
-        else:
-            return redirect('selec-planta-trabajo')
-
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        area_seleccionada = "FUGAS"
-        context["menu"] = area_seleccionada
-        return context
-    
 
     def get_queryset(self):
         id_planta = self.request.session.get("id_planta", None)
@@ -57,4 +42,8 @@ class FugaListView(PermissionRequiredMixin, ListView):
             return response
         else:
             return Http404
+
+
+
+
 

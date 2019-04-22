@@ -31,6 +31,11 @@ function InitModalEvents() {
                             $LoadingBlockUI.fadeIn(750);
                             window.location = "/fuga/list/";
                         });
+                    else if (action == "ExportCSVFuga") {
+                        InitForm("idFormExportCSVFugas", AlwaysCallBackAfterFormHasBeenSent, function () {
+                            //$LoadingBlockUI.fadeIn(750);
+                        });
+                    }
                     globalAction = action;
                 }
                 else {

@@ -93,6 +93,9 @@
     <Compile Include="MainApp\views\FugaViews\FugaEditView.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\FugaViews\FugaExportCSVFormView.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\views\FugaViews\FugaListView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -169,6 +172,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\FugaForms\CreateFugaForm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ModelsApp\forms\FugaForms\ExportCSVForm.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ModelsApp\forms\FugaForms\__init__.py">
@@ -523,6 +529,7 @@
     <Content Include="MainApp\templates\MainApp\Fuga\delete-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\detail-partial-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\detail-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\export-csv-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\list-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\mapa-fugas.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\update-corregir-fuga.html" />

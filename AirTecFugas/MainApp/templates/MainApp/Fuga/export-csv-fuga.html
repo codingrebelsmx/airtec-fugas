@@ -1,0 +1,26 @@
+﻿<div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card top-grey-bdr">
+            <div class="card-header">Detalles Fuga</div>
+            <div class="card-body">
+                <form id="idFormExportCSVFugas" name="FormExportCSVFugas" action="{% url 'fuga-export-csv' %}" method="post">
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_area">Fecha Inicial:</label>
+                                <input type="date" class="form-control" id="id_fInicial" name="fInicial" />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="id_area">Fecha Final:</label>
+                                <input type="date" class="form-control" id="id_fFinal" name="fFinal" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Exportar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

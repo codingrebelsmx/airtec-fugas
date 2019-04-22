@@ -8,8 +8,19 @@ $(document).ready(function () {
 });
 
 function InitSelects() {
-    DownloadFromApiToSelect("id_cliente", $("#idUrlApiEmpresaListSelect").val(), "Selecciona un Cliente...");
 
+    if ($("#idEsEjecutivo").val() != "True")
+        DownloadFromApiToSelect("id_cliente", $("#idUrlApiEmpresaListSelect").val(), "Selecciona un Cliente...");
+    else {
+        DownloadFromApiToSelect("idSelectCliente", $("#idUrlApiEmpresaListSelect").val(), "Selecciona un Cliente...");
+        DownloadFromApiToSelect("id_planta"
+            , $("#idUrlApiPlantaListSelect").val().replace("0", $("#id_cliente").val())
+            , "Selecciona una planta..."
+            , function () {
+                $("#id_planta").removeAttr("disabled");
+                $LoadingBlockUI.fadeOut(1500);
+            });
+    }
     // EventHandler OnChange Cliente's Select
     $("#id_cliente").on("change", function () {
         $LoadingBlockUI.fadeIn(750);

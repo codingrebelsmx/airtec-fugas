@@ -39,7 +39,30 @@ class Fuga(BaseModel):
         return self.imagenfuga_set.filter(is_enabled=True)
         #return ImagenFuga.objects.filter(fuga__id=self.pk, is_enabled=True)
 
-        
+    def to_csv_row(self):
+        return [self.area.nombre, self.maquina.nombre, self.ubicacion.nombre, self.categoria
+                , self.recomendacion_csv, self.estatus_csv, self.nadp_csv, self.refacciones_comentarios]
+
+    @property
+    def recomendacion_csv(self):
+        if self.recomendacion == "REP":
+            return "Reparar"
+        elif self.recomendacion == "REM":
+            return "Remplazar"
+        elif self.recomendacion == "OTR":
+            return "Otra"
+
+    @property
+    def estatus_csv(self):
+        if self.estatus == 1:
+            return "Registrado"
+        elif self.estatus == 2:
+            return "Corregido"
+
+    @property
+    def nadp_csv(self):
+        return "Si" if self.nadp else "No"
+
 
     #Custom Methods
     def __str__(self):
