@@ -4,6 +4,7 @@
             <div class="card-header">Detalles Fuga</div>
             <div class="card-body">
                 <form id="idFormExportCSVFugas" name="FormExportCSVFugas" action="{% url 'fuga-export-csv' %}" method="post">
+                    {% csrf_token %}
                     <div class="row gutters">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
