@@ -9,7 +9,7 @@ var globalAction = "";
 $(document).ready(function () {
     InitSelects();
     InitModalEvents();
-    InitForm("idFormCreateFuga", LimpiarControles, OnCloseModalCallBack);
+    InitForm("idFormUpdateFuga", LimpiarControles, OnCloseModalCallBack);
     //InitForm("idFormCreateFuga", function () {
     //    LimpiarControles();
     //});
@@ -58,7 +58,7 @@ function InitSelects() {
 
 function InitModalEvents() {
     $('#genericModal').on('show.bs.modal', function (e) {
-        $LoadingBlockUI.fadeIn(500);
+        $LoadingBlockUI.fadeIn(750);
         var url = $(e.relatedTarget).data("url");
         var action = $(e.relatedTarget).data("action");
         if (url != undefined && url != null) {
@@ -77,7 +77,7 @@ function InitModalEvents() {
                         'error'
                     );
                 }
-                $LoadingBlockUI.fadeOut(1000);
+                $LoadingBlockUI.fadeOut(750);
             });
         }
     });
@@ -98,6 +98,7 @@ function AlwaysCallBackAfterFormHasBeenSent() {
 
 
 var OnCloseModalCallBack = function () {
-    window.location = $("#UrlMapaFugasCreate").val();
+    $LoadingBlockUI.fadeIn(750);
+    window.location = $("#UrlMapaFugasList").val();
 };
 

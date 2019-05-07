@@ -117,8 +117,8 @@ function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
         if (data != undefined) {
             if (data.length > 0) {
                 data.map(function (obj, index) {
-
-                    let strOption = '<option value="' + obj.id + '" ' + ReturnSelectedAttr(defaultValue) + '>';
+                    let selected = ReturnSelectedAttr(defaultValue);
+                    let strOption = '<option value="' + obj.id + '" ' + selected + '>';
                     strOption += (obj.nombre + '</option>');
                     $objSelect.append(strOption);
                 });
@@ -142,6 +142,10 @@ function DownloadFromApiToSelect(idSelect, theURL, emptyLabel, alwaysCallBack) {
             'warning'
         );
     }).always(function () {
+        if (defaultValue != undefined && defaultValue != null && defaultValue != "") {
+            $objSelect.val(defaultValue);
+            $objSelect.trigger("change");
+        }
         if (alwaysCallBack != undefined && alwaysCallBack != null)
             alwaysCallBack();
     });
