@@ -7,7 +7,9 @@
     <div class="side-content ">
         <!-- BEGIN .user-profile -->
         <div class="user-profile">
-	        <img src="{% static 'MainApp/theme-files/img/user.png' %}" class="profile-thumb" alt="User Thumb">
+            <a href="{% url "dashboard" %}" class="logo">
+                <img src="{% static 'MainApp/theme-files/img/user.png' %}" alt="User Thumb">
+            </a>
             <!--
 	        <h6 class="profile-name">Yuki Hayashi</h6>
 	        <ul class="profile-actions">
@@ -73,9 +75,10 @@
                 {% endif %}
 		        
                 {% if request.user|is_in_group:"Administradores" %}
-		            <li class="menu-header">
-			            -- Catalogos
+                <!--
+		            <li class="menu-header">Catalogos
 		            </li>
+                -->
 		            <li  class="{% if menu == 'AREAS' %} active selected {% endif %}">
 			            <a href="#" class="has-arrow" aria-expanded="false">
 				            <span class="has-icon">
