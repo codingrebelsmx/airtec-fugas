@@ -46,7 +46,7 @@
 			        </a>
 		        </li>
 
-                {% if request.user|is_in_group:"Administradores" or request.user|is_in_group:"Tecnicos" %}
+                {% if request.user|is_in_group:"Administradores" or request.user|is_in_group:"Tecnicos" or request.user|is_in_group:"Ejecutivos" %}
                     <li  class="{% if menu == 'TRABAJO' %} active selected {% endif %}">
                         <a href="{% url 'selec-planta-trabajo' %}">
 				            <span class="has-icon">
