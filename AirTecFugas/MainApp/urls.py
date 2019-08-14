@@ -14,10 +14,10 @@ from MainApp.views import default
 from MainApp.views.FugaViews import FugaCreateView, FugaListView, FugaDetailsViews, FugaEditView, FugaDeleteView, FugaExportCSVFormView
 from MainApp.views.AreaViews import AreaCreateView, AreaCreatePartialView, AreaListView, AreaEditsView, AreaDeleteView
 from MainApp.views.MaquinaViews import MaquinaCreateView, MaquinaCreatePartialView, MaquinaListView, MaquinaEditViews, MaquinaDeleteView
-from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView
+from MainApp.views.PlantaViews import SeleccionPlantaTrabajoView, CreatePlantaPartialView, PlanoPlantaView, PlanoPlantaImgView
 from MainApp.views.EmpresaViews import CreateEmpresaPartialView
 from MainApp.views.ImagenFugaViews import DetailImagenView
-
+from MainApp.views.Mapa.MapaOpenLayerViews import MapaFugasOpenLayerView
 
 # Uncomment the next lines to enable the admin:
 from django.conf.urls import include
@@ -41,13 +41,18 @@ urlpatterns = [# Examples:
     ### -------------- CRUD PLANTA -------------- ###
     re_path(r'^planta/seleccionar-planta/$', SeleccionPlantaTrabajoView.as_view(), name='selec-planta-trabajo'),
     re_path(r'^planta/plano/(?P<pk>\d+)/$', PlanoPlantaView.as_view(), name='planta-plano-view'),
+    re_path(r'^planta/plano_img/(?P<pk>\d+)/$', PlanoPlantaImgView.as_view(), name='planta-plano-view'),
     re_path(r'^planta/create/$', CreatePlantaPartialView.as_view(), name='planta-create'),
     re_path(r'^planta/list/$', default.about, name='planta-list'),
 
     ### -------------- CRUD FUGA -------------- ###
     re_path(r'^mapa-fugas/$', default.mapafugas, name='mapa-fugas'),
+
+    re_path(r'^mapafugas/$', MapaFugasOpenLayerView.as_view(), name='mapa-fugas-ol'),
+
     re_path(r'^fuga/create/(?P<punto_x>-?\d+\.\d+)/(?P<punto_y>-?\d+\.\d+)/$', FugaCreateView.as_view(), name='fuga-create'),
     re_path(r'^fuga/edit/(?P<pk>\d+)/$', FugaEditView.FugaEditView.as_view(), name='fuga-edit'),
+    #re_path(r'^fuga/edit/mapa/(?P<pk>\d+)/$', FugaEditView, name='fuga-edit'),
     re_path(r'^fuga/delete/(?P<pk>\d+)/$', FugaDeleteView.as_view(), name='fuga-delete'),
     re_path(r'^fuga/partial-edit/(?P<pk>\d+)/$', FugaEditView.FugaPartialEditView.as_view(), name='fuga-partial-edit'),
     re_path(r'^fuga/corregida/(?P<pk>\d+)/$', FugaEditView.FugaCorregidaEditView.as_view(), name='fuga-corregida'),

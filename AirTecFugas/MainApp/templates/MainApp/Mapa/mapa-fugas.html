@@ -1,0 +1,156 @@
+﻿{% extends "MainApp/Layout/_Layout.html" %}
+
+{% load staticfiles %}
+
+{% block SpecificStyles %}
+    <!--
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    -->
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <link href="https://unpkg.com/ol-contextmenu/dist/ol-contextmenu.min.css" rel="stylesheet">
+    <style>
+      .map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <!--
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+    <script src="https://unpkg.com/ol-contextmenu"></script>
+{% endblock %}
+
+{% block content %}
+    <!--<h2>Google Maps Test</h2>
+    <div id="map"></div>
+    -->
+    <h2>My Map</h2>
+    <div id="map" class="map"></div>
+{% endblock %}
+
+{% block finalscripts %}
+<script type="text/javascript">
+    // Map views always need a projection.  Here we just want to map image
+      // coordinates directly to map coordinates, so we create a projection that uses
+      // the image extent in pixels.
+      var extent = [0, 0, 1024, 968];
+      var projection = new ol.proj.Projection({
+        code: 'xkcd-image',
+        units: 'pixels',
+        extent: extent
+      });
+
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Image({
+            source: new ol.source.ImageStatic({
+              attributions: '© <a href="http://xkcd.com/license.html">xkcd</a>',
+              url: 'http://localhost:8080/planta/plano_img/1/',
+              projection: projection,
+              imageExtent: extent
+            })
+          })
+        ],
+        target: 'map',
+        view: new ol.View({
+          projection: projection,
+          center: ol.extent.getCenter(extent),
+          constrainRotation:180,
+          zoom: 2,
+          maxZoom: 8,
+          extent: extent //extension maxima del mapa
+        })
+      });
+
+      var contextmenu = new ContextMenu({
+        width: 170,
+        defaultItems: true, // defaultItems are (for now) Zoom In/Zoom Out
+        items: [
+            {
+            text: 'Center map here',
+            classname: 'some-style-class', // add some CSS rules
+            callback: function(){
+                alert("center");
+                } // `center` is your callback function
+            },
+            {
+            text: 'Add a Marker',
+            classname: 'some-style-class', // you can add this icon with a CSS class
+                                            // instead of `icon` property (see next line)
+            //icon: 'img/marker.png',  // this can be relative or absolute
+            callback: function(){
+                alert("Marker");
+                }
+            },
+            '-' // this is a separator
+        ]
+    });
+
+    map.addControl(contextmenu);
+    map.on("click", function(evt){
+        //alert(evt.pixel);
+        alert(evt.coordinate);
+        //alert("click fires");
+    }, map);
+</script>
+<!--
+    <script>
+        var map;
+        var _style = [
+            {
+                "featureType": "landscape",
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            },
+            {
+                "featureType": "administrative.country",
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            },
+            {
+                "featureType": "administrative.locality",
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            }
+        ];
+
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 22.1588879, lng: -100.9430535},
+          zoom: 13,
+          mapTypeId: 'satellite',
+          styles:_style
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfoX_ehHdaBdZyBqstPzwskxVkWXMN2xI&callback=initMap"
+    async defer></script>-->
+{% endblock %}

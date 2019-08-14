@@ -28,3 +28,31 @@ class PlanoPlantaView(LoginRequiredMixin, DetailView):
         else:
             return Http404("La planta no tiene un plano asignado")
 
+
+class PlanoPlantaImgView(LoginRequiredMixin, DetailView):
+    """ View que permitirá retornar el contenido del archivo svg del plano de la planta """
+    model = Planta
+    template_name = ""
+    imgs_ext = ["jpeg", "jpg", "png", "bmp", "gif"]
+
+
+    def get_object(self, queryset=None):
+        id_planta = self.request.session.get("id_planta", None)
+
+        if id_planta == None:
+            return super().get_object(queryset)
+        else:
+            return Planta.objects.filter(pk=id_planta, is_enabled=True).first()
+
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.object is not None and self.object.plano is not None:
+            ext = self.object.get_extension()
+            if ext in self.imgs_ext:
+                ext = "jpeg" if ext == "jpg" else ext
+                return HttpResponse(self.object.plano.file, content_type="image/" + ext)
+            else:
+                return HttpResponse(self.object.plano.file, content_type="image/svg+xml")
+        else:
+            return Http404("La planta no tiene un plano asignado")
+

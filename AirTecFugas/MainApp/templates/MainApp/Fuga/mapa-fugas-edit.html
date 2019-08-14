@@ -1,0 +1,123 @@
+﻿{% extends "MainApp/Layout/_Layout.html" %}
+
+{% block SpecificStyles %}
+    {% load static %}
+    <link  rel="stylesheet" type="text/css" href="{% static 'MainApp/css/mapa-fugas.css' %}" />
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+   <div id="context-menu" class="d-none">
+       <div class="custom-menu">
+           <ul class="list-group">
+               <li class="list-group-item d-flex justify-content-between align-items-center" style="padding: 0 !important;">
+                   <div style="padding: 12px 20px;">
+				   <span class="icon" style="padding-right: 10px;">
+						<i class="icon-wrench"></i>
+					</span>
+                   Agregar Fuga
+				   </div>
+               </li>
+           </ul>
+       </div>
+   </div> 
+   <div id="context-menu-fugas" class="d-none">
+       <div class="menu-actions">
+           <ul class="list-group">
+               <!--<li class="list-group-item d-flex justify-content-between align-items-center btn-action-reparada" style="padding: 0 !important;">
+                   <div style="padding: 12px 20px;">
+				   <span class="icon" style="padding-right: 10px;">
+						<i class="icon-wrench"></i>
+					</span>
+                   Reparada
+				   </div>
+               </li>-->
+			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-detalles" style="padding: 0 !important;"  data-toggle="modal" data-target="#modal-fugas">
+                   <div style="padding: 12px 20px;">
+				   <span class="icon" style="padding-right: 10px;">
+						<i class="icon-file-text"></i>
+					</span>
+                   Detalles
+				   </div>
+               </li>
+			   <li class="list-group-item d-flex justify-content-between align-items-center btn-action-images" style="padding: 0 !important;">
+                   <div style="padding: 12px 20px;">
+				   <span class="icon" style="padding-right: 10px;">
+						<i class="icon-image"></i>
+					</span>
+                    Ver Imágenes
+				   </div>
+               </li>-
+           </ul>
+       </div>
+   </div> 
+   <div id="SVGContainer">
+   </div>
+   <div id="controls">
+      <svg version="1.1" width="50px" height="150px">
+         <g transform="translate(10,10)">
+            <g transform="translate(0,47)">
+               <g cursor="pointer" id="zoom-in-button">
+                  <circle r="15.5" cx="0" cy="0" fill="#FFFFFF" stroke="#000000" fill-opacity="0.7" stroke-width="1"
+                     stroke-opacity="0.1" transform="translate(16,16)"></circle>
+                  <g transform="translate(16,16)" opacity="1" style="		pointer-events: none;">
+                     <path cs="100,100" d="M-6.5,0.5 L7.5,0.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#494949"></path>
+                     <path cs="100,100" d="M0.5,-6.5 L0.5,7.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#494949"></path>
+                  </g>
+               </g>
+               <g cursor="pointer" transform="translate(0,36)" id="zoom-out-button">
+                  <circle r="15.5" cx="0" cy="0" fill="#FFFFFF" stroke="#000000" fill-opacity="0.7" stroke-width="1"
+                     stroke-opacity="0.1" transform="translate(16,16)"></circle>
+                  <path cs="100,100" d="M-6.5,0.5 L7.5,0.5" fill="none" stroke-width="1" stroke-opacity="1" stroke="#494949"
+                     transform="translate(16,16)" opacity="1" style="		pointer-events: none;"></path>
+               </g>
+            </g>
+            <g cursor="pointer" id="reset-button">
+               <circle r="15.5" cx="0" cy="0" fill="#FFFFFF" stroke="#000000" fill-opacity="0.7" stroke-width="1"
+                  stroke-opacity="0.1" transform="translate(16,16)">
+			   </circle>
+				<path fill="#444444" transform="translate(8,8)" d="M5.3 6.7l1.4-1.4-3-3 1.3-1.3h-4v4l1.3-1.3z"></path>
+				<path fill="#444444" transform="translate(8,8)" d="M6.7 10.7l-1.4-1.4-3 3-1.3-1.3v4h4l-1.3-1.3z"></path>
+				<path fill="#444444" transform="translate(8,8)" d="M10.7 9.3l-1.4 1.4 3 3-1.3 1.3h4v-4l-1.3 1.3z"></path>
+				<path fill="#444444" transform="translate(8,8)" d="M11 1l1.3 1.3-3 3 1.4 1.4 3-3 1.3 1.3v-4z"></path>
+            </g>
+         </g>
+      </svg>
+   </div>
+
+	<div id="resumen-fugas" class="info-fugas">
+		<span>Total fugas:</span><span id="total-fugas"></span><br />
+		<span>Fugas reparadas:</span><span id="fugas-reparadas"></span><br />
+		<span>Fugas pendientes:</span><span id="fugas-pendientes"></span>
+	</div>
+
+	<div class="modal fade" id="modal-fugas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Detalles fuga</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modal-fuga-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+    <div id="modal-images" class="div-images d-none">
+        <span id="close-image-modal" class="icon-cross" style="font-size: 25px; color: #a7a7a7; cursor: pointer; position: absolute; top: 5%; left: 92%; margin-right: 2%;"></span>
+        <span id="change-image-left" class="icon-chevron-left2" style="font-size: 100px; color: #a7a7a7; cursor:pointer; position: absolute; top: 45%; left: 5%;"></span>
+        <img id="img-dynamic" src="" style="width: auto; height: auto; max-height: 90%; max-width: 90%; display: inline-block;" />
+        <span id="change-image-right" class="icon-chevron-right2" style="font-size: 100px; color: #a7a7a7; cursor:pointer; position: absolute; top: 45%; left: 85%;"></span>
+    </div>
+{% endblock %}
+
+{% block finalscripts %}
+    <script src="{% static 'MainApp/scripts/lib/SVGPanZoom/SVGPanZoom.js' %}"></script>
+    <script src="{% static 'MainApp/scripts/lib/SVG/svg.js' %}"></script>
+    
+    <script src="{% static 'MainApp/scripts/Mapa-Fugas/mapa-fugas.js' %}"></script>
+{% endblock %}

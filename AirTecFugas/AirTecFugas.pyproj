@@ -108,6 +108,8 @@
     <Compile Include="MainApp\views\ImagenFugaViews\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\views\Mapa\MapaOpenLayerViews.py" />
+    <Compile Include="MainApp\views\Mapa\__init__.py" />
     <Compile Include="MainApp\views\MaquinaViews\MaquinaCreatePartialView.py">
       <SubType>Code</SubType>
     </Compile>
@@ -366,6 +368,7 @@
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\slimscroll\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\sparkline\" />
     <Folder Include="MainApp\static\MainApp\theme-files\vendor\unifyMenu\" />
+    <Folder Include="MainApp\templates\MainApp\Mapa\" />
     <Folder Include="MainApp\templatetags\" />
     <Folder Include="MainApp\utils\" />
     <Folder Include="MainApp\static\MainApp\css\" />
@@ -399,6 +402,7 @@
     <Folder Include="MainApp\views\EmpresaViews\" />
     <Folder Include="MainApp\views\FugaViews\" />
     <Folder Include="MainApp\views\ImagenFugaViews\" />
+    <Folder Include="MainApp\views\Mapa\" />
     <Folder Include="MainApp\views\MaquinaViews\" />
     <Folder Include="MainApp\views\PlantaViews\" />
     <Folder Include="ModelsApp\" />
@@ -685,12 +689,14 @@
     <Content Include="MainApp\templates\MainApp\Fuga\detail-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\export-csv-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\list-fuga.html" />
+    <Content Include="MainApp\templates\MainApp\Fuga\mapa-fugas-edit.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\mapa-fugas.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\update-corregir-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\update-partial-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Fuga\update-fuga.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_Content.html" />
     <Content Include="MainApp\templates\MainApp\Layout\_Layout_LogOut.html" />
+    <Content Include="MainApp\templates\MainApp\Mapa\mapa-fugas.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina-partial.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\create-maquina.html" />
     <Content Include="MainApp\templates\MainApp\Maquina\delete-maquina.html" />
