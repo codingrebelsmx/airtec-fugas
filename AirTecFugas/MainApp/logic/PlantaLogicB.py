@@ -18,12 +18,12 @@ def get_cantidad_fugas_resueltas(id_planta):
     return cantidad_fugas
 
 
-def calcula_porcentaje_fugas(id_planta):
-    porcentaje=0
+def calcula_porcentaje_fugas(id_planta, planta):
+    porcentaje = 0
     fugas = Fuga.objects.filter(area__planta__pk=id_planta, estatus=2)
     if len(fugas) > 0:
-        sumatoria = reduce((lambda x,y:x.flujo + y.flujo), fugas)
-        porcentaje = sumatoria / planta.flujo_total
+        sumatoria = sum(x.flujo for x in fugas)
+        porcentaje = sumatoria / float(planta.flujo_total)
     return porcentaje
 
 
@@ -31,7 +31,7 @@ def calcula_ahorro_economico(id_planta):
     sumatoria = 0
     fugas = Fuga.objects.filter(area__planta__pk=id_planta, estatus=2)
     if len(fugas) > 0:
-        sumatoria = reduce((lambda x,y: x.ahorro_economico + y.ahorro_economico), fugas)
+        sumatoria = sum(x.ahorro_economico for x in fugas)
     return sumatoria
 
 
@@ -39,7 +39,7 @@ def calcula_ahorro_energetico(id_planta):
     sumatoria = 0
     fugas = Fuga.objects.filter(area__planta__pk=id_planta, estatus=2)
     if len(fugas) > 0:
-        sumatoria = reduce((lambda x,y: x.ahorro_energetico + y.ahorro_energetico), fugas)
+        sumatoria = sum(x.ahorro_energetico for x in fugas)
     return sumatoria
 
 

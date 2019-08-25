@@ -65,16 +65,16 @@ class Fuga(BaseModel):
 
     @property
     def flujo(self):
-        return (self.categoria * 1.2)
+        return (float(self.categoria) * 1.2)
 
     @property
     def ahorro_economico(self):
-        horas_totales = self.area.planta.horas_totales
+        horas_totales = float(self.area.planta.horas_totales)
         return (((self.flujo * 60 * horas_totales) / 1000) * 0.42)
 
     @property
     def ahorro_energetico(self):
-        horas_totales = self.area.planta.horas_totales
+        horas_totales = float(self.area.planta.horas_totales)
         return ((self.flujo / 4) * 0.7459 * horas_totales)
 
     #Custom Methods

@@ -33,7 +33,7 @@ def dashboard(request):
         planta = PlantaLogicB.get_planta(id_planta)
         total_fugas = PlantaLogicB.get_cantidad_fugas(id_planta)
         fugas_resueltas = PlantaLogicB.get_cantidad_fugas_resueltas(id_planta)
-        porcentaje_fugas = PlantaLogicB.calcula_porcentaje_fugas(id_planta)
+        porcentaje_fugas = PlantaLogicB.calcula_porcentaje_fugas(id_planta, planta)
         ahorro_economico = PlantaLogicB.calcula_ahorro_economico(id_planta)
         ahorro_energetico = PlantaLogicB.calcula_ahorro_energetico(id_planta)
         emisiones_co2 = PlantaLogicB.calcula_emisiones_co2(id_planta)
