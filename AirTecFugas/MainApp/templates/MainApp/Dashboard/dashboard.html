@@ -7,7 +7,59 @@
         <div class="card">
             <div class="card-header">Dashboard</div>
             <div class="card-body">
-               
+               <div class="row align-items-center">
+                   <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
+                       <div class="monthly-avg plain">
+                           <h6>Fugas</h6>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-secondary">{{ porcentaje_fugas }}</h4>
+                                <h6 class="avg-label">
+                                    % de Fugas
+                                </h6>
+                            </div>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-secondary">{{ total_fugas }}</h4>
+                                <h6 class="avg-label">
+                                    Registradas
+                                </h6>
+                            </div>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-primary">{{ fugas_resueltas }}</h4>
+                                <h6 class="avg-label">
+                                    Resueltas
+                                </h6>
+                            </div>
+                       </div>
+                   </div>
+                   <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
+                       <div class="monthly-avg plain">
+                           <h6>Ahorro</h6>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-secondary">{{ ahorro_economico | prepend_dollars }}</h4>
+                                <h6 class="avg-label">
+                                    Econ&oacute;mico (USD)
+                                </h6>
+                            </div>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-primary">{{ ahorro_energetico }}</h4>
+                                <h6 class="avg-label">
+                                    Energ&eacute;tico
+                                </h6>
+                            </div>
+                       </div>
+                   </div>
+                   <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12">
+                       <div class="monthly-avg plain">
+                           <h6>Ahorro</h6>
+                           <div class="avg-block">
+                                <h4 class="avg-total text-secondary">{{ emisiones_co2 }}</h4>
+                                <h6 class="avg-label">
+                                    Emisiones de Carbono (Ton de CO2 a la atm.)
+                                </h6>
+                            </div>
+                       </div>
+                   </div>
+               </div>
             </div>
         </div>
     </div>
