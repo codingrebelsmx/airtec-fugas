@@ -40,6 +40,12 @@
     <Compile Include="MainApp\forms\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainApp\logic\PlantaLogicB.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainApp\logic\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainApp\migrations\__init__.py" />
     <Compile Include="MainApp\templatetags\__init__.py">
       <SubType>Code</SubType>
@@ -318,6 +324,7 @@
   <ItemGroup>
     <Folder Include="AirTecFugas\" />
     <Folder Include="MainApp\" />
+    <Folder Include="MainApp\logic\" />
     <Folder Include="MainApp\migrations\" />
     <Folder Include="MainApp\forms\" />
     <Folder Include="MainApp\static\MainApp\scripts\lib\longclick\" />

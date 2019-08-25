@@ -63,6 +63,19 @@ class Fuga(BaseModel):
     def nadp_csv(self):
         return "Si" if self.nadp else "No"
 
+    @property
+    def flujo(self):
+        return (self.categoria * 1.2)
+
+    @property
+    def ahorro_economico(self):
+        horas_totales = self.area.planta.horas_totales
+        return (((self.flujo * 60 * horas_totales) / 1000) * 0.42)
+
+    @property
+    def ahorro_energetico(self):
+        horas_totales = self.area.planta.horas_totales
+        return ((self.flujo / 4) * 0.7459 * horas_totales)
 
     #Custom Methods
     def __str__(self):
