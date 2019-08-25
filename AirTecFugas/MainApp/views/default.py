@@ -31,12 +31,15 @@ def dashboard(request):
 
     if cliente != None and id_planta != None:
         planta = PlantaLogicB.get_planta(id_planta)
-        total_fugas = PlantaLogicB.get_cantidad_fugas(id_planta)
-        fugas_resueltas = PlantaLogicB.get_cantidad_fugas_resueltas(id_planta)
-        porcentaje_fugas = PlantaLogicB.calcula_porcentaje_fugas(id_planta, planta)
-        ahorro_economico = PlantaLogicB.calcula_ahorro_economico(id_planta)
-        ahorro_energetico = PlantaLogicB.calcula_ahorro_energetico(id_planta)
-        emisiones_co2 = PlantaLogicB.calcula_emisiones_co2(id_planta)
+
+        datos = PlantaLogicB.get_dashboard_stats(id_planta, planta)
+
+        total_fugas = datos[0]
+        fugas_resueltas = datos[1]
+        porcentaje_fugas = datos[2]
+        ahorro_economico = datos[3]
+        ahorro_energetico = datos[4]
+        emisiones_co2 = datos[5]
 
         return render(request, 'MainApp/Dashboard/dashboard.html',
             {
