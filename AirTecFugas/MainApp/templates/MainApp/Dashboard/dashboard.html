@@ -12,12 +12,14 @@
                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                        <div class="monthly-avg plain">
                            <h6>Fugas</h6>
+                           <!--
                            <div class="avg-block">
-                                <h4 class="avg-total text-secondary">{{ porcentaje_fugas | floatformat:4 }}</h4>
+                                <h4 class="avg-total text-secondary">{#{{ porcentaje_fugas | floatformat:4 }}#}</h4>
                                 <h6 class="avg-label">
                                     % de Fugas
                                 </h6>
                             </div>
+                            -->
                            <div class="avg-block">
                                 <h4 class="avg-total text-secondary">{{ total_fugas }}</h4>
                                 <h6 class="avg-label">
@@ -53,7 +55,7 @@
                        <div class="monthly-avg plain">
                            <h6>Emisiones</h6>
                            <div class="avg-block">
-                                <h4 class="avg-total text-secondary">{{ emisiones_co2 | floatformat:2 }}</h4>
+                                <h4 class="avg-total text-primary">{{ emisiones_co2 | floatformat:2 }}</h4>
                                 <h6 class="avg-label">
                                     De Carbono (Ton de CO2 a la Atm.)
                                 </h6>

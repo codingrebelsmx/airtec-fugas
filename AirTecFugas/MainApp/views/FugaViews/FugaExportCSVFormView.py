@@ -43,7 +43,8 @@ class FugaExportCSVFormView(PermissionRequiredMixin, FormView):
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="Fugas.csv"'
             writer = csv.writer(response)
-            writer.writerow(["Área", "Máquina", "Ubicación", "Categoría", "Recomendación", "Estatus", "NADP", "Comentarios"])
+            writer.writerow(["Área", "Máquina", "Ubicación", "Categoría", "Recomendación", "Estatus"
+                             , "NADP", "Comentarios", "Flujo", "Ahorro Económico", "Ahorro Energético"])
             for fuga in queryset:
                 writer.writerow(fuga.to_csv_row())
             return response

@@ -41,7 +41,8 @@ class Fuga(BaseModel):
 
     def to_csv_row(self):
         return [self.area.nombre, self.maquina.nombre, self.ubicacion.nombre, self.categoria
-                , self.recomendacion_csv, self.estatus_csv, self.nadp_csv, self.refacciones_comentarios]
+                , self.recomendacion_csv, self.estatus_csv, self.nadp_csv, self.refacciones_comentarios
+                , self.flujo, self.ahorro_economico, self.ahorro_energetico]
 
     @property
     def recomendacion_csv(self):
