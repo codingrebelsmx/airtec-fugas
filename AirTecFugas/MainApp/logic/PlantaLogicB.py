@@ -15,7 +15,7 @@ def get_dashboard_stats(id_planta, planta):
     emisiones_co2 = 0.0
 
     if planta != None:
-        fugas = Fuga.objects.filter(area__planta__pk=id_planta)
+        fugas = Fuga.objects.filter(is_enabled=True, area__planta__pk=id_planta)
         fugas_pend = fugas.filter(estatus=1)
         fugas_resueltas = fugas.filter(estatus=2)
 
